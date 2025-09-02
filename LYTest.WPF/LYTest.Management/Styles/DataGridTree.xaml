@@ -1,0 +1,246 @@
+﻿<ResourceDictionary xmlns:Controls="clr-namespace:LYTest.DataManager.Controls"  
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Converter="clr-namespace:LYTest.DataManager.Converter">
+    <Converter:LevelToMarginConverter x:Key="LevelToIndentConverter"/>
+    <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    <Style x:Key="ExpandCollapseToggleStyle"
+           TargetType="{x:Type ToggleButton}">
+        <Setter Property="Focusable"
+              Value="False"/>
+        <Setter Property="Width"
+              Value="16"/>
+        <Setter Property="Height"
+              Value="16"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Path x:Name="ExpandPath"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center"
+                      Margin="1"
+                      Data="M 0 0 L 0 12 L 6 6 z" 
+					  Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}">
+                    </Path>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked"
+                       Value="True">
+                            <Setter TargetName="ExpandPath" 
+								Property="Fill" Value="Black"/>
+                            <Setter TargetName="ExpandPath" 
+                                        Property="LayoutTransform">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="45"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <DataTemplate x:Key="CellTemplate_Name">
+        <StackPanel Orientation="Horizontal" 
+                      Margin="{Binding Level,Converter={StaticResource LevelToIndentConverter}}">
+            <ToggleButton x:Name="Expander" 
+                      Style="{StaticResource ExpandCollapseToggleStyle}" 
+                      IsChecked="{Binding Path=IsExpanded,
+                                 RelativeSource={RelativeSource 
+                                                 AncestorType=
+                                                  {x:Type TreeViewItem}}}"
+												  
+             HorizontalAlignment="Center"
+             VerticalAlignment="Center"
+                      ClickMode="Press"/>
+            <Image 
+                    x:Name="imageCheck"
+                    Source="/LYTest.DataManager;component/images/star.png"
+                    Height="14"
+					ToolTip="当前检定项"
+					Visibility="{Binding IsCurrent, Converter={StaticResource BoolToVisibilityConverter}}"
+					Margin="3,0"
+					VerticalAlignment="Center"/>
+            <CheckBox Margin="3,1"
+										IsChecked="{Binding IsSelected,Mode=TwoWay}"
+										VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding Name}"
+										ToolTip="{Binding Name}"
+										VerticalAlignment="Center"/>
+        </StackPanel>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=HasItems,
+                               RelativeSource={RelativeSource 
+                               AncestorType={x:Type TreeViewItem}}}" 
+                     Value="False">
+                <Setter TargetName="Expander"
+                  Property="Visibility"
+                  Value="Collapsed"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <GridViewColumnCollection x:Key="ColumnCollection">
+        <GridViewColumn  Header="检定点列表" Width="240" CellTemplate="{StaticResource CellTemplate_Name}"/>
+        <GridViewColumn Width="40" Header="结论">
+            <GridViewColumn.CellTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Image  x:Name="imageResult"
+									Source="/LYTest.DataManager;component/images/error.png"
+									Height="10" />
+                        <TextBlock x:Name="textBlockFailCount"
+                                                   Foreground="Red"
+                                                   Margin="3,0,0,0"
+									Text="{Binding FailCount}"/>
+                    </StackPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding FailCount}"
+										Value ="0">
+                            <Setter TargetName="imageResult"
+											Property="Visibility"
+											Value="Hidden"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding TestPass}"
+										Value="true">
+                            <Setter TargetName="imageResult"
+											Property="Source" 
+											Value="/LYTest.DataManager;component/images/DoComplete.png"/>
+                            <Setter TargetName="imageResult"
+											Property="Visibility"
+											Value="Visible"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding FailCount}" Value="0">
+                            <Setter TargetName="textBlockFailCount"
+											Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </GridViewColumn.CellTemplate>
+        </GridViewColumn>
+    </GridViewColumnCollection>
+
+    <Style TargetType="TreeView"
+               x:Key="TreeViewStyleResultSummary">
+        <Style.Resources>
+            <Style TargetType="{x:Type TreeViewItem}">
+                <Setter Property="Padding" Value="0,2"/>
+                <Setter Property="IsExpanded" Value="True"/>
+                <Setter Property="Foreground"
+                        Value="{DynamicResource BrushTextDark}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                            <StackPanel VerticalAlignment="Center">
+                                <Border Name="Bd"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}"
+                      BorderThickness="{TemplateBinding BorderThickness}"
+                      Padding="{TemplateBinding Padding}">
+                                    <GridViewRowPresenter x:Name="PART_Header" 
+                                      Content="{TemplateBinding Header}" 
+                                      Columns="{StaticResource ColumnCollection}" >
+                                        <GridViewRowPresenter.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="合格">
+                                                        <Setter Property="Foreground" Value="Green"/>
+                                                    </Trigger>
+                                                    <Trigger Property="Text" Value="不合格">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </GridViewRowPresenter.Resources>
+                                    </GridViewRowPresenter>
+                                </Border>
+                                <ItemsPresenter x:Name="ItemsHost" />
+                            </StackPanel>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsExpanded"
+                       Value="false">
+                                    <Setter TargetName="ItemsHost"
+                        Property="Visibility"
+                        Value="Collapsed"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="HasHeader"
+                             Value="false"/>
+                                        <Condition Property="Width"
+                             Value="Auto"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="PART_Header"
+                        Property="MinWidth"
+                        Value="75"/>
+                                </MultiTrigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="HasHeader"
+                             Value="false"/>
+                                        <Condition Property="Height"
+                             Value="Auto"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="PART_Header"
+                        Property="MinHeight"
+                        Value="19"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsSelected"
+                       Value="true">
+                                    <Setter Property="Foreground"
+                        Value="Blue"/>
+                                    <Setter Property="Background" TargetName="Bd" Value="{DynamicResource BrushContentDark}"/>
+                                </Trigger>
+                                <MultiTrigger>
+                                    <MultiTrigger.Conditions>
+                                        <Condition Property="IsSelected"
+                             Value="true"/>
+                                        <Condition Property="IsSelectionActive"
+                             Value="false"/>
+                                    </MultiTrigger.Conditions>
+                                    <Setter TargetName="Bd"
+                        Property="Background"
+                        Value="{DynamicResource 
+                          {x:Static SystemColors.ControlBrushKey}}"/>
+                                    <Setter Property="Foreground"
+                        Value="{DynamicResource 
+                          {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                </MultiTrigger>
+                                <Trigger Property="IsEnabled"
+                       Value="false">
+                                    <Setter Property="Foreground"
+                        Value="{DynamicResource 
+                          {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TreeView}">
+                    <ScrollViewer>
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                  Background="White"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                            <DockPanel>
+                                <GridViewHeaderRowPresenter Columns="{StaticResource ColumnCollection}"
+                                                            DockPanel.Dock="Top"/>
+                                <ItemsPresenter/>
+                            </DockPanel>
+                        </Border>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

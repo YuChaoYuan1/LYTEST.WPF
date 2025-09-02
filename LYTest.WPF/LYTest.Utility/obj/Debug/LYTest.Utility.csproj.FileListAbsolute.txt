@@ -1,0 +1,6 @@
+D:\LY_Meter_Code_M2\Resource\LYTest.Utility.dll
+D:\LY_Meter_Code_M2\Resource\LYTest.Utility.pdb
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.Utility\obj\Debug\LYTest.Utility.csproj.AssemblyReference.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.Utility\obj\Debug\LYTest.Utility.csproj.CoreCompileInputs.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.Utility\obj\Debug\LYTest.Utility.dll
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.Utility\obj\Debug\LYTest.Utility.pdb

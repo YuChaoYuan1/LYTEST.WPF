@@ -1,0 +1,810 @@
+﻿<basemodel:DockControlDisposable
+    x:Class="LYTest.WPF.View.View_DeviceDebug"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="clr-namespace:LYTest.ViewModel.Debug;assembly=LYTest.ViewModel"
+    xmlns:Controls1="clr-namespace:LYTest.WPF.Controls"
+    xmlns:basemodel="clr-namespace:LYTest.WPF.Model"
+    mc:Ignorable="d" 
+             Foreground="{DynamicResource 字体颜色标准}"
+            d:DesignHeight="600"     d:DesignWidth="1200">
+    <UserControl.Resources>
+        <local1:PowerViewModel x:Key="PowerViewModel"/>
+        <local1:ErrorControlViewModel x:Key="ErrorControlViewModel"/>
+        <local1:MeterControlViewModel x:Key="MeterControlViewModel"/>
+        <local1:QueryDataBase x:Key="QueryDataBase"/>
+        <local1:Debug_ProtViewModel x:Key="Debug_ProtViewModel"/>
+        <!--<local1:SocketViewModel x:Key="SocketViewModel"/>-->
+        <local1:MultiBoardViewModel x:Key="MultiBoardViewModel"/>
+        <local1:Debug_TimeZonePeriodViewModel x:Key="TimeZonePeriodViewModel"/>
+        <local1:Debug_HarmonicViewModel x:Key="Debug_HarmonicViewModel"/>
+
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#2e9afe"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Foreground" Value="{DynamicResource 字体颜色标准}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Chrome"     SnapsToDevicePixels="true"    BorderThickness="0" 
+                                                                   Background="#2e9afe">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                            </Border.BorderBrush>
+                            <ContentPresenter      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                                    Margin="1" 
+                                                                    RecognizesAccessKey="True" 
+                                                                    Content="{TemplateBinding Content}"
+                                                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Chrome"  Property="Background"    Value="#48B7FC"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Chrome" Property="Background" Value="#2E64FE"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource 窗口背景色}">
+        <TabControl  Background="{DynamicResource 窗口背景色}" >
+            <TabItem   Header="基本控制">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="247*"/>
+                        <ColumnDefinition Width="948*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Header="源控制"  DataContext="{StaticResource PowerViewModel}" Grid.Column="0">
+                            <StackPanel Orientation="Vertical" Margin="5">
+
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="接线" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <Controls1:ControlEnumComboBox    Width="100"    EnumName="CLFS"  Style="{DynamicResource StyleComboBox}"
+                                                      SelectedValue="{Binding Setting,Mode=TwoWay}" />
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Ua" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Ua,Mode=TwoWay}"/>
+                                    <TextBlock Text="V"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseUa,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Ub" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Ub,Mode=TwoWay}"/>
+                                    <TextBlock Text="V"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseUb,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Uc" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Uc,Mode=TwoWay}" />
+                                    <TextBlock Text="V"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseUc,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Ia" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Ia,Mode=TwoWay}"/>
+                                    <TextBlock Text="A"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseIa,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Ib" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Ib,Mode=TwoWay}"/>
+                                    <TextBlock Text="A"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseIb,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="Ic" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Ic,Mode=TwoWay}"/>
+                                    <TextBlock Text="A"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                    <TextBox Width="80" TextAlignment="Right" Style="{Binding}" Text="{Binding PhaseIc,Mode=TwoWay}"/>
+                                    <TextBlock Text="°"  VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0 2 0 2" >
+                                    <TextBlock Text="频率" VerticalAlignment="Center" Margin="2 0 2 0"  Width="30" TextAlignment="Right"/>
+                                    <TextBox Width="80"  TextAlignment="Right" Style="{Binding}" Text="{Binding Freq,Mode=TwoWay}"/>
+                                    <TextBlock Text="Hz"  VerticalAlignment="Center" Margin="2 0 15 0"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0 30 0 0"  HorizontalAlignment="Center">
+                                    <Button Content="升 源" Width="60" Height="40"  Margin="0 0 50 0" FontSize="20"
+                                         CommandParameter="PowerOnFree"  Command="{Binding LocalCommand}"/>
+
+                                    <Button Content="关 源" Width="60" Height="40"  Margin="0" FontSize="20"
+                                        CommandParameter="PowerOffFree"  Command="{Binding LocalCommand}"/>
+
+                                </StackPanel>
+                            </StackPanel>
+
+                        </GroupBox>
+
+                        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                <GroupBox Header="表位控制"  DataContext="{StaticResource ErrorControlViewModel}" Grid.Column="1"  >
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <CheckBox Content="全选1-30" Name="chk_All1" Margin="0 0 10 0"  IsChecked="{Binding IsAllCheck1,Mode=TwoWay}" />
+                                            <CheckBox Content="全选31-60" Name="chk_All2"  Margin="0 0 10 0"   IsChecked="{Binding IsAllCheck2,Mode=TwoWay}" />
+                                            <CheckBox Content="全选1-15" Name="chk_All3" Margin="0 0 10 0" Tag="1"  Checked="Chk_All3_Checked" Unchecked="Chk_All3_Checked" />
+                                            <CheckBox Content="全选16-30" Name="chk_All4" Margin="0 0 10 0" Tag="2" Checked="Chk_All3_Checked" Unchecked="Chk_All3_Checked" />
+                                            <CheckBox Content="全选31-45" Name="chk_All5" Margin="0 0 10 0" Tag="3" Checked="Chk_All3_Checked" Unchecked="Chk_All3_Checked" />
+                                            <CheckBox Content="全选46-60" Name="chk_All6" Margin="0 0 10 0" Tag="4" Checked="Chk_All3_Checked" Unchecked="Chk_All3_Checked" />
+
+                                        </StackPanel>
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" >
+                                            <WrapPanel Orientation="Horizontal" Name="panel1">
+                                            </WrapPanel>
+                                        </ScrollViewer>
+                                        <StackPanel Orientation="Vertical" >
+                                            <WrapPanel Orientation="Horizontal">
+                                                <Button Content="恢复全部表位" Width="100" Height="30"  Margin="5" FontSize="15"  CommandParameter="Set_RelayAll_On"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="逐个隔离" Height="30" Margin="5" FontSize="15" CommandParameter="Set_RelayOnebyOne_Off"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="隔离选中表位" Width="100" Height="30"  Margin="5" FontSize="15"    CommandParameter="Set_RelayAll_Off"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="逐个恢复" Height="30" Margin="5" FontSize="15" CommandParameter="Set_RelayOnebyOne_On"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="恢复选中表位" Width="100" Height="30"  Margin="5" FontSize="15"    CommandParameter="Set_Relay_On"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="电机下行" Height="30" Margin="5 0 5 0" CommandParameter="ElectricmachineryContrnl_Down"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="电机上行" Height="30" Margin="5 0 5 0" CommandParameter="ElectricmachineryContrnl_Up"  Command="{Binding LocalCommand}"/>
+                                                <Button Content="读全部状态" Height="30" Margin="5 0 5 0" Click="ReadStatus_Click"/>
+                                                <Button Content="耐压继电器" Height="30" Click="SetNaiYa_Click"/>
+                                                <Button Content="恢复耐压继电器" Height="30" Margin="5 0 5 0" Click="ResetNaiYa_Click"/>
+                                            </WrapPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="台体状态灯" DataContext="{StaticResource ErrorControlViewModel}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="闪烁:" VerticalAlignment="Center"  FontSize="14"  Margin="5 0 0 0"/>
+                                        <Button Content="黄" Width="30"   Height="30"  Margin="2 0 2 0" Foreground="Yellow"  CommandParameter="Set_Hong2"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="绿" Width="30"   Height="30"  Margin="2 0 2 0" Foreground="Green"     CommandParameter="Set_Lv2"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="红" Width="30"   Height="30"  Margin="2 0 2 0"  Foreground="red"    CommandParameter="Set_Huang2"  Command="{Binding LocalCommand}"/>
+                                        <TextBlock Text="点亮:"  VerticalAlignment="Center"  FontSize="14" Margin=" 20 0 0 0"/>
+                                        <Button Content="黄" Width="30"   Height="30"  Margin="2 0 2 0"  Foreground="Yellow"   CommandParameter="Set_Hong"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="绿" Width="30"   Height="30"  Margin="2 0 2 0"  Foreground="Green"    CommandParameter="Set_Lv"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="红" Width="30"   Height="30"  Margin="2 0 2 0"   Foreground="red"     CommandParameter="Set_Huang"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="灭" Width="30"   Height="30"  Margin="2 0 2 0"    CommandParameter="Set_Guan"  Command="{Binding LocalCommand}"/>
+
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="台体供电、断电" BorderBrush="Red" Visibility="Collapsed" DataContext="{StaticResource ErrorControlViewModel}">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button Content="台体供电" HorizontalAlignment="Right"  Height="30"  Margin="5"    CommandParameter="Remote_SupplyOn"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="台体断电" HorizontalAlignment="Right"  Height="30"  Margin="5"    CommandParameter="Remote_SupplyOff"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="表位切换" DataContext="{StaticResource ErrorControlViewModel}">
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="5" Visibility="Collapsed">
+                                            <Button Content="切探针互感式" Height="30" CommandParameter="Set_HG"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                            <Button Content="切探针直接式" Height="30" CommandParameter="Set_ZJ"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                            <Button Content="关闭电机" Height="30" CommandParameter="Set_Off"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" >
+                                            <Button Content="切互感式供电" Height="30" CommandParameter="Set_HGRelay"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                            <Button Content="切直接式供电" Height="30" CommandParameter="Set_ZJRelay"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="表位" DataContext="{StaticResource ErrorControlViewModel}">
+                                    <StackPanel Orientation="Horizontal"  Margin="5">
+                                        <TextBlock Text="表位号："/>
+                                        <TextBox Width="100" Style="{x:Null}" Text="{Binding MeterNo}"/>
+                                        <Button Content="读取地址"  CommandParameter="ReadAddress"  Command="{Binding LocalCommand}" Margin="10 0 10 0"/>
+                                        <Button Content="读取电流值"  CommandParameter="ReadCurrent"  Command="{Binding LocalCommand}" Margin="10 0 10 0"/>
+                                        <TextBlock x:Name="txt_Address2" Text="{Binding Address}" Margin=" 5 0 0 0"/>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Header="系统控制" DataContext="{StaticResource ErrorControlViewModel}" Visibility="Collapsed">
+                                    <StackPanel Orientation="Horizontal"  Margin="5">
+                                        <Button Content="重启电脑" FontSize="16"  Width="100" Height="30" CommandParameter="RestareWindow"  Command="{Binding LocalCommand}" Margin="10 0 10 0" ToolTip="重启计算机"/>
+                                        <Button Content="发送检定完成"  CommandParameter="VerfiyEnd"  Command="{Binding LocalCommand}" FontSize="16"  Height="30" Width=" 100" Margin="0 0 10 0" ToolTip="发送检定完成命令到集控线"/>
+                                        <Button Content="开始自动检定"   CommandParameter="StartAutoVerify" Command="{Binding LocalCommand}" FontSize="16"   Height="30" Width=" 100" ToolTip="先下载表信息,下载方案,开始自动化检定" Visibility="Collapsed"/>
+                                    </StackPanel>
+                                </GroupBox>
+
+                                <GroupBox Header="光电蓝牙模块" DataContext="{StaticResource ErrorControlViewModel}">
+                                    <WrapPanel Orientation="Horizontal" >
+
+                                        <Button Content="复位 " Height="30" CommandParameter="GD_Reset"  Command="{Binding LocalCommand}" Margin="3,0" />
+                                        <Button Content="连接 " Height="30" CommandParameter="GD_Connect"  Command="{Binding LocalCommand}" Margin="3,0" />
+                                        <Button Content="预处理 " Height="30" CommandParameter="GD_Pretreatment"  Command="{Binding LocalCommand}" Margin="3" />
+                                        <Button Content="预处理查询 " Height="30" CommandParameter="GD_PretreatmentSelect"  Command="{Binding LocalCommand}" Margin="3" />
+                                        <Controls1:ControlEnumComboBox Width="130"  EnumName="TestPulseType"  Style="{DynamicResource StyleComboBox}"
+                                                      SelectedValue="{Binding ItoPulseType,Mode=TwoWay}" Margin="0,0,8,0"/>
+
+                                        <Button Content="切换光电脉冲 " Height="30" CommandParameter="GD_SetLightPulse"  Command="{Binding LocalCommand}" Margin="3" />
+                                        <Button Content="报文切换电表模式 " Height="30" CommandParameter="GD_SetMeterTestModelConn"  Command="{Binding LocalCommand}" Margin="3" />
+                                        <Button Content="切换电表模式 " Height="30" CommandParameter="GD_SetMeterTestModelConn"  Command="{Binding LocalCommand}" Margin="3" />
+                                        <Button Content="切换转换器模式 " Height="30" CommandParameter="GD_SetConverterModel"  Command="{Binding LocalCommand}" Margin="3" />
+
+                                    </WrapPanel>
+
+                                </GroupBox>
+
+                                <GroupBox Header="误差调试" DataContext="{StaticResource ErrorControlViewModel}" Visibility="Visible">
+                                    <WrapPanel >
+                                        <StackPanel Orientation="Horizontal" Margin="5">
+                                            <TextBlock Text="标准常数：" VerticalAlignment="Center"/>
+                                            <TextBox Width="150" Style="{Binding}" Text="{Binding StdConst,Mode=TwoWay}"/>
+                                            <Button Content="获取" Width="40" Height="18"  Margin="5 0"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="GetStdConst"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="5">
+                                            <TextBlock Text="电表常数：" VerticalAlignment="Center"/>
+                                            <TextBox Width="150" Style="{Binding}" Text="{Binding TestedConst,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="5">
+                                            <TextBlock Text="检定圈数：" VerticalAlignment="Center"/>
+                                            <TextBox Width="150" Style="{Binding}" Text="{Binding TestQs,Mode=TwoWay}"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="5">
+                                            <TextBlock Text="脉冲类型：" VerticalAlignment="Center"/>
+                                            <ComboBox  Width="150"  Height="24"
+					                        SelectedItem="{Binding PulseType}" 
+					                        ItemsSource="{Binding PulseTypeList}" Style="{DynamicResource StyleComboBox}"
+                                            Margin="0 0 20 0"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content="设置主标准表常数" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="SetStdConst"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                            <Button Content="设置副标准表常数" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }" 
+                                            CommandParameter="SetStdConstDeviceID" Command="{Binding LocalCommand}" BorderThickness="0" FontSize ="12" Foreground="White" />
+                                            <Button Content="设置误差板标准常数" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="SetWCStdConst"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                            <Button Content="设置误差板被检常数" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="SetWcTestConst"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"  Margin="5">
+                                            <Button Content="启动误差版" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="StartWc"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                            <Button Content="停止误差版" Width="120" Height="30"  Margin="5"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="StopWc"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                        </StackPanel>
+                                    </WrapPanel>
+                                </GroupBox>
+
+                            </StackPanel>
+                        </ScrollViewer>
+                        <StackPanel Grid.Column="2" Visibility="Collapsed">
+
+
+                            <GroupBox Header="误差板"  Visibility="Collapsed"  DataContext="{StaticResource ErrorControlViewModel}" Grid.Column="2" Grid.ColumnSpan="1" Margin="0,0,0,-0.2" >
+                                <StackPanel Orientation="Vertical" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="开启所有继电器" Width="120" Height="30"  Margin="5" FontSize="15" 
+                                        CommandParameter="RelayAll_On"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="关闭所有继电器" Width="120" Height="30"  Margin="5" FontSize="15" 
+                                        CommandParameter="RelayAll_Off"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+
+
+                                    <StackPanel Orientation="Horizontal"  Margin="5 10 0 0">
+                                        <TextBlock Text="表位:"  VerticalAlignment="Center"/>
+                                        <TextBox Text="{Binding StartNo,Mode=TwoWay}" Width="50" VerticalAlignment="Center"  Style="{Binding}"
+                                         Margin="5 0 5 0" ToolTip="开始编号" TextAlignment="Right"/>
+                                        <TextBlock Text="-"  VerticalAlignment="Center"/>
+                                        <TextBox Text="{Binding EndNo,Mode=TwoWay}" Width="50" VerticalAlignment="Center"  Style="{Binding}"
+                                         Margin="5 0 5 0" ToolTip="结束编号"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal"  Margin="5 10 0 0">
+                                        <TextBlock Text="继电器控制:"  VerticalAlignment="Center"/>
+                                        <Button Content="开启" Width="40" Margin="5 0 5 0"    CommandParameter="Relay_On"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="关闭" Width="40" Margin="5 0 5 0"    CommandParameter="Relay_Off"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="5 10 0 0">
+                                        <TextBlock Text="   电机控制:"  VerticalAlignment="Center"/>
+                                        <Button Content="下行" Width="40" Margin="5 0 5 0"    CommandParameter="ElectricmachineryContrnl_Down"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="上行" Width="40" Margin="5 0 5 0"    CommandParameter="ElectricmachineryContrnl_Up"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="5 10 0 0">
+                                        <TextBlock Text="  表位状态:"  VerticalAlignment="Center"/>
+                                        <Button Content="读取状态" Width="50" Margin="5 0 5 0"    CommandParameter="Read_Fault"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="线程读取" Width="50" Margin="5 0 5 0"    CommandParameter="Tesk_Read_Fault"  Command="{Binding LocalCommand}"/>
+                                        <Button Content="停止" Width="50" Margin="5 0 5 0"    CommandParameter="StopTask"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+                                </StackPanel>
+
+                            </GroupBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3"  Visibility="Collapsed">
+                            <GroupBox Header="表位状态测试"  Visibility="Collapsed"  DataContext="{StaticResource MeterControlViewModel}" Grid.Column="3" Margin="0,0,0,-0.2">
+                                <StackPanel >
+                                    <StackPanel Orientation="Horizontal"  Margin="5">
+                                        <TextBlock Text="表位号"/>
+                                        <TextBox Width="100" Style="{Binding}" Text="{Binding MeterNo}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="5">
+                                        <Button Content="读取地址"  CommandParameter="ReadAddress"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                        <TextBlock Text="地址："/>
+                                        <TextBlock x:Name="txt_Address" Text="{Binding Address}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal"  Margin="5">
+                                        <Button Content="切换到互感器式"  CommandParameter="Set_HG"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                        <Button Content="切换到直接式式"  CommandParameter="Set_ZJ"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                        <Button Content="关闭互感器电机"  CommandParameter="Set_Off"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="多功能板" Visibility="Collapsed" DataContext="{StaticResource MultiBoardViewModel}" Grid.Column="4" Margin="0,0,0,-0.2">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal" Margin=" 5">
+                                        <TextBlock Text="颜色:"/>
+                                        <TextBox Width="100" Style="{Binding }"  Text="{Binding DColor}"/>
+                                        <TextBlock Text="类型:" Margin=" 10 0 0 0" />
+                                        <TextBox Width="100" Style="{Binding }" Text="{Binding DType}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin=" 5">
+                                        <Button Content="切 换" Width="50"  CommandParameter="SetSSD"  Command="{Binding LocalCommand}" Margin="0 0 10 0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </Grid>
+
+
+                    <!--<WrapPanel Name="wrapPanelParas2" Grid.Row=" 1"
+                             Orientation="Vertical"
+                             VerticalAlignment="Top" Width="1000"
+                               HorizontalAlignment="Left" />-->
+
+                </Grid>
+
+
+            </TabItem>
+            <TabItem   Header="高级控制" Name="text112233" Visibility="Collapsed">
+                <!--<Controls1:MeterStartControl></Controls1:MeterStartControl>-->
+
+            </TabItem>
+
+
+            <TabItem Header="数据库查询" DataContext="{StaticResource QueryDataBase}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <WrapPanel Orientation="Horizontal" Margin="10" >
+                        <TextBlock Text="数据库名称" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                        <ComboBox  Width="250"
+                           Name="comboBoxDataName"
+					       SelectedItem="{Binding DataBaseName}"
+					       ItemsSource="{Binding DataBaseNames}" Style="{DynamicResource StyleComboBox}"
+                           Margin="0 0 20 0"/>
+                        <TextBlock Text="表名称" VerticalAlignment="Center" Margin="0 0 5 0"/>
+                        <ComboBox  Width="250"
+                           Name="comboBoxTable"
+					       SelectedItem="{Binding TableName}"
+					       ItemsSource="{Binding TableNames}" Style="{DynamicResource StyleComboBox}"/>
+                        <Button Content="查询" Width="50" Height="20"  Margin="5" FontSize="15" 
+                                       Click="Button_Click"/>
+                        <!--<TextBox  Width="180"  Style="{Binding}" Margin="20 0 0 0" Name="txt_sql"/>
+                        <Button Content="筛选" Width="50" Height="20"  Margin="5,5,5,0" FontSize="15" 
+                                       Click="Button_Click2" VerticalAlignment="Top"/>-->
+
+
+                        <TextBlock Text="全路径：" VerticalAlignment="Center" Margin="10 0 5 0"/>
+                        <TextBox  Width="180"  Style="{Binding}" Name="txt_sql"/>
+                        <Button Content="查询" Width="50" Height="20"  Margin="5,5,5,0" FontSize="15" 
+                                       Click="Button_Click2" VerticalAlignment="Top"/>
+                        <TextBox Name="Txtwhere" Text="SCHEMA_ID"/>
+                        <Button Content="DownScheme" Click="DownScheme_Click"/>
+                    </WrapPanel>
+                    <DataGrid ItemsSource="{Binding Data}" Grid.Row="1" >
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem   Header="串口调试" DataContext="{StaticResource Debug_ProtViewModel}">
+
+                <Grid Margin="10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="210"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <GroupBox Header="串口配置">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Horizontal" Margin="3" >
+                                    <TextBlock Text="串口：" VerticalAlignment="Center"    TextAlignment="Right"  Width="50" Margin="0 0 5 0"/>
+                                    <ComboBox  Width="130"  Height="24"
+					                        SelectedItem="{Binding ProtName}" 
+					                        ItemsSource="{Binding ProtList}" Style="{DynamicResource StyleComboBox}"
+                                            Margin="0 0 20 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="3"  >
+                                    <TextBlock Text="波特率：" VerticalAlignment="Center"   TextAlignment="Right"  Width="50" Margin="0 0 5 0"/>
+                                    <ComboBox  Width="130"  Height="24"
+					                           SelectedItem="{Binding BaudRate}"  
+					                           ItemsSource="{Binding BaudRateList}" Style="{DynamicResource StyleComboBox}"
+                                               Margin="0 0 20 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="3"  >
+                                    <TextBlock Text="数据位：" VerticalAlignment="Center"   TextAlignment="Right"  Width="50" Margin="0 0 5 0"/>
+                                    <ComboBox  Width="130"  Height="24"
+					                          SelectedItem="{Binding DataBit}"  
+					                          ItemsSource="{Binding DataBitList}" Style="{DynamicResource StyleComboBox}"
+                                               Margin="0 0 20 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="3"  >
+                                    <TextBlock Text="停止位：" VerticalAlignment="Center"   TextAlignment="Right"  Width="50" Margin="0 0 5 0"/>
+                                    <ComboBox  Width="130"  Height="24"
+					                          SelectedItem="{Binding StopBit}"  
+					                          ItemsSource="{Binding StopBitList}" Style="{DynamicResource StyleComboBox}"
+                                               Margin="0 0 20 0"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"  Margin="3"  >
+                                    <TextBlock Text="校验：" VerticalAlignment="Center"   TextAlignment="Right"  Width="50" Margin="0 0 5 0"/>
+                                    <ComboBox  Width="130"  Height="24"
+					                           SelectedItem="{Binding CheckType}" 
+					                          ItemsSource="{Binding CheckTypeList}" Style="{DynamicResource StyleComboBox}"
+                                               Margin="0 0 20 0"/>
+                                </StackPanel>
+
+                                <Button Content="{Binding ProtStartName}" Width="80" Height="25"  Margin="5" FontSize="14"    CommandParameter="OpenPort"  Command="{Binding LocalCommand}" />
+
+
+                            </StackPanel>
+
+                        </GroupBox>
+
+                        <GroupBox Header="其他设置" Margin=" 0 10 0 0" Grid.Row="1">
+                            <StackPanel Orientation="Vertical" Margin="5">
+                                <Button Content="{Binding PortDataLogName}"   HorizontalAlignment="Left" Width="100" Height="25"   FontSize="15"    CommandParameter="OpenPortDataLog"  Command="{Binding LocalCommand}"  />
+                                <CheckBox Content="Hex发送接收" IsChecked="{Binding IsHexSendData}"  FontSize="14" Margin="0 5 0 5"/>
+                                <CheckBox Content="连续发送" IsChecked="True" FontSize="14"/>
+
+                            </StackPanel>
+                        </GroupBox>
+                    </Grid>
+
+
+                    <Grid Grid.Column="1" Margin="10 0 10 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition  Height="200"/>
+                        </Grid.RowDefinitions>
+
+
+                        <GroupBox Header="收发记录">
+                            <TextBox Text="{Binding ReceiveData}" Background="White" Style="{Binding }" Margin="5" TextWrapping="Wrap">
+                                <TextBox.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="清空" Click="MenuItem_Click" />
+                                    </ContextMenu>
+                                </TextBox.ContextMenu>
+                            </TextBox>
+                        </GroupBox>
+                        <GroupBox Header="发送数据" Grid.Row="1">
+
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="30   "/>
+                                </Grid.RowDefinitions>
+                                <TextBox Text="{Binding SendData}" Background="White" Style="{Binding }" Margin="5" TextWrapping="Wrap">
+                                    <TextBox.ContextMenu>
+                                        <ContextMenu>
+                                            <MenuItem Header="清空" Click="MenuItem_Click2" />
+                                        </ContextMenu>
+                                    </TextBox.ContextMenu>
+                                </TextBox>
+
+                                <Button  CommandParameter="But_SendData"  Command="{Binding LocalCommand}" Content="发 送"  Grid.Row="1" Width="80" Height="25" Background="Green"  Foreground="White" FontSize="15"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </Grid>
+
+
+
+                <!--<Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                        <Button Content="刷新" Width="50" Height="20"  Margin="5" FontSize="15"    CommandParameter="RefProt"  Command="{Binding LocalCommand}"/>
+                        <Button Content="打开" Width="50" Height="20"  Margin="5" FontSize="15"    CommandParameter="OpenPort"  Command="{Binding LocalCommand}" IsEnabled="{Binding OpenPortEnabled}"/>
+                        <Button Content="关闭" Width="50" Height="20"  Margin="5" FontSize="15"    CommandParameter="ClosePort"  Command="{Binding LocalCommand}"/>
+                        <Button Content="{Binding PortDataLogName}" Width="100" Height="20"  Margin="5" FontSize="15"    CommandParameter="OpenPortDataLog"  Command="{Binding LocalCommand}"  />
+                    </StackPanel>
+                    -->
+                <!--<DataGrid ItemsSource="{Binding Data}" Grid.Row="1" >                      .    
+
+                    </DataGrid>-->
+                <!--
+                    <ListBox Grid.Row="1" ItemsSource="{Binding ReturnData}"/>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="5" >
+                        <TextBlock Text="发送数据：" VerticalAlignment="Center"/>
+                        <TextBox Style="{Binding}" Width="300" Text="{Binding SendData}"/>
+                        <Button Content="发送" Width="50" Height="20"  Margin="5" FontSize="15"    CommandParameter="But_SendData"  Command="{Binding LocalCommand}"/>
+                        <Button Content="清空信息" Width="80" Height="20"  Margin="5" FontSize="15"    CommandParameter="Btn_DataClear"  Command="{Binding LocalCommand}" />
+                    </StackPanel>
+
+                </Grid>-->
+
+            </TabItem>
+
+
+            <TabItem   Header="时区时段设置" DataContext="{StaticResource TimeZonePeriodViewModel}">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <GroupBox Header="时段数据">
+                            <TabControl SelectedIndex="{Binding SelectIndex}">
+                                <TabItem Header="第一套时段">
+                                    <ListBox ItemsSource="{Binding TimeData1}" SelectedIndex="{Binding ListSelectIndex}"/>
+                                </TabItem>
+                                <TabItem Header="第二套时段">
+                                    <ListBox ItemsSource="{Binding TimeData2}"  SelectedIndex="{Binding ListSelectIndex}"/>
+                                </TabItem>
+                            </TabControl>
+                        </GroupBox>
+
+                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="5 0">
+                            <GroupBox Header="时区">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5"   >
+                                    <TextBlock Text="起始日期  " VerticalAlignment="Center"/>
+                                    <ComboBox  Width="50"  Height="20"
+					                        SelectedItem="{Binding TimeZone_Month}" 
+					                        ItemsSource="{Binding MonthList}" Style="{DynamicResource StyleComboBox}"/>
+                                    <TextBlock Text="月"  VerticalAlignment="Center"/>
+                                    <ComboBox  Width="50"  Height="20"
+					                        SelectedItem="{Binding TimeZone_Day}" 
+					                        ItemsSource="{Binding DayList}" Style="{DynamicResource StyleComboBox}"/>
+                                    <TextBlock Text="日"    VerticalAlignment="Center"/>
+                                    <Button Content="添 加" Width="50" Height="20"  Margin="10 0"  HorizontalAlignment="Left" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="AddTimeZone"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <GroupBox Header="时段">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5"   >
+                                    <TextBlock Text="费率  " VerticalAlignment="Center"/>
+                                    <ComboBox  Width="50"  Height="20"
+					                        SelectedItem="{Binding TimeInterval_FL}" 
+					                        ItemsSource="{Binding FlList}" Style="{DynamicResource StyleComboBox}"/>
+                                    <TextBlock Text="  起始时间  " VerticalAlignment="Center"/>
+                                    <TextBox Style="{Binding}" Width="80" Height="25" Text="{Binding TimeInterval_Time}" />
+                                    <StackPanel Orientation="Vertical" >
+                                        <Button Content="︿" FontSize="8" Height="12"  Width="18" Margin="1 1"    CommandParameter="AddTimeInterval_Time"  Command="{Binding LocalCommand}" />
+                                        <Button Content="﹀" FontSize="8"  Height="12"  Width="18" Margin="1 0"  CommandParameter="ReduceTimeInterval_Time"  Command="{Binding LocalCommand}"/>
+                                    </StackPanel>
+                                    <Button Content="添 加" Width="50" Height="20"  Margin="10 0"  HorizontalAlignment="Left" VerticalAlignment="Center"  Background="#2ea400"  Style="{Binding }"
+                                          CommandParameter="AddTimeInterval"  Command="{Binding LocalCommand}" BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Header="其他">
+                                <StackPanel Orientation="Vertical">
+
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="两套费率切换时间:" VerticalAlignment="Center" />
+                                        <DatePicker Width="180" Margin="5 0" SelectedDate="{Binding SwitchingTime}">
+                                            <DatePicker.Resources>
+                                                <Style TargetType="{x:Type DatePickerTextBox}">
+                                                    <Setter Property="Control.Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate>
+                                                                <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat={}{0:yyyy/MM/dd HH:mm:ss}}" />
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </DatePicker.Resources>
+                                        </DatePicker>
+                                    </StackPanel>
+
+                                    <Button Content="第二套复制第一套" Width="120" Height="30" Margin="5"   HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#2ea400"  Style="{Binding }"
+                                         CommandParameter="TowCopyOne"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12"  Foreground="White"/>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <GroupBox Header="操作">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <Button Content="清空" Width="120" Height="30" Margin="5"   HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#2ea400"  Style="{Binding }"
+                                       CommandParameter="ClearData"  Command="{Binding LocalCommand}"       BorderThickness="0" FontSize ="12"  Foreground="White"/>
+
+                                    <Button Content="删除选择项" Width="120" Height="30" Margin="5"   HorizontalAlignment="Center" VerticalAlignment="Center"  Background="#2ea400"  Style="{Binding }"
+                                       CommandParameter="DeleteData"  Command="{Binding LocalCommand}"     BorderThickness="0" FontSize ="12"  Foreground="White"/>
+                                </StackPanel>
+                            </GroupBox>
+
+                            <StackPanel Orientation="Horizontal" >
+                                <Button Content="读取表内时段" Width="120" Height="30"  Margin="10"   HorizontalAlignment="Center"  VerticalAlignment="Center"  Background="#0000FF"  Style="{Binding }"
+                                  CommandParameter="ReadDateTime"  Command="{Binding LocalCommand}"         BorderThickness="0" FontSize ="12" Foreground="White"/>
+                                <Button Content="写入时段" Width="120" Height="30"  Margin="10"   HorizontalAlignment="Center"  VerticalAlignment="Center"  Background="#0000FF"  Style="{Binding }"
+                                  CommandParameter="WriteDateTime"  Command="{Binding LocalCommand}"         BorderThickness="0" FontSize ="12" Foreground="White"/>
+                            </StackPanel>
+
+
+
+
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Column="1" >
+                        <GroupBox Header="信息" Margin="5 0 10 0  ">
+                            <TextBox TextWrapping="Wrap" Foreground="Red" Margin="3"  BorderThickness="5" Text="{Binding Tips}" />
+                        </GroupBox>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <TabItem  Header="谐波调试"  DataContext="{StaticResource Debug_HarmonicViewModel}">
+                <TabItem.Resources>
+                    <Style x:Key="CheckBoxSwitchStyle" TargetType="CheckBox">
+                        <Setter Property="IsChecked" Value="False"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Setter Property="FontFamily" Value="/MESToolIntegration;component/Fonts/#iconfont"/>
+                        <Setter Property="Background" Value="#FFFFFF"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox">
+                                    <Border Width="54" Name="CheckTrueBG" Height="22" BorderThickness="1" Background="#FFFFFF"  CornerRadius="10" BorderBrush="#ACACAC" >
+                                        <Grid>
+                                            <Border BorderThickness="1" Background="#ACACAC" x:Name="border" Width="20" Height="20" CornerRadius="9" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0"  >
+                                                <Border.RenderTransform>
+                                                    <TranslateTransform  X="1"/>
+                                                </Border.RenderTransform>
+                                            </Border>
+                                            <TextBlock x:Name="txt" Text="{TemplateBinding Content}" FontFamily="iconfont"  FontSize="{TemplateBinding FontSize}" Margin="7,3.5,0,3" VerticalAlignment="Stretch" Foreground="#ACACAC" HorizontalAlignment="Left" d:LayoutOverrides="Height" >
+                                                <TextBlock.RenderTransform>
+                                                    <TranslateTransform   X="17"></TranslateTransform>
+                                                </TextBlock.RenderTransform>
+                                            </TextBlock>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="true">
+                                            <Setter Property="Background" TargetName="CheckTrueBG"  Value="#5FB878"/>
+                                            <Setter Property="Foreground" TargetName="txt"  Value="#FFFFFF"/>
+                                            <Setter Property="Background" TargetName="border"  Value="#FFFFFF"/>
+                                            <Setter Property="Text" TargetName="txt"  Value="{Binding Tag,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="32" Duration="00:00:0.2"/>
+                                                        <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="0" Duration="00:00:0.2"/>
+                                                        <DoubleAnimation Storyboard.TargetName="txt" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" To="17" Duration="00:00:0.2"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter Property="Text" TargetName="txt" Value="{Binding Content,RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabItem.Resources>
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <GroupBox Header="谐波设置" Padding="5">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"  Margin="5">
+                                <TextBlock Text="谐波类型:" VerticalAlignment="Center"/>
+                                <ComboBox  Width="130"  Height="24"
+					                        SelectedItem="{Binding HarmonicType}" 
+					                        ItemsSource="{Binding HarmonicTypeList}" Style="{DynamicResource StyleComboBox}"
+                                            Margin="0 0 20 0"/>
+                                <TextBlock Text="谐波开关:" VerticalAlignment="Center"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsEnableHarmonic ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <TextBlock Text="UA:" Margin="5" Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left"  IsChecked="{Binding IsUA ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+                                <TextBlock Text="IA:" Margin="20  5 5 5"  Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsIA ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal"  Margin="5">
+                                <TextBlock Text="UB:" Margin="5" Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsUB ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+
+                                <TextBlock Text="IB:" Margin="20  5 5 5" Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsIB ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="5" >
+                                <TextBlock Text="UC:" Margin="5" Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsUC ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+                                <TextBlock Text="IC:" Margin="20  5 5 5" Width="30"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsIC ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" Visibility="{Binding HarmonicContent_Visible,Converter={StaticResource BoolToVisibilityConverter}}" >
+                                <TextBlock Text="谐波含量：" VerticalAlignment="Center"/>
+                                <TextBox Width="70" Style="{Binding}" VerticalAlignment="Center" Text="{Binding HarmonicContent,Mode=TwoWay}"/>
+                                <TextBlock Text="谐波相位：" VerticalAlignment="Center"  Margin="10 0 0 0"/>
+                                <TextBox Width="70" Style="{Binding}" VerticalAlignment="Center" Text="{Binding HarmonicPhase,Mode=TwoWay}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" Visibility="{Binding HarmonicNumbere_Visible,Converter={StaticResource BoolToVisibilityConverter}}" >
+                                <TextBlock Text="谐波次数：" VerticalAlignment="Center"/>
+                                <TextBox Width="70" Style="{Binding}" VerticalAlignment="Center"  Text="{Binding HarmonicNumber,Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5" Visibility="{Binding HarmonicNumbere_Visible,Converter={StaticResource BoolToVisibilityConverter}}" >
+                                <TextBlock Text="读取标准表谐波信息：" VerticalAlignment="Center"/>
+                                <CheckBox  HorizontalAlignment="Left" IsChecked="{Binding IsReadStaData ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="NO" />
+                            </StackPanel>
+                            <Button Content="设置" Width="80" Height="30"  Margin="10"  HorizontalAlignment="Center" VerticalAlignment="Top" Background="#2ea400"  Style="{Binding }"
+                                            CommandParameter="SetHarmonic"  Command="{Binding LocalCommand}"   BorderThickness="0" FontSize ="12" Foreground="White"/>
+
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Grid.Column="1" Margin="5" Header="谐波信息">
+                        <TabControl x:Name="tabHarmonic" Background="Transparent">
+                            <!--<StackPanel Orientation="Horizontal" Name="stackpanel_data"></StackPanel>-->
+                        </TabControl>
+
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</basemodel:DockControlDisposable>

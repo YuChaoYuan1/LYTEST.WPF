@@ -1,0 +1,61 @@
+﻿<basemodel:DockControlDisposable   x:Class="LYTest.WPF.View.View_BackupData"
+                                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                                   xmlns:LocalControls="clr-namespace:LYTest.WPF.Controls"
+                                   xmlns:basemodel="clr-namespace:LYTest.WPF.Model"
+                                   mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <ListBox Name="lists" SelectedItem="{Binding SelectBackup,Mode=TwoWay}"  
+                 IsSynchronizedWithCurrentItem="True"  SelectionMode="Single" 
+                 Focusable="False" Background="Transparent"  ItemsSource="{Binding BackupFileList}" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"  >
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Background="Transparent" Style="{x:Null}"  Width="120"  Height="120" BorderThickness="0" Click="Button_Click">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                            <Image  Source="{StaticResource 备份包}" Margin="5 5 5 0"/>
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15"/>
+                        </StackPanel>
+                    </Button>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" >
+            <LocalControls:BorderRadiusButton Style="{StaticResource SunButtonStyle}"
+                        Margin="3,14" 
+                        Width="120"
+                        FontSize="24"
+                        CommandParameter="BackupData" Command="{Binding LocalCommand}"
+                        Content="手动备份"/>
+            <LocalControls:BorderRadiusButton Style="{StaticResource SunButtonStyle}"
+                        Margin="3,14" 
+                        Width="120"
+                        FontSize="24"
+                        Click="BorderRadiusButton_Click"
+                        Content="预览数据"/>
+        </StackPanel>
+
+        <LocalControls:BorderRadiusButton Grid.Row="1" Style="{StaticResource SunButtonStyle}"
+                        Margin="3,14" 
+                        HorizontalAlignment="Right"
+                        Width="120"
+                        FontSize="24"
+                        Click="ExporttDataClick"
+                        Content="导出数据" />
+
+    </Grid>
+</basemodel:DockControlDisposable>

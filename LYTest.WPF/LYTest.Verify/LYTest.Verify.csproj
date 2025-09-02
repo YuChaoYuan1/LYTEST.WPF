@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CB39CC18-6171-487E-BE1D-AB1B4C927A1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LYTest.Verify</RootNamespace>
+    <AssemblyName>LYTest.Verify</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccurateTest\BasicError.cs" />
+    <Compile Include="AccurateTest\ClockError.cs" />
+    <Compile Include="AccurateTest\ConstantVerify2.cs" />
+    <Compile Include="AccurateTest\AppearanceInspection.cs" />
+    <Compile Include="AccurateTest\Creep2.cs" />
+    <Compile Include="AccurateTest\DeviationModel.cs" />
+    <Compile Include="AccurateTest\ErrorAccord.cs" />
+    <Compile Include="AccurateTest\ErrorVarietyErr.cs" />
+    <Compile Include="AccurateTest\HarmonicMeasureAccuracy.cs" />
+    <Compile Include="AccurateTest\HarmonicPowerAccuracy.cs" />
+    <Compile Include="AccurateTest\InitialError.cs" />
+    <Compile Include="AccurateTest\LoadCurrentUpAndDown.cs" />
+    <Compile Include="AccurateTest\OverLoad.cs" />
+    <Compile Include="AccurateTest\PreHeat.cs" />
+    <Compile Include="AccurateTest\Register48h.cs" />
+    <Compile Include="AccurateTest\ReproducibilityTest.cs" />
+    <Compile Include="AccurateTest\Starts.cs" />
+    <Compile Include="AccurateTest\TemperatureError.cs" />
+    <Compile Include="CarrierTest\CarrierVerify.cs" />
+    <Compile Include="CarrierTest\HPLC_ID_Authen.cs" />
+    <Compile Include="CarrierTest\PowerConsume.cs" />
+    <Compile Include="DataCheck\DataCheck1.cs" />
+    <Compile Include="ConnProtocolTest\ConnProtocol.cs" />
+    <Compile Include="ConnProtocolTest\ConnProtocol2.cs" />
+    <Compile Include="CostControl\FK_Encryption_Certification.cs" />
+    <Compile Include="CostControl\FK_Encryption_Certification_ITO.cs" />
+    <Compile Include="CostControl\FK_Encryption_ClearEnergy.cs" />
+    <Compile Include="CostControl\FK_Encryption_Control.cs" />
+    <Compile Include="CostControl\FK_Encryption_ControlFunction.cs" />
+    <Compile Include="CostControl\FK_Encryption_DisPower.cs" />
+    <Compile Include="CostControl\FK_Encryption_EnPower.cs" />
+    <Compile Include="CostControl\FK_Encryption_InitPurse.cs" />
+    <Compile Include="CostControl\FK_Encryption_LeftEnergyAccuracy.cs" />
+    <Compile Include="CostControl\FK_Encryption_LoadSwitch.cs" />
+    <Compile Include="CostControl\FK_Encryption_ParaSet.cs" />
+    <Compile Include="CostControl\FK_Encryption_ReadEsam.cs" />
+    <Compile Include="CostControl\FK_Encryption_RecoverKey.cs" />
+    <Compile Include="CostControl\FK_Encryption_UpdateKey.cs" />
+    <Compile Include="CostControl\FK_Encryption_Warning.cs" />
+    <Compile Include="ElectricalTest\InsulationVerify.cs" />
+    <Compile Include="ElectricalTest\PowerConsume.cs" />
+    <Compile Include="EventLog\ActiveReporting.cs" />
+    <Compile Include="EventLog\BroadcastTime.cs" />
+    <Compile Include="EventLog\EL_Acdump.cs" />
+    <Compile Include="EventLog\EL_CalibrationTime.cs" />
+    <Compile Include="EventLog\EL_ClearDemand.cs" />
+    <Compile Include="EventLog\EL_ClearEnergy.cs" />
+    <Compile Include="EventLog\EL_ClearEvent.cs" />
+    <Compile Include="EventLog\EL_ImbalanceI.cs" />
+    <Compile Include="EventLog\EL_ImbalanceU.cs" />
+    <Compile Include="EventLog\EL_LoseCurrent.cs" />
+    <Compile Include="EventLog\EL_LoseFullVoltage.cs" />
+    <Compile Include="EventLog\EL_LosePhase.cs" />
+    <Compile Include="EventLog\EL_LoseVoltage.cs" />
+    <Compile Include="EventLog\EL_Magnetic.cs" />
+    <Compile Include="EventLog\EL_OpenButtonCover.cs" />
+    <Compile Include="EventLog\EL_OpenMeterCover.cs" />
+    <Compile Include="EventLog\EL_OverCurrent.cs" />
+    <Compile Include="EventLog\EL_OverLoad.cs" />
+    <Compile Include="EventLog\EL_OverVoltage.cs" />
+    <Compile Include="EventLog\EL_Program.cs" />
+    <Compile Include="EventLog\EL_ReversePhaseI.cs" />
+    <Compile Include="EventLog\EL_ReversePhaseU.cs" />
+    <Compile Include="EventLog\EL_ReversePower.cs" />
+    <Compile Include="EventLog\EL_ReverseTrend.cs" />
+    <Compile Include="EventLog\EL_StopCurrent.cs" />
+    <Compile Include="EventLog\EL_Swith.cs" />
+    <Compile Include="EventLog\EL_TransDemand.cs" />
+    <Compile Include="EventLog\EL_TransPF.cs" />
+    <Compile Include="EventLog\EL_UnderVoltage.cs" />
+    <Compile Include="EventLog\FollowAndReport.cs" />
+    <Compile Include="EventLog\TimeErr.cs" />
+    <Compile Include="EventLog\ZeroCurrentErr.cs" />
+    <Compile Include="Frozen\Freeze_Appoint.cs" />
+    <Compile Include="Frozen\Freeze_CheckedDate.cs" />
+    <Compile Include="Frozen\Freeze_Day.cs" />
+    <Compile Include="Frozen\Freeze_Hour.cs" />
+    <Compile Include="Frozen\Freeze_Instant.cs" />
+    <Compile Include="Frozen\Freeze_Minute.cs" />
+    <Compile Include="Frozen\Freeze_Mouth.cs" />
+    <Compile Include="Frozen\Freeze_Timing.cs" />
+    <Compile Include="Frozen\Freeze_Whole_Point.cs" />
+    <Compile Include="Frozen\Freeze_Year.cs" />
+    <Compile Include="Function\FC_Computation.cs" />
+    <Compile Include="Function\FC_MaxDemand.cs" />
+    <Compile Include="Function\FC_PowerCutReadMeter.cs" />
+    <Compile Include="Function\FC_PulseOutPut.cs" />
+    <Compile Include="Function\FC_RatePeriodFunction.cs" />
+    <Compile Include="Function\FC_Show.cs" />
+    <Compile Include="Function\FC_Timing.cs" />
+    <Compile Include="Function\FC_ZonePeriod.cs" />
+    <Compile Include="HEBVerify\ClockError.cs" />
+    <Compile Include="HEBVerify\ConnProtocol.cs" />
+    <Compile Include="HEBVerify\ConnProtocol2.cs" />
+    <Compile Include="HEBVerify\ConstantVerify2.cs" />
+    <Compile Include="HEBVerify\Creep2.cs" />
+    <Compile Include="HEBVerify\Dgn_ClearEnerfy.cs" />
+    <Compile Include="HEBVerify\Dgn_GPS.cs" />
+    <Compile Include="HEBVerify\Dgn_Register.cs" />
+    <Compile Include="HEBVerify\Dgn_TimeInError.cs" />
+    <Compile Include="HEBVerify\FK_Encryption_UpdateKey.cs" />
+    <Compile Include="HEBVerify\ParameterValidation.cs" />
+    <Compile Include="HEBVerify\PreWiringTest.cs" />
+    <Compile Include="Influence\HigherHarmonic.cs" />
+    <Compile Include="Influence\MFFnoload.cs" />
+    <Compile Include="Influence\MFFnoload_2.cs" />
+    <Compile Include="Influence\MFFs.cs" />
+    <Compile Include="Influence\MFFs2.cs" />
+    <Compile Include="Influence\MFFs2_2.cs" />
+    <Compile Include="Influence\MFFs_2.cs" />
+    <Compile Include="Influence\Influences.cs" />
+    <Compile Include="InfraredCommunication\InfraredVerify.cs" />
+    <Compile Include="LoadRecord\LoadRecord.cs" />
+    <Compile Include="MeteringPerformance\DataSync.cs" />
+    <Compile Include="Multi\DgnBYDYTimeError.cs" />
+    <Compile Include="Multi\Dgn_AC_VoltageSagSndInterruption.cs" />
+    <Compile Include="Multi\Dgn_BluetoothConnectivity.cs" />
+    <Compile Include="Multi\Dgn_ClearDemand.cs" />
+    <Compile Include="Multi\Dgn_ClearEnerfy.cs" />
+    <Compile Include="Multi\Dgn_CommTest.cs" />
+    <Compile Include="Multi\Dgn_CurrentChangesRapidly.cs" />
+    <Compile Include="Multi\Dgn_GPS.cs" />
+    <Compile Include="Multi\Dgn_JDGZ_Test.cs" />
+    <Compile Include="Multi\Dgn_LeapYear.cs" />
+    <Compile Include="Multi\Dgn_MaxDemand.cs" />
+    <Compile Include="Multi\Dgn_MeasureAndMonitor.cs" />
+    <Compile Include="Multi\Dgn_PeriodChange.cs" />
+    <Compile Include="Multi\Dgn_PowerDemandTest.cs" />
+    <Compile Include="Multi\Dgn_PowerOffTransfer.cs" />
+    <Compile Include="Multi\Dgn_RatePeriod.cs" />
+    <Compile Include="Multi\Dgn_ReadEnerfy.cs" />
+    <Compile Include="Multi\Dgn_ReadPeriod.cs" />
+    <Compile Include="Multi\Dgn_Register.cs" />
+    <Compile Include="Multi\Dgn_TimeInError.cs" />
+    <Compile Include="Multi\Dgn_ZeroCurrentMonitor.cs" />
+    <Compile Include="PrepareTest\BluetoothPreprocessing.cs" />
+    <Compile Include="PrepareTest\CurrentOpenCircuit.cs" />
+    <Compile Include="PrepareTest\PreWiringTest.cs" />
+    <Compile Include="PrepareTest\PreWriteAddress.cs" />
+    <Compile Include="PrepareTest\RecoverKey.cs" />
+    <Compile Include="PrepareTest\UpdateKey.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualityModule\CurrentImbalance.cs" />
+    <Compile Include="QualityModule\Deviationflickering.cs" />
+    <Compile Include="QualityModule\DeviationHarmonicActivePower.cs" />
+    <Compile Include="QualityModule\DeviationModel.cs" />
+    <Compile Include="QualityModule\DeviationThreePhaseUnbalance.cs" />
+    <Compile Include="QualityModule\DeviationvoltageDropTemporaryRiseShorttermInterruption.cs" />
+    <Compile Include="QualityModule\DeviationVoltageFluctuation.cs" />
+    <Compile Include="QualityModule\FrequencyInfluenceModel.cs" />
+    <Compile Include="QualityModule\HarmonicCurrent.cs" />
+    <Compile Include="QualityModule\HarmonicVoltage.cs" />
+    <Compile Include="QualityModule\InterHarmonicCurrent.cs" />
+    <Compile Include="QualityModule\InterHarmonicVoltage.cs" />
+    <Compile Include="QualityModule\VoltageImbalance.cs" />
+    <Compile Include="Selfheating\SelfheartSwitch.cs" />
+    <Compile Include="Selfheating\SelfheatVerify.cs" />
+    <Compile Include="Selfheating\SelfheatVerify3.cs" />
+    <Compile Include="Selfheating\SelfheatVerify2.cs" />
+    <Compile Include="StdCalibration\StdCalibration.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="XiAnVerify\CheckSate.cs" />
+    <Compile Include="XiAnVerify\Dgn_Register.cs" />
+    <Compile Include="XiAnVerify\FK_Encryption_Control.cs" />
+    <Compile Include="XiAnVerify\FK_Encryption_EnPower.cs" />
+    <Compile Include="XiAnVerify\FK_Encryption_Warning.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LYTest.Core\LYTest.Core.csproj">
+      <Project>{830309e8-432d-437a-9f3e-d7a8925d09b8}</Project>
+      <Name>LYTest.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.DAL\LYTest.DAL.csproj">
+      <Project>{5ef4554f-f70b-4499-8ef6-07cadd8af843}</Project>
+      <Name>LYTest.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Mis\LYTest.Mis.csproj">
+      <Project>{92B1BD49-4868-4D88-B188-30F992E339E2}</Project>
+      <Name>LYTest.Mis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Utility\LYTest.Utility.csproj">
+      <Project>{b51cd3e2-0663-4a0d-af36-b16ed291f033}</Project>
+      <Name>LYTest.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.ViewModel\LYTest.ViewModel.csproj">
+      <Project>{9cb85f14-7126-4f14-98ea-f295f604e346}</Project>
+      <Name>LYTest.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZH.MeterProtocol\LYTest.MeterProtocol.csproj">
+      <Project>{d2741fcf-183d-4581-afe8-2df869b4246a}</Project>
+      <Name>LYTest.MeterProtocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

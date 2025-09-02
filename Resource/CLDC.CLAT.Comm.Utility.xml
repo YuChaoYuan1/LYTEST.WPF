@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.Utility</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.Utility.ReflectionHelper">
+            <summary>
+            反射执行方法帮助类
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.ReflectionHelper.ReflectionMethod(System.Object,System.String)">
+            <summary>
+            通过方法名执行方法(方法不带任何参数)
+            </summary>
+            <param name="targetObject">方法所在对象类</param>
+            <param name="targetMethod">方法名</param>
+            <returns>执行方法后的返回参数</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.ReflectionHelper.ReflectionMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            通过方法名执行方法（方法带参数，但不存在重载方法和ref或out型参数）
+            </summary>
+            <param name="targetObject">方法所在对象类</param>
+            <param name="targetMethod">方法名</param>
+            <param name="paramValues">入参数据</param>
+            <returns>执行方法后的返回参数</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.ReflectionHelper.ReflectionMethod(System.Object,System.String,System.Type[],System.Object[],System.Object[]@)">
+            <summary>
+            通过方法名执行方法（方法带参数）
+            </summary>
+            <param name="targetObject">方法所在对象类</param>
+            <param name="targetMethod">方法名</param>
+            <param name="paramTypes">入参数据类型(out、ref参数需用typeof().MakeByRefType()进行标记)</param>
+            <param name="paramValues">入参数据</param>
+            <param name="outValues">out、ref参数的返回结果集</param>
+            <returns>执行方法后的返回参数</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.ReflectionHelper.ReflectionMethodParamType(System.Object,System.String)">
+            <summary>
+            反射获取方法参数类型
+            </summary>
+            <param name="targetObject"></param>
+            <param name="targetMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.ReflectionHelper.GetMethod(System.Object,System.String,System.Type[])">
+            <summary>
+            获取方法对象
+            </summary>
+            <param name="targetObject">方法所在类</param>
+            <param name="targetMethod">方法名</param>
+            <param name="paramTypes">方法传入的参数类型,无参数则为null</param>
+            <returns></returns>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.Utility.XmlConverter">
+            <summary>
+            提供Xml与其它类型的转换方法
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.XmlConverter.ParseXmlData(System.String,System.Boolean@,System.String@)">
+            <summary>
+            解析输出Xml数据
+            </summary>
+            <param name="xml">Xml数据</param>
+            <param name="result">成功为true</param>
+            <param name="errorInfo">>错误信息，无则为空字符串</param>
+            <returns>解析成功，返回true</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.Utility.XmlConverter.CreateXmlData(System.Boolean,System.String)">
+            <summary>
+            创建输出Xml数据
+            </summary>
+            <param name="result">成功为true</param>
+            <param name="errorInfo">错误信息，无则为空字符串</param>
+            <returns>Xml数据</returns>
+        </member>
+    </members>
+</doc>

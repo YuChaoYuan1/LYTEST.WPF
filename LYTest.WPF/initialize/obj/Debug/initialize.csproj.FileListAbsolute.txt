@@ -1,0 +1,15 @@
+D:\LY_Meter_Code_M2\Resource\initialize.exe.config
+D:\LY_Meter_Code_M2\Resource\initialize.exe
+D:\LY_Meter_Code_M2\Resource\initialize.pdb
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.csproj.AssemblyReference.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\MainWindow.g.cs
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\App.g.cs
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize_MarkupCompile.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize_MarkupCompile.lref
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\MainWindow.baml
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.g.resources
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.Properties.Resources.resources
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.csproj.GenerateResource.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.csproj.CoreCompileInputs.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.exe
+D:\LY_Meter_Code_M2\LYTest.WPF\initialize\obj\Debug\initialize.pdb

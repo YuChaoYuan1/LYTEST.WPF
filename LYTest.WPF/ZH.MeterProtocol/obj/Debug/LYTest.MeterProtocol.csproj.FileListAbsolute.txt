@@ -1,0 +1,7 @@
+D:\LY_Meter_Code_M2\Resource\LYTest.MeterProtocol.dll
+D:\LY_Meter_Code_M2\Resource\LYTest.MeterProtocol.pdb
+D:\LY_Meter_Code_M2\LYTest.WPF\ZH.MeterProtocol\obj\Debug\LYTest.MeterProtocol.csproj.AssemblyReference.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\ZH.MeterProtocol\obj\Debug\LYTest.MeterProtocol.csproj.CoreCompileInputs.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\ZH.MeterProtocol\obj\Debug\LYTest.MeterProtocol.csproj.CopyComplete
+D:\LY_Meter_Code_M2\LYTest.WPF\ZH.MeterProtocol\obj\Debug\LYTest.MeterProtocol.dll
+D:\LY_Meter_Code_M2\LYTest.WPF\ZH.MeterProtocol\obj\Debug\LYTest.MeterProtocol.pdb

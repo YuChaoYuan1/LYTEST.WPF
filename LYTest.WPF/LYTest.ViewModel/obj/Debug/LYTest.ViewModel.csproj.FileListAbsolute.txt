@@ -1,0 +1,8 @@
+D:\LY_Meter_Code_M2\Resource\LYTest.ViewModel.dll.config
+D:\LY_Meter_Code_M2\Resource\LYTest.ViewModel.dll
+D:\LY_Meter_Code_M2\Resource\LYTest.ViewModel.pdb
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.ViewModel\obj\Debug\LYTest.ViewModel.csproj.AssemblyReference.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.ViewModel\obj\Debug\LYTest.ViewModel.csproj.CoreCompileInputs.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.ViewModel\obj\Debug\LYTest.ViewModel.csproj.CopyComplete
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.ViewModel\obj\Debug\LYTest.ViewModel.dll
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.ViewModel\obj\Debug\LYTest.ViewModel.pdb

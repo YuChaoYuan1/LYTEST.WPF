@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9CB85F14-7126-4F14-98EA-F295F604E346}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LYTest.ViewModel</RootNamespace>
+    <AssemblyName>LYTest.ViewModel</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="kafka-net">
+      <HintPath>..\RefLibs\kafka-net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\RefLibs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.5.3.0\lib\net45\System.Web.Http.SelfHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessControl\RightsIoT.cs" />
+    <Compile Include="AccessControl\RightsJJGC.cs" />
+    <Compile Include="AccessControl\RightsSchemaCategory.cs" />
+    <Compile Include="DataBackup\BackupData.cs" />
+    <Compile Include="DataBackup\BackupViewModel.cs" />
+    <Compile Include="DataBackup\SharpZip.cs" />
+    <Compile Include="CheckController\ControllerViewModel.cs" />
+    <Compile Include="CheckController\DeviceControl.cs" />
+    <Compile Include="CheckController\EnumCheckMode.cs" />
+    <Compile Include="CheckController\EnumLogType.cs" />
+    <Compile Include="CheckController\MeterLogicalTypeHelper.cs" />
+    <Compile Include="CheckController\MeterProtocolAdapter.cs" />
+    <Compile Include="CheckController\MulitThread\DeviceThreadManager.cs" />
+    <Compile Include="CheckController\MulitThread\EncryptionWorkThread.cs" />
+    <Compile Include="CheckController\MulitThread\MulitEncryptionWorkThreadManager.cs" />
+    <Compile Include="CheckController\MulitThread\MulitThreadManager.cs" />
+    <Compile Include="CheckController\MulitThread\WorkThread.cs" />
+    <Compile Include="CheckController\VerifyBase.cs" />
+    <Compile Include="CheckController\VerifyConfig.cs" />
+    <Compile Include="CheckController\VerifyHelpers\DeviceHelpers.cs" />
+    <Compile Include="CheckController\VerifyHelpers\FunctionHelpers.cs" />
+    <Compile Include="CheckController\VerifyHelpers\MeterHelpers.cs" />
+    <Compile Include="CheckController\VerifyHelpers\VerifyHelper.cs" />
+    <Compile Include="CheckInfo\AllMeterResult.cs" />
+    <Compile Include="CheckInfo\CheckNodeViewModel.cs" />
+    <Compile Include="CheckInfo\CheckResultViewModel.cs" />
+    <Compile Include="CheckInfo\DataBaseDisplayViewModel.cs" />
+    <Compile Include="CheckInfo\EquipmentViewModel.cs" />
+    <Compile Include="CheckInfo\LastCheckInfoViewModel.cs" />
+    <Compile Include="CheckInfo\MeterResultUnit.cs" />
+    <Compile Include="CheckInfo\OneMeterResult.cs" />
+    <Compile Include="CheckResultBll.cs" />
+    <Compile Include="CodeTree\CodeTreeNode.cs" />
+    <Compile Include="CodeTree\CodeTreeViewModel.cs" />
+    <Compile Include="CodeTree\EnumPermission.cs" />
+    <Compile Include="Config\ConfigGroup.cs" />
+    <Compile Include="Config\ConfigInfo.cs" />
+    <Compile Include="Config\ConfigTreeNode.cs" />
+    <Compile Include="Config\ConfigUnit.cs" />
+    <Compile Include="Config\ConfigViewModel.cs" />
+    <Compile Include="Debuger\Debug_HarmonicViewModel.cs" />
+    <Compile Include="Debuger\Debug_ProtViewModel.cs" />
+    <Compile Include="Debuger\Debug_TimeZonePeriodViewModel.cs" />
+    <Compile Include="Debuger\ErrorControlViewModel.cs" />
+    <Compile Include="Debuger\MeterControlViewModel.cs" />
+    <Compile Include="Debuger\MeterStartControlViewModel.cs" />
+    <Compile Include="Debuger\MultiBoardViewModel.cs" />
+    <Compile Include="Debuger\PowerViewModel.cs" />
+    <Compile Include="Debuger\QueryDataBase.cs" />
+    <Compile Include="Debuger\SocketViewModel.cs" />
+    <Compile Include="Device\ComServerViewModel.cs" />
+    <Compile Include="Device\DeviceData.cs" />
+    <Compile Include="Device\DeviceViewModel.cs" />
+    <Compile Include="Device\MeterUnitViewModel.cs" />
+    <Compile Include="Device\PortUnit.cs" />
+    <Compile Include="Device\ServersViewModel.cs" />
+    <Compile Include="DISetsModel\DIClass.cs" />
+    <Compile Include="DISetsModel\DISetsModel.cs" />
+    <Compile Include="DynamicViewModel.cs" />
+    <Compile Include="EquipmentData.cs" />
+    <Compile Include="FrameLog\LiveMeterFrame.cs" />
+    <Compile Include="IMICP\HttpServer.cs" />
+    <Compile Include="IMICP\KafkaClient.cs" />
+    <Compile Include="IMICP\OpenPortIMICP.cs" />
+    <Compile Include="IMICP\RestfulController.cs" />
+    <Compile Include="InnerCommand\VerifyControl.cs" />
+    <Compile Include="InputPara\EnumCompare.cs" />
+    <Compile Include="InputPara\EnumValueType.cs" />
+    <Compile Include="InputPara\InputParaUnit.cs" />
+    <Compile Include="InputPara\InputParaViewModel.cs" />
+    <Compile Include="InputPara\MeterInputParaViewModel.cs" />
+    <Compile Include="InputPara\SearchMenuItem.cs" />
+    <Compile Include="Loger\LogUnitViewModel.cs" />
+    <Compile Include="Loger\LogViewModel.cs" />
+    <Compile Include="Loger\LogViewModelS.cs" />
+    <Compile Include="Loger\SpeechClass.cs" />
+    <Compile Include="Menu\EnumCheckingEnable.cs" />
+    <Compile Include="Menu\EnumMainMenu.cs" />
+    <Compile Include="Menu\EnumMenuCategory.cs" />
+    <Compile Include="Menu\EnumMenuType.cs" />
+    <Compile Include="Menu\EnumUserVisible.cs" />
+    <Compile Include="Menu\ImageItem.cs" />
+    <Compile Include="Menu\MenuConfigItem.cs" />
+    <Compile Include="Menu\MenuViewModel.cs" />
+    <Compile Include="MeterResoultModel\MeterDataHelper.cs" />
+    <Compile Include="MeterResoultModel\MeterDataHelper_HLJ.cs" />
+    <Compile Include="MeterResoultModel\MeterDataHelper_XiAn.cs" />
+    <Compile Include="Meters\DataAnalysisModel.cs" />
+    <Compile Include="Meters\MetersViewModel.cs" />
+    <Compile Include="Meters\SearchItemModel.cs" />
+    <Compile Include="Meters\SetMeterResoultModel.cs" />
+    <Compile Include="Model\AsyncObservableCollection.cs" />
+    <Compile Include="Model\BasicCommand.cs" />
+    <Compile Include="Model\DataPagerViewModel.cs" />
+    <Compile Include="Model\DateTimePair.cs" />
+    <Compile Include="Model\SchemaCategory.cs" />
+    <Compile Include="Model\SelectCollection.cs" />
+    <Compile Include="Model\ViewModelBase.cs" />
+    <Compile Include="Monitor\StdInfoViewModel.cs" />
+    <Compile Include="MsgType.cs" />
+    <Compile Include="PairUnit.cs" />
+    <Compile Include="PowerControl\PowerControlModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtConfig\DeviceGroup.cs" />
+    <Compile Include="ProtConfig\DeviceItem.cs" />
+    <Compile Include="ProtConfig\MeterItems.cs" />
+    <Compile Include="ProtConfig\PortConfigViewModel.cs" />
+    <Compile Include="ProtConfig\ServerItem.cs" />
+    <Compile Include="Schema\CheckParaViewModel.cs" />
+    <Compile Include="Schema\Error\AllErrorModel.cs" />
+    <Compile Include="Schema\Error\ErrorCategory.cs" />
+    <Compile Include="Schema\Error\ErrorModel.cs" />
+    <Compile Include="Schema\FullTree.cs" />
+    <Compile Include="Schema\JJG596Points202X.cs" />
+    <Compile Include="Schema\JJGPoints.cs" />
+    <Compile Include="Schema\ParaInfoViewModel.cs" />
+    <Compile Include="Schema\SchemaNodeViewModel.cs" />
+    <Compile Include="Schema\SchemaOperationViewModel.cs" />
+    <Compile Include="Schema\SchemaViewModel.cs" />
+    <Compile Include="CheckController\TestMeterInfo.cs" />
+    <Compile Include="Time\CheckModelTime.cs" />
+    <Compile Include="Time\TimeItem.cs" />
+    <Compile Include="Time\TimeMonitor.cs" />
+    <Compile Include="UiInterface.cs" />
+    <Compile Include="User\UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LYTest.Core\LYTest.Core.csproj">
+      <Project>{830309E8-432D-437A-9F3E-D7A8925D09B8}</Project>
+      <Name>LYTest.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.DAL\LYTest.DAL.csproj">
+      <Project>{5ef4554f-f70b-4499-8ef6-07cadd8af843}</Project>
+      <Name>LYTest.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Mis\LYTest.Mis.csproj">
+      <Project>{92b1bd49-4868-4d88-b188-30f992e339e2}</Project>
+      <Name>LYTest.Mis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Utility\LYTest.Utility.csproj">
+      <Project>{b51cd3e2-0663-4a0d-af36-b16ed291f033}</Project>
+      <Name>LYTest.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZH.MeterProtocol\LYTest.MeterProtocol.csproj">
+      <Project>{d2741fcf-183d-4581-afe8-2df869b4246a}</Project>
+      <Name>LYTest.MeterProtocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IMICP\说明.txt" />
+    <Content Include="Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

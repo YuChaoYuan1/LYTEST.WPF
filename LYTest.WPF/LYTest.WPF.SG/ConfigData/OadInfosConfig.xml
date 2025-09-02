@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OadConfig>
+	<Oad  Oad="20000200" BigType="01" ItemCount="3" Name="三相电压">
+		<Data DataTypeCode="18" DataTypeName="long-unsigned" LengthFlag="0" DataLength="2" FloatCount="1" />
+		<Data DataTypeCode="18" DataTypeName="long-unsigned" LengthFlag="0" DataLength="2" FloatCount="1" />
+		<Data DataTypeCode="18" DataTypeName="long-unsigned" LengthFlag="0" DataLength="2" FloatCount="1" />
+	</Oad>
+	<Oad  Oad="20010200" BigType="01" ItemCount="3" Name="三相电流">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="3" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="3" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="3" />
+	</Oad>
+	<Oad Oad="40010200" BigType="" ItemCount="1" Name="通信地址">
+		<Data DataTypeCode="09" DataTypeName="octet-string" LengthFlag="1" DataLength="6" FloatCount="0" />
+	</Oad>
+	<Oad Oad="40020200" BigType="" ItemCount="1" Name="表号">
+		<Data DataTypeCode="09" DataTypeName="octet-string" LengthFlag="1" DataLength="8" FloatCount="0" />
+	</Oad>
+	<Oad Oad="F2077F00" BigType="02" ItemCount="2" Name="设置多功能端子">
+		<Data DataTypeCode="81" DataTypeName="OAD" LengthFlag="0" DataLength="4" FloatCount="0" />
+		<Data DataTypeCode="22" DataTypeName="enum" LengthFlag="0" DataLength="1" FloatCount="0" />
+	</Oad>
+	<Oad Oad="20140200" BigType="" ItemCount="7" Name="状态运行字">
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+		<Data DataTypeCode="5" DataTypeName="octet-string" LengthFlag="0" DataLength="3" FloatCount="0" />
+	</Oad>
+	<Oad Oad="00000200" BigType="01" ItemCount="5" Name="当前组合有功电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="00100200" BigType="01" ItemCount="5" Name="当前正向有功电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="00200200" BigType="01" ItemCount="5" Name="当前反向有功电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="00300200" BigType="01" ItemCount="5" Name="当前正向无功电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="00400200" BigType="01" ItemCount="5" Name="当前反向无功电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="00000201" BigType="" ItemCount="1" Name="当前组合有功总电能">
+		<Data DataTypeCode="5" DataTypeName="double-long" LengthFlag="0" DataLength="4" FloatCount="2" />
+	</Oad>
+	<Oad Oad="F1000200" BigType="" ItemCount="1" Name="EASM序列号">
+		<Data DataTypeCode="09" DataTypeName="octet-string" LengthFlag="1" DataLength="8" FloatCount="0" />
+	</Oad>
+	<Oad Oad="F1000400" BigType="" ItemCount="1" Name="密钥版本">
+		<Data DataTypeCode="09" DataTypeName="octet-string" LengthFlag="1" DataLength="16" FloatCount="0" />
+	</Oad>
+	<Oad Oad="F1000700" BigType="01" ItemCount="3" Name="当前计数器">
+		<Data DataTypeCode="06" DataTypeName="double-long-unsigned" LengthFlag="0" DataLength="4" FloatCount="0" />
+		<Data DataTypeCode="06" DataTypeName="double-long-unsigned" LengthFlag="0" DataLength="4" FloatCount="0" />
+		<Data DataTypeCode="06" DataTypeName="double-long-unsigned" LengthFlag="0" DataLength="4" FloatCount="0" />
+	</Oad>
+	<Oad Oad="F1010200" BigType="" ItemCount="1" Name="安全模式参数">
+		<Data DataTypeCode="22" DataTypeName="enum" LengthFlag="0" DataLength="1" FloatCount="0" />
+	</Oad>
+	<Oad Oad="00100100" BigType="" ItemCount="1" Name="当前组合有功总电能">
+		<Data DataTypeCode="15" DataTypeName="integer" LengthFlag="0" DataLength="1" FloatCount="0" />
+	</Oad>
+	<Oad Oad="40000200" BigType="" ItemCount="1" Name="日期时间">
+		<Data DataTypeCode="28" DataTypeName="date_time_s" LengthFlag="0" DataLength="7" FloatCount="0" />
+	</Oad>
+	<Oad Oad="40007F00" BigType="" ItemCount="1" Name="广播校时">
+		<Data DataTypeCode="28" DataTypeName="date_time_s" LengthFlag="0" DataLength="7" FloatCount="0" />
+	</Oad>
+	<Oad Oad="50000300" BigType="" ItemCount="1" Name="触发瞬时冻结">
+		<Data DataTypeCode="18" DataTypeName="long-unsigned" LengthFlag="0" DataLength="2" FloatCount="0" />
+	</Oad>
+	<Oad Oad="10100201" BigType="02" ItemCount="2" Name="当前正向有功最大需量">
+		<Data DataTypeCode="06" DataTypeName="double-long-unsigned" LengthFlag="0" DataLength="4" FloatCount="4" />
+		<Data DataTypeCode="28" DataTypeName="date_time_s" LengthFlag="0" DataLength="7" FloatCount="0" />
+	</Oad>
+</OadConfig>

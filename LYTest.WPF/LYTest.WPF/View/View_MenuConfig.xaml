@@ -1,0 +1,114 @@
+﻿<basemodel:DockControlDisposable 
+             xmlns:basemodel="clr-namespace:LYTest.WPF.Model"
+             x:Class="LYTest.WPF.View.View_MenuConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LYTest.WPF.View" 
+             xmlns:ViewModel="clr-namespace:LYTest.ViewModel.InputPara;assembly=LYTest.ViewModel" 
+             xmlns:ViewModel1="clr-namespace:LYTest.ViewModel.Menu;assembly=LYTest.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <basemodel:DockControlDisposable.Resources>
+        <ViewModel1:MenuViewModel x:Key="MenuViewModel"/>
+    </basemodel:DockControlDisposable.Resources>
+    <Grid DataContext="{StaticResource MenuViewModel}"
+          HorizontalAlignment="Stretch">
+        <DataGrid Margin="3"
+                  Style="{StaticResource dataGridStyleGeneral}"
+                  HeadersVisibility="Column"
+                  HorizontalContentAlignment="Center"
+                  ItemsSource="{Binding Menus}">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True"
+                                    MinWidth="200"
+                                    Header="目录名称"
+                                    Binding="{Binding MenuName}"/>
+                <DataGridTextColumn IsReadOnly="True"
+                                    MinWidth="200"
+                                    Header="页面或方法名称"
+                                    Binding="{Binding MenuClass}"/>
+                <DataGridTemplateColumn Header="图标"
+                                        Width="160">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding MenuImage.ImageControl}"  Width="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox x:Name="comboBoxImages"
+                                      ItemsSource="{Binding Images, Source={StaticResource MenuViewModel}}"
+                                      Style="{StaticResource StyleComboBox}"
+                                      SelectedItem="{Binding MenuImage,Mode=TwoWay}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Source="{Binding ImageControl}"
+                                               Height="20"
+                                               Margin="2"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridCheckBoxColumn Binding="{Binding IsValid}" 
+                                        MinWidth="120"
+                                        Header="是否有效" 
+                                        EditingElementStyle="{DynamicResource StyleEditCheckBox}"/>
+                <DataGridComboBoxColumn
+                                        x:Name="columnMenuType"
+                                        MinWidth="120"
+                                        ItemsSource="{Binding MenuTypes, Source={StaticResource MenuViewModel}}"
+                                        SelectedItemBinding="{Binding MenuType,Mode=TwoWay}"
+                                        Header="类型" EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                <DataGridComboBoxColumn  x:Name="columnCheckEnable"
+                                         MinWidth="120"
+                                         ItemsSource="{Binding Enables, Source={StaticResource MenuViewModel}}"
+                                         SelectedItemBinding="{Binding CheckingEnable,Mode=TwoWay}"
+                                         Header="检定时是否可用"
+                                         EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                <DataGridComboBoxColumn 
+                                        x:Name="columnUserType"
+                                        MinWidth="120"
+                                        ItemsSource="{Binding UserTypes, Source={StaticResource MenuViewModel}}"
+                                        SelectedItemBinding="{Binding UserCode,Mode=TwoWay}"
+                                        Header="用户权限" 
+                                        EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                <DataGridComboBoxColumn
+                                        x:Name="columnMainMenu"
+                                        MinWidth="120"
+                                        ItemsSource="{Binding YesNoCollecion, Source={StaticResource MenuViewModel}}"
+                                        SelectedItemBinding="{Binding IsMainMenu,Mode=TwoWay}"
+                                        Header="是否主菜单" 
+                                        EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                <DataGridComboBoxColumn  x:Name="columnMenuCategory"
+                                        MinWidth="120"
+                                        ItemsSource="{Binding Categories, Source={StaticResource MenuViewModel}}"
+                                        SelectedItemBinding="{Binding MenuCategory,Mode=TwoWay}"
+                                        Header="目录类别" 
+                                        EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                <DataGridTemplateColumn IsReadOnly="True"
+                                        Header="有改动">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Width="14"
+                                   Visibility="{Binding FlagChanged, Converter={StaticResource BoolToVisibilityConverter}}" Source="/Images/Edit.png"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="排序编号"  Binding="{Binding SortId}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Button HorizontalAlignment="Right"
+                Command="{Binding LocalCommand}"
+                CommandParameter="SaveMenus"
+                VerticalAlignment="Bottom"
+                Margin="15">
+            <Image Width="40"   Source="/Images/save.png"/>
+        </Button>
+    </Grid>
+</basemodel:DockControlDisposable> 

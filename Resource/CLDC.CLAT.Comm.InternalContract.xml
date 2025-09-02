@@ -1,0 +1,485 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.InternalContract</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.InternalContract.IInternalComm">
+            <summary>
+            内部通讯契约
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.Login(System.Int32)">
+            <summary>
+            客户端系统连接到数据服务系统，该接口为各系统之间通讯交互的前提
+            </summary>
+            <param name="systemID">客户端编号</param>
+            <returns>返回所有现在登陆到服务上客户端编号</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.HeartBeat(System.Int32)">
+            <summary>
+            客户端系统检测与服务的连接状态，用于判断服务器是否中断
+            </summary>
+            <param name="systemID">客户端编号</param>
+            <returns>返回心跳发送是否成功</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.LogOut(System.Int32)">
+            <summary>
+            当客户端退出或关闭时以通知数据服务该客户端主动退出连接
+            </summary>
+            <param name="systemID">客户端编号</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplySchemeInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            以批次号向数据服务申请检定方案，进行电能表的检定业务
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="Type">类型：0，任务号，1：方案编号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadTemAndHum(System.Int32,System.String)">
+            <summary>
+            将检定线环境内的温湿度信息上传，数据服务进行保存，并转送到控制系统
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="paramData">参数数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadCheckStateInfo(System.Int32,System.String)">
+            <summary>
+            将过程中检定状态信息上报
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="stateInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadStandardInfo(System.Int32,System.String)">
+            <summary>
+            将过程中实时的标准表监视信息上报
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="standardInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadCheckDataInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            将检定过程数据及结果上传给数据服务进行存储
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadCheckFinish(System.Int32)">
+            <summary>
+            将检定完成的信息发送给数据服务，然后由数据服务转发至控制系统将托盘放行出检定台体
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.SelectChannelType(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通道检测类型选择
+            </summary>
+            <param name="checkID">调用方系统编号（客户端编号）</param>
+            <param name="systemID">目标系统编号</param>
+            <param name="channelType">通道类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadEquipImg(System.Int32,System.String,System.Boolean)">
+            <summary>
+            上传外观检定图片信息
+            </summary>
+            <param name="systemID">客户端编号</param>
+            <param name="processInfo">图片信息XML格式</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyCertificationInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的标签号
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyCertificationInfo(System.Int32,System.String,System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的标签号(以条码列表绑定)
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="barCodes">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplySealonInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的封印号
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplySealonInfo(System.Int32,System.String,System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的封印号
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="barCodes">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyTaskInfo(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取所有的检定任务信息
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskState">需获取任务的任务状态</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.SetBindingInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            将托盘与表的关系、箱与表的关系、表与封印的关系进行绑定
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="codePam">需要绑定的容器编号，如：箱条码、托盘编号或表条码</param>
+            <param name="bindingType">绑定类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadMaterialUseInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            上传贴标纸、封印豆等材料使用情况
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="codePam">需要上传的数据参数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyMeterForCheck(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要待检表，然后由数据服务将申请转送到调度平台
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">申请的任务号</param>
+            <param name="pileNum">申请数量(以垛为单位)</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyEmptyBox(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要空箱，然后由数据服务将申请转送到调度平台
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">申请的任务号</param>
+            <param name="pileNum">申请数量</param>
+            <param name="boxType">申请空箱的类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadBoxInfo(System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            将进行组箱并通知数据服务进行数据一致性、完整性的验证，并进行箱表绑定
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="isVerifyData">是否进行数据验证，true：验证，false：不验证</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadPileInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            将进行组垛并通知数据服务上传该垛检定数据至平台
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadCheckStart(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Boolean)">
+            <summary>
+            将进入到检定台体内就绪的表发送至数据服务，再于数据服务通知相应的检定台体检定系统进行检定
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="checkSystemID">需要开始检定的台体编号</param>
+            <param name="lstTrayNo">台体就绪的托盘编号列表，必须是按顺序排列</param>
+            <param name="checkTime">检定次数，第几次发送启动（主要用于专机有多次动作检定的情况），其中当该数值为0时表示重新检定</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadCheckStart(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            将进入到检定台体内就绪的表发送至数据服务，再于数据服务通知相应的检定台体检定系统进行检定
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="checkSystemID">需要开始检定的台体编号</param>
+            <param name="lstTrayNo">台体就绪的托盘编号列表，必须是按顺序排列</param>
+            <param name="checkTime">检定次数，第几次发送启动（主要用于专机有多次动作检定的情况），其中当该数值为0时表示重新检定</param>
+            <param name="checkType">检定对象类型，1：托盘，3：电表</param>
+            <param name="isInitData">是否初始化检定数据</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.CheckBoxMeterInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            控制系统将出库的箱表信息进行核对，以便检定表信息的正确性
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyProductionLineNo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            控制系统根据表号获取线体编号，以便出库验证时分配箱子的流向
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="barCode">条码</param>
+            <param name="barCodeType">条码类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadTaskFinish(System.Int32,System.String,System.Boolean)">
+            <summary>
+            控制系统手动完成检定任务
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyEquipDET(System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            控制系统手动要出库明细
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="boxCode">箱条码</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadPileQty(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            上传线体缓存剁数量
+            </summary>
+            <param name="systemID">系统编号</param>
+            <param name="pileCount">剁数量</param>
+            <param name="applyType">调用类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyMeterInfo(System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Boolean)">
+            <summary>
+            依据表条码、托盘编号或箱条码来获取表的基本资产信息
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="codePam">请求的获取参数列表，表条码或箱条码或托盘编号</param>
+            <param name="codeType">获取参数的类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadErrorInfo(System.Int32,System.String)">
+            <summary>
+            将过程中发生故障信息上报
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="errorInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ControlClientRun(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过该接口可远程控制指定的客户端运行暂停、恢复及终止
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="clientID">通知的客户(重载为空时，将广播所有的客户端)</param>
+            <param name="runState">任务运行状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ControlAllClientRun(System.Int32,System.Int32)">
+            <summary>
+            通过该接口可远程控制所有客户端运行暂停、恢复及终止
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="runState">任务运行状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.InitialCheckData(System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            通过该接口可将原有检定数据进行全部无效，从而将被检物初始化原有状态（非检状态）。
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="lstMeterCode">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyCheckDataInfo(System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过该接口可将获取表的检定有效的实验数据
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="lstMeterCode">表条码列表</param>
+            <param name="stationId">所在工位编号（为0表所有工位实验数据）</param>
+            <param name="itemId">实验项目编号(为0所有实验项目数据)</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.ApplyServerDate(System.Int32,System.Boolean)">
+            <summary>
+            通过该接口可获取服务器时间
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UserLogin(System.Int32,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            通过该接口进行用户登录验证
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="ip">Ip地址</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.EventRecord(System.Int32,System.String)">
+            <summary>
+            系统操作记录
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="processInfo"></param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadDeviceState(System.Int32,System.String)">
+            <summary>
+            上传开机自检后的设备状态信息
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalComm.UploadConfigChange(System.Int32)">
+            <summary>
+            上报配置变更
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <returns></returns>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback">
+            <summary>
+            内部通讯回调契约
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveTaskInfo(System.String,System.Int32,System.String,System.Int32)">
+            <summary>
+            由平台下检定任务，然后再由数据服务转发下至控制系统
+            </summary>
+            <param name="taskNo">接收的任务号</param>
+            <param name="taskNum">任务量</param>
+            <param name="modelCode">设备型号</param>
+            <param name="taskState">任务状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveCheckStart(System.Int32,System.Collections.Generic.List{System.String},System.Int32)">
+            <summary>
+            将控制系统检测进入到检定台体内就绪的表发送至相应的检定台体检定系统进行检定
+            </summary>
+            <param name="checkSystemID">需要开始检定的台体编号</param>
+            <param name="lstTrayNo">台体就绪的托盘编号列表，必须是按顺序排列</param>
+            <param name="checkTime">检定次数</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveCheckStateInfo(System.Int32,System.String)">
+            <summary>
+            将检定系统检定过程中发生的状态信息转送至控制系统
+            </summary>
+            <param name="checkSystemID">发送检定过程状态信息的检定工位编号</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveStandardInfo(System.Int32,System.String)">
+            <summary>
+            将检定系统检定过程中标准表的实时监视信息转送至控制系统
+            </summary>
+            <param name="checkSystemID">发送检定过程状态信息的检定工位编号</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveCheckFinish(System.Int32)">
+            <summary>
+            将检定系统检定完成的信息发至控制系统，然后控制系统接到后将托盘放行出检定台体
+            </summary>
+            <param name="checkSystemID">发送检定完成信息的检定工位编号</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.BroadcastOnLine(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            数据服务实时的广播所有在线客户端给每一个在线客户端
+            </summary>
+            <param name="lstOnLineSystemID">所有在线客户端编号列表</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveTemAndHum(System.Int32,System.String)">
+            <summary>
+            将接收到的检定线环境内的温湿度信息转送到控制系统，由控制系统进行界面展示
+            </summary>
+            <param name="systemID">上传温湿度信息的客户端编号</param>
+            <param name="paramData">参数数据</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveErrorInfo(System.Int32,System.String)">
+            <summary>
+            将各系统检定过程中发生故障信息转送至控制系统
+            </summary>
+            <param name="systemID">发送信息客户端编号</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveDataAsync(System.Int32,System.Int32,System.String)">
+            <summary>
+            用于检定系统、控制系统等在调用数据服务的接口时采用异步方式，而后由数据服务把异步的数据报送至调用方
+            </summary>
+            <param name="systemID">客户端ID</param>
+            <param name="callType">调用数据服务接口的客户端，调用接口的类型</param>
+            <param name="processInfo">数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveControlRun(System.Int32,System.Int32)">
+            <summary>
+            通过该接口接收远程控制运行暂停、恢复及终止状态
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="runState">任务运行状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveChannelType(System.Int32,System.Int32)">
+            <summary>
+            接受通道类型选择
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="channelType">通道类别</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveServiceLoginOut">
+            <summary>
+            通知客户端服务已退出
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="channelType">通道类别</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveCheckData(System.Int32,System.String)">
+            <summary>
+            上传检定数据到3d系统
+            </summary>
+            <param name="checkSystemId">业务系统客户端编号</param>
+            <param name="xmlData">数据</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalContract.IInternalCommCallback.ReceiveDeviceState(System.Int32,System.String)">
+            <summary>
+            上传设备状态信息到3d系统
+            </summary>
+            <param name="systemId">客户端编号</param>
+            <param name="xmlData">数据</param>
+        </member>
+    </members>
+</doc>

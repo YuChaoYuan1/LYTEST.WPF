@@ -1,0 +1,36 @@
+﻿<Page x:Class="LYTest.WPF.User.Page_LoginUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LYTest.WPF.User"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Background="{DynamicResource 窗口背景色}"
+      FontSize="24"
+      Title="Page_LoginUser">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <ComboBox Width="200" 
+                      Text="用户名"
+                      Name="comboBoxUserName"
+                      Style="{DynamicResource StyleComboBox}"
+                      IsEditable="True"
+                      Margin="10"/>
+            <PasswordBox Width="200"
+                         Name="passwordBox"
+                         Margin="10">
+                <PasswordBox.BorderBrush>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                </PasswordBox.BorderBrush>
+            </PasswordBox>
+            <Button Width="140" Name="buttonLogIn"
+                    Content="登录" Margin="10"
+                    Click="Button_Click"/>
+            <TextBlock Name="textBlockLog"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Page>

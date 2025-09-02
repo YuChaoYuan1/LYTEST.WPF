@@ -1,0 +1,49 @@
+﻿<Page x:Class="LYTest.WPF.SG.User.Page_AddUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LYTest.WPF.SG.User"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      Title="Page_AddUser">
+
+    <Grid Width="220" VerticalAlignment="Center" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="用户名" />
+        <TextBox Grid.Column="1" Name="textBoxUserName"/>
+
+        <TextBlock Grid.Row="1" Text="用户编号"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="textBoxUserCode" />
+
+        <TextBlock Grid.Row="2" Text="密码"/>
+        <PasswordBox Grid.Row="2" Grid.Column="1" Name="passwordBox1" />
+        <TextBlock Grid.Row="3" Text="确认密码" />
+        <PasswordBox Grid.Row="3" Grid.Column="1" Name="passwordBox2" Margin="3" />
+        <TextBlock Grid.Row="4" Text="用户权限" 
+                   Visibility="{Binding  CurrentUser.USER_POWER, Converter={StaticResource UserVisibilityConverter},ConverterParameter=2}"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="comboBoxPermission" 
+                  Visibility="{Binding  CurrentUser.USER_POWER, Converter={StaticResource UserVisibilityConverter},ConverterParameter=2}"
+			    SelectedIndex="0" VerticalContentAlignment="Center" >
+            <sys:String>普通用户</sys:String>
+            <sys:String>管理员</sys:String>
+        </ComboBox>
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="添加用户" Click="OnUserAdd" Height="30"
+               Margin="0,20"  Style="{DynamicResource PrimaryButtonStyle}"  />
+        <TextBlock Grid.Row="6" x:Name="textBlockLog" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
+    </Grid>
+</Page>

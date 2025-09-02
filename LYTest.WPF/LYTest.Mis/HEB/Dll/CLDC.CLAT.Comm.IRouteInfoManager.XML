@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.IRouteInfoManager</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.IRouteInfoManager.IRouteManager">
+            <summary>
+            路由信息管理接口
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.IRouteInfoManager.IRouteManager.GetRouteInfo(System.String,System.String@)">
+            <summary>
+            通过调用方法，获取目标对象及目标调用方法
+            </summary>
+            <param name="invokeMethod">调用方法</param>
+            <param name="targetMethod">目标调用方法</param>
+            <returns>目标对象，失败为null</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.IRouteInfoManager.IRouteManager.GetRouteInfo(System.String,System.String@,System.String@)">
+            <summary>
+            通过调用方法，获取目标对象及目标调用方法
+            </summary>
+            <param name="invokeMethod">调用方法</param>
+            <param name="targetMethod">目标调用方法</param>
+            <param name="targetParam">目标调用方法参数</param>
+            <returns>目标对象，失败为null</returns>
+        </member>
+    </members>
+</doc>

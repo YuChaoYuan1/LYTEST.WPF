@@ -1,0 +1,128 @@
+﻿<Window x:Class="LYTest.WPF.SG.View.Windows.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:LYTest.WPF.SG.Controls"
+        mc:Ignorable="d"
+        Width="600" Height="410" WindowStyle="None" FontSize="12"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" AllowsTransparency="True"
+        Foreground="{DynamicResource 字体颜色标准}"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Background="Transparent">
+    <Grid>
+
+        <!--<Polygon Fill="Red" Points="0 35 30 35 30 0 0 35" Margin="100,0,0,0" Name="StyLogoPre"/>-->
+
+
+        <Border Margin="0 30 0 0" CornerRadius="30" Name="StyBorder" Background="{DynamicResource 窗口背景色}" BorderBrush="#BAC2CA" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="Black"  ShadowDepth="1" BlurRadius="5" Opacity="0.3" Direction="0" />
+            </Border.Effect>
+
+            <Border Margin="10 100 10 60" CornerRadius="10" Background="White">
+                <Grid x:Name="gridContent" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                    </Grid.RowDefinitions>
+                    <Grid  HorizontalAlignment="Center" Margin="0,30,0,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="140"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="检验员" />
+                        <ComboBox Grid.Column="1" Name="cmb_Checker" IsEditable="True" Margin="3,3" />
+                        <TextBlock Text="密码" Grid.Column="2" HorizontalAlignment="Right" Margin="10,0,0,0"/>
+                        <PasswordBox Grid.Column="3" Name="passwordBoxChecker" Password="123456" />
+
+                        <TextBlock Text="核验员" Grid.Row="1" />
+                        <ComboBox Name="cmb_Auditor" Grid.Column="1" Grid.Row="1" IsEditable="True" Margin="3,3" />
+                        <TextBlock Text="密码" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right" Margin="10,0,0,0" />
+                        <PasswordBox Grid.Column="3" Grid.Row="1" Name="passwordBoxAuditor" Password="123456" />
+                    </Grid>
+
+                    <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="70"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="工作电压" Margin="3"/>
+                        <Controls:ControlEnumComboBox Grid.Column="1"
+                            SelectedItem="{Binding ProtectedVoltage}" 
+                            x:Name="comboBoxVoltage"  EnumName="SafeVoltage"  />
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Right" Text="工作电流" Margin="10,3,3,3"/>
+                        <Controls:ControlEnumComboBox Grid.Column="3"
+                            SelectedItem="{Binding ProtectedCurrent}" 
+                            EnumName="SafeCurrent" x:Name="comboBoxCurrent"/>
+                    </Grid>
+
+                    <UniformGrid Columns="2" Grid.Row="3" Width="300" Height="32">
+                        <Button Content="登录" FontSize="14" Width="80" Click="OnLogin" IsDefault="True" Style="{DynamicResource PrimaryButtonStyle}" />
+                        <Button Content="退出" FontSize="14" Width="80" Click="OnExit" Style="{DynamicResource PrimaryButtonStyle}" />
+                    </UniformGrid>
+
+                </Grid>
+
+            </Border>
+        </Border>
+
+        <Ellipse Height="120" Width="120" Fill="#FFFFFFFF" StrokeThickness="6" Stroke="Gold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="100,0,0,0">
+            <Ellipse.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="4" BlurRadius="5" Opacity="0.5" Direction="290" />
+            </Ellipse.Effect>
+        </Ellipse>
+        <!--<Polygon  Points=" 130 0 240  0 240 100 130 100" Fill="#006CBE" Name="StyLogoBg"/>-->
+        <Polygon Points="115 14 205 14 205 104 115 104" >
+            <Polygon.Fill>
+                <ImageBrush x:Name="Logo"/>
+            </Polygon.Fill>
+        </Polygon>
+        <TextBlock x:Name="SoftModel" Text="LY8001电能检定装置" Margin="230 60 0 0" FontSize="28" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="楷体">
+            <TextBlock.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="4" BlurRadius="5" Opacity="0.5" Direction="0" />
+            </TextBlock.Effect>
+        </TextBlock>
+
+        <TextBlock x:Name="BenchName" Text="深圳市隆元科技有限公司" Margin="230 100 0 0" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" FontFamily="楷体"/>
+        <Grid Height="200" Name="gridLogIn"
+              Visibility="Collapsed"
+              d:Visibility="Visible"
+              VerticalAlignment="Top"
+              HorizontalAlignment="Center"
+              Margin="0,60,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <TextBlock Name="textBlockLogin" VerticalAlignment="Bottom"
+                       MaxWidth="400" TextWrapping="Wrap" FontSize="18" Margin="0,0,0,20" />
+            <ProgressBar Width="400" Name="timeBar" Grid.Row="1"/>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20">
+            <TextBlock Text="演示模式" Margin="0,0,7,0" />
+            <CheckBox Name="Chk_IsDeom"
+                  Content=""
+                  IsChecked="{Binding IsDemo,Mode=TwoWay}"
+                  Checked="IsDeom_Click"
+                  Unchecked="IsDeom_Click2" Style="{DynamicResource SwitchStyle}" />
+        </StackPanel>
+
+
+
+
+
+    </Grid>
+</Window>

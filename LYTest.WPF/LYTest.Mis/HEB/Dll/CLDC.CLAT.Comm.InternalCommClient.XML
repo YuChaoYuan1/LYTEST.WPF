@@ -1,0 +1,783 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.InternalCommClient</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ChannelDataEventArgs">
+            <summary>
+            检定数据接收事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ChannelDataEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ChannelDataEventArgs.CheckSystemId">
+            <summary>
+            业务系统客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ChannelDataEventArgs.Channel">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ChannelDataEventArgs.ReturnInfo">
+            <summary>
+            事件订阅方返回信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckDataEventArgs">
+            <summary>
+            检定数据接收事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckDataEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckDataEventArgs.CheckSystemId">
+            <summary>
+            业务系统客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckDataEventArgs.XmlData">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckUnquliedArgs">
+            <summary>
+            检定不合格表位信息
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckUnquliedArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckUnquliedArgs.CheckSystemId">
+            <summary>
+            业务系统客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckUnquliedArgs.XmlData">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CommExpEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CommExpEventArgs.CheckSystemId">
+            <summary>
+            业务系统客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CommExpEventArgs.ExpMessage">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DeviceStateEventArgs">
+            <summary>
+            设备状态接收事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DeviceStateEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DeviceStateEventArgs.SystemId">
+            <summary>
+            客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DeviceStateEventArgs.XmlData">
+            <summary>
+            数据
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs">
+            <summary>
+            任务信息接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.TaskNo">
+            <summary>
+            接收的任务号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.TaskNum">
+            <summary>
+            任务量
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.ModelCode">
+            <summary>
+            设备型号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.TaskState">
+            <summary>
+            任务状态
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TaskInfoEventArgs.ReturnInfo">
+            <summary>
+            事件订阅方返回信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStateInfoEventArgs">
+            <summary>
+            检定状态信息接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStateInfoEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStateInfoEventArgs.CheckSystemId">
+            <summary>
+            发送检定过程状态信息的检定工位编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStateInfoEventArgs.ProcessInfo">
+            <summary>
+            上传数据以XML格式传输
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.StandardInfoEventArgs">
+            <summary>
+            检定监视数据接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.StandardInfoEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.StandardInfoEventArgs.CheckSystemId">
+            <summary>
+            发送检定过程状态信息的检定工位编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.StandardInfoEventArgs.ProcessInfo">
+            <summary>
+            上传数据以XML格式传输
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckFinishEventArgs">
+            <summary>
+            检定完成接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckFinishEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckFinishEventArgs.CheckSystemId">
+            <summary>
+            发送检定完成信息的检定工位编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckFinishEventArgs.ReturnInfo">
+            <summary>
+            事件订阅方返回信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs">
+            <summary>
+            检定开始接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs.CheckSystemId">
+            <summary>
+            需要开始检定的台体编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs.TrayNoList">
+            <summary>
+            台体就绪的托盘编号列表，必须是按顺序排列
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs.CheckTime">
+            <summary>
+            检定次数
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.CheckStartEventArgs.ReturnInfo">
+            <summary>
+            事件订阅方返回信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DataAsyncEventArgs">
+            <summary>
+            异步返回数据接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DataAsyncEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DataAsyncEventArgs.SystemId">
+            <summary>
+            调用数据服务接口的客户端
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DataAsyncEventArgs.CallType">
+            <summary>
+            调用数据服务接口的客户端，调用接口的类型，如：获取表信息、任务信息等
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.DataAsyncEventArgs.ProcessInfo">
+            <summary>
+            数据以XML格式传输
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ErrorInfoEventArgs">
+            <summary>
+            故障信息接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ErrorInfoEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ErrorInfoEventArgs.SystemId">
+            <summary>
+            发送信息的客户端编号
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ErrorInfoEventArgs.ProcessInfo">
+            <summary>
+            上传数据以XML格式传输
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TemAndHumEventArgs">
+            <summary>
+            温湿度接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TemAndHumEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TemAndHumEventArgs.SystemId">
+            <summary>
+            调用方系统编号（客户端编号）
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.TemAndHumEventArgs.ParamData">
+            <summary>
+            参数数据
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.OnLinesystemIdEventArgs">
+            <summary>
+            在线客户端编号接受事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.OnLinesystemIdEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.OnLinesystemIdEventArgs.OnLinesystemIdList">
+            <summary>
+            在线客户端编号列表
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ControlRunEventArgs">
+            <summary>
+            远程控制运行事件数据
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ControlRunEventArgs.#ctor">
+            <summary>
+            默认构造
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ControlRunEventArgs.SystemId">
+            <summary>
+            调用数据服务接口的客户端
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ControlRunEventArgs.RunState">
+            <summary>
+            任务运行状态
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.ClientEventArgs.ControlRunEventArgs.ReturnInfo">
+            <summary>
+            事件订阅方返回信息
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy">
+            <summary>
+            服务代理接口
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.Initialize(System.String,System.Int32,System.UInt32)">
+            <summary>
+            初始化服务代理,并进行首次连接
+            </summary>
+            <param name="remoteAddress">服务地址</param>
+            <param name="systemId">客户端编号</param>
+            <param name="timeout">超时，单位秒,默认10秒</param>
+            <returns >成功，返回true</returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.Close">
+            <summary>
+            关闭服务代理
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyMeterInfo(System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Boolean)">
+            <summary>
+            依据表条码、托盘编号或箱条码来获取表的基本资产信息
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="codePam">请求的获取参数列表，表条码或箱条码或托盘编号</param>
+            <param name="codeType">获取参数的类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadErrorInfo(System.Int32,System.String)">
+            <summary>
+            将过程中发生故障信息上报
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="errorInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ControlClientRun(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通过该接口可远程控制指定的客户端运行暂停、恢复及终止
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="clientID">通知的客户(重载为空时，将广播所有的客户端)</param>
+            <param name="runState">任务运行状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ControlAllClientRun(System.Int32,System.Int32)">
+            <summary>
+            通过该接口可远程控制所有客户端运行暂停、恢复及终止
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="runState">任务运行状态</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.InitialCheckData(System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            通过该接口可将原有检定数据进行全部无效，从而将被检物初始化原有状态（非检状态）。
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="lstMeterCode">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyCheckDataInfo(System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            通过该接口可将获取表的检定有效的实验数据
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="lstMeterCode">表条码列表</param>
+            <param name="stationId">所在工位编号（为0表所有工位实验数据）</param>
+            <param name="itemId">实验项目编号(为0所有实验项目数据)</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyServerDate(System.Int32,System.Boolean)">
+            <summary>
+            通过该接口可获取服务器时间
+            </summary>
+            <param name="systemID">调用方系统编号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UserLogin(System.Int32,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="systemId">系统编号</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="ip">Ip地址</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.EventRecord(System.Int32,System.String)">
+            <summary>
+            系统事件记录
+            </summary>
+            <param name="systemID">系统编号</param>
+            <param name="processInfo"></param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadDeviceState(System.Int32,System.String)">
+            <summary>
+            上传设备状态信息
+            </summary>
+            <param name="systemID"></param>
+            <param name="processInfo"></param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadConfigChange(System.Int32)">
+            <summary>
+            上报配置变更
+            </summary>
+            <param name="systemID"></param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplySchemeInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            以批次号向数据服务申请检定方案，进行电能表的检定业务
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号或方案编号</param>
+             <param name="Type">0：任务号，1：方案编号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadTemAndHum(System.Int32,System.String)">
+            <summary>
+            将检定线环境内的温湿度信息上传，数据服务进行保存，并转送到控制系统
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="paramData">参数数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadCheckStateInfo(System.Int32,System.String)">
+            <summary>
+            将过程中检定状态信息上报
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="stateInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadStandardInfo(System.Int32,System.String)">
+            <summary>
+            将过程中实时的标准表监视信息上报
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="standardInfo">上传数据以XML格式传输</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadCheckDataInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            将检定过程数据及结果上传给数据服务进行存储
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadCheckFinish(System.Int32)">
+            <summary>
+            将检定完成的信息发送给数据服务，然后由数据服务转发至控制系统将托盘放行出检定台体
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.SelectChannelType(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            通道选择
+            </summary>
+            <param name="checkID"></param>
+            <param name="systemID"></param>
+            <param name="channelType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadEquipImg(System.Int32,System.String,System.Boolean)">
+            <summary>
+            上传外观检定图片信息
+            </summary>
+            <param name="systemID">客户端编号</param>
+            <param name="processInfo">图片信息XML格式</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyCertificationInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的标签号
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyCertificationInfo(System.Int32,System.String,System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的标签号
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="barCodes">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplySealonInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的封印号
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplySealonInfo(System.Int32,System.String,System.Int32,System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            向数据服务申请要一定数据的封印号
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyNum">申请的个数</param>
+            <param name="barCodes">表条码列表</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyTaskInfo(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            获取所有的检定任务信息
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskState">需获取任务的任务状态</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.SetBindingInfo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            将托盘与表的关系、箱与表的关系、表与封印的关系进行绑定
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="codePam">需要绑定的容器编号，如：箱条码、托盘编号或表条码</param>
+            <param name="bindingType">绑定类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadMaterialUseInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            上传贴标纸、封印豆等材料使用情况
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="codePam">需要上传的数据参数</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyMeterForCheck(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要待检表，然后由数据服务将申请转送到调度平台
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">申请的任务号</param>
+            <param name="pileNum">申请数量(以垛为单位)</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyEmptyBox(System.Int32,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            向数据服务申请要空箱，然后由数据服务将申请转送到调度平台
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">申请的任务号</param>
+            <param name="pileNum">申请数量</param>
+            <param name="boxType">申请空箱的类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadBoxInfo(System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            将进行组箱并通知数据服务进行数据一致性、完整性的验证，并进行箱表绑定
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="isVerifyData">是否进行数据验证，true：验证，false：不验证</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadPileInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            将进行组垛并通知数据服务上传该垛检定数据至平台
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>	 
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadCheckStart(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Boolean)">
+            <summary>
+            将进入到检定台体内就绪的表发送至数据服务，再于数据服务通知相应的检定台体检定系统进行检定
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="toCheckSystemId">需要开始检定的台体编号</param>
+            <param name="TrayNoList">台体就绪的托盘编号列表，必须是按顺序排列</param>
+            <param name="checkTime">检定次数，第几次发送启动（主要用于专机有多次动作检定的情况），其中当该数值为0时表示重新检定</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadCheckStart(System.Int32,System.Int32,System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            将进入到检定台体内就绪的表发送至数据服务，再于数据服务通知相应的检定台体检定系统进行检定
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="toCheckSystemId">需要开始检定的台体编号</param>
+            <param name="TrayNoList">台体就绪的托盘编号列表，必须是按顺序排列</param>
+            <param name="checkTime">检定次数，第几次发送启动（主要用于专机有多次动作检定的情况），其中当该数值为0时表示重新检定</param>
+            <param name="checkType">检定对象类型，1:托盘，3：电表</param>
+            <param name="isInitData">是否初始化检定数据</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CheckBoxMeterInfo(System.Int32,System.String,System.Boolean)">
+            <summary>
+            控制系统将出库的箱表信息进行核对，以便检定表信息的正确性
+            </summary>
+            <param name="systemId">调用方系统编号（客户端编号）</param>
+            <param name="processInfo">上传数据以XML格式传输</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyProductionLineNo(System.Int32,System.String,System.Int32,System.Boolean)">
+            <summary>
+            控制系统根据表号获取线体编号，以便出库验证时分配箱子的流向
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="barCode">条码</param>
+            <param name="barCodeType">条码类型</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadTaskFinish(System.Int32,System.String,System.Boolean)">
+            <summary>
+            控制系统手动完成检定任务
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ApplyEquipDET(System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            控制系统申请出库明细
+            </summary>
+            <param name="systemID">调用方系统编号（客户端编号）</param>
+            <param name="taskNo">任务号</param>
+            <param name="boxCode">箱条码</param>
+            <param name="applyType">调用类型，即采用同步或异步，True同步、Fasle异步</param>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.UploadPileQty(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            上传线体缓存剁数量
+            </summary>
+            <param name="systemID">系统编号</param>
+            <param name="pileCount">剁数量</param>
+            <param name="applyType">调用类型</param>
+            <returns></returns>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ChannelDataReceived">
+            <summary>
+            通道检测接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CheckStartReceived">
+            <summary>
+            检定开始接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CheckStateInfoReceived">
+            <summary>
+            检定状态信息接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.StandardInfoReceived">
+            <summary>
+            检定监视数据接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CheckFinishReceived">
+            <summary>
+            检定完成接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.OnLinesystemIdReceived">
+            <summary>
+            在线客户端编号接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.TemAndHumReceived">
+            <summary>
+            温湿度已接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ErrorInfoReceived">
+            <summary>
+            故障信息接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.DataAsyncReceived">
+            <summary>
+            异步返回数据接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CommExpReceived">
+            <summary>
+            通讯组件异常事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.CheckDataReceived">
+            <summary>
+            检定数据接收事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.DeviceStateReceived">
+            <summary>
+            设备状态接收事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.TaskInfoReceived">
+            <summary>
+            任务信息接受事件
+            </summary>
+        </member>
+        <member name="E:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.ControlRunReceived">
+            <summary>
+            控制运行接受事件
+            </summary>
+        </member>
+        <member name="P:CLDC.CLAT.Comm.InternalCommClient.IServiceProxy.IsConnected">
+            <summary>
+            是否连接服务
+            </summary>
+        </member>
+        <member name="T:CLDC.CLAT.Comm.InternalCommClient.ServiceProxyFactory">
+            <summary>
+            代理服务工厂
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.InternalCommClient.ServiceProxyFactory.CreateServiceProxy">
+            <summary>
+            创建代理服务实例
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

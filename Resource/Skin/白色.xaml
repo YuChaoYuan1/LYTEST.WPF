@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Control colors.-->
+    <SolidColorBrush x:Key="窗口背景色" Color="#FFECECEC"/>
+    <!--Border colors-->    
+    <SolidColorBrush x:Key="窗口背景深色"
+                     Color="White"/>
+    <SolidColorBrush x:Key="分隔条颜色"
+                     Color="White"/>
+    <SolidColorBrush x:Key="边框颜色浅" Color="White"/>
+    <SolidColorBrush x:Key="边框颜色" Color="#FF6699CC"/>
+    <SolidColorBrush x:Key="字体颜色浅" Color="White"/>
+    <SolidColorBrush x:Key="字体颜色标准" Color="#FF101010"/>
+    <SolidColorBrush x:Key="屏幕颜色" Color="#FF666666"/>
+    <SolidColorBrush x:Key="表行颜色" Color="White"/>
+    <SolidColorBrush x:Key="表行颜色1" Color="#FFF8F8F8"/>
+    <SolidColorBrush x:Key="工作状态颜色" Color="#FF99CC99"/>
+    <LinearGradientBrush x:Key="线性渐变颜色"
+        EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="White"
+                                      Offset="0"/>
+                                        <GradientStop Color="#FFECECEC" 
+                                      Offset="1"/>
+                                    </LinearGradientBrush>
+    <SolidColorBrush x:Key="控件有效" Color="White"/>
+    <SolidColorBrush x:Key="窗口背景深色半透明"
+                     Color="#FFECECEC" Opacity="0.6"/>
+</ResourceDictionary>

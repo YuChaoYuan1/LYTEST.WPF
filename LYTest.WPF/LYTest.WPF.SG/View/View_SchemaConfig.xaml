@@ -1,0 +1,381 @@
+﻿<basemodel:DockControlDisposable      
+    x:Class="LYTest.WPF.SG.View.View_SchemaConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:schemaViewModel="clr-namespace:LYTest.ViewModel.Schema;assembly=LYTest.ViewModel"
+    xmlns:LocalControls="clr-namespace:LYTest.WPF.SG.Controls"
+    xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model"
+    xmlns:local="clr-namespace:LYTest.WPF.SG.Schema"
+    xmlns:Error="clr-namespace:LYTest.WPF.SG.Schema.Error"
+    mc:Ignorable="d" 
+    FontSize="14"
+    d:DesignHeight="700" d:DesignWidth="1200">
+
+    <basemodel:DockControlDisposable.Resources>
+        <Style x:Key="DataGridCellStyle1" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                Background="{TemplateBinding Background}" 
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                              Content="{TemplateBinding Content}" 
+                                              VerticalAlignment ="Center"
+                                              Margin="3,1"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" 
+                            Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                    <Setter Property="Foreground" 
+                            Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                    <Setter Property="BorderBrush" 
+                            Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                    <Setter Property="BorderBrush"
+                            Value="{DynamicResource {ComponentResourceKey ResourceId=FocusBorderBrushKey, TypeInTargetAssembly={x:Type DataGrid}}}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" 
+                            Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <schemaViewModel:SchemaViewModel x:Key="SchemaViewModel"/>
+        <schemaViewModel:SchemaOperationViewModel x:Key="SchemasViewModel"/>
+        <GridViewColumnCollection x:Key="ColumnsSchemaConfig">
+            <GridViewColumn  Header="检定点名称"
+                             Width="500">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" 
+                      Margin="{Binding Level,Converter={StaticResource LevelToIndentConverter}}">
+                            <ToggleButton x:Name="Expander" 
+                                Style="{StaticResource ExpandCollapseToggleStyle}" 
+                                IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource AncestorType= {x:Type TreeViewItem}}}"
+                                HorizontalAlignment="Center" VerticalAlignment="Center" ClickMode="Press"/>
+                            <TextBlock Text="{Binding Name}" ToolTip="{Binding Name}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=HasItems, RelativeSource={RelativeSource AncestorType={x:Type TreeViewItem}}}" Value="False">
+                                <Setter TargetName="Expander" Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="60" DisplayMemberBinding="{Binding PointCount, StringFormat=(\{0\}项)}"/>
+            <GridViewColumn Width="40">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Click="Button_Click_RemoveNode" VerticalAlignment="Center">
+                            <Image Width="16" Source="{DynamicResource 删除}" />
+                        </Button>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+        </GridViewColumnCollection>
+        <Style  x:Key="TreeViewStyleSchemaConfig" TargetType="TreeView">
+            <Style.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="Padding" Value="0,2"/>
+                    <Setter Property="IsExpanded" Value="True"/>
+                    <Setter Property="Foreground" Value="{DynamicResource 字体颜色标准}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                                <StackPanel VerticalAlignment="Center">
+                                    <Border Name="Bd"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Padding="{TemplateBinding Padding}">
+                                        <GridViewRowPresenter x:Name="PART_Header" 
+                                            Content="{TemplateBinding Header}" 
+                                            Columns="{StaticResource ColumnsSchemaConfig}" >
+                                            <GridViewRowPresenter.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                                </Style>
+                                            </GridViewRowPresenter.Resources>
+                                        </GridViewRowPresenter>
+                                    </Border>
+                                    <ItemsPresenter x:Name="ItemsHost" />
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsExpanded" Value="false">
+                                        <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="HasHeader" Value="false"/>
+                                            <Condition Property="Width" Value="Auto"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                                    </MultiTrigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="HasHeader" Value="false"/>
+                                            <Condition Property="Height" Value="Auto"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter Property="Background" TargetName="Bd" Value="{DynamicResource 网格选中项颜色}"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsSelected" Value="true"/>
+                                            <Condition Property="IsSelectionActive" Value="false"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource 网格选中项颜色}"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <!--<Setter Property="Background" Value="{DynamicResource 表行颜色}"/>-->
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="{DynamicResource 表行颜色}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource 网格选中项颜色}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" Value="{DynamicResource 网格选中项颜色}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeView}">
+                        <DockPanel>
+                            <GridViewHeaderRowPresenter DockPanel.Dock="Top" Columns="{StaticResource ColumnsSchemaConfig}" />
+                            <ScrollViewer>
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="AlternationCount" Value="2"/>
+        </Style>
+        <Style TargetType="{x:Type local:DataGridParaValue }" BasedOn="{StaticResource {x:Type DataGrid}}">
+
+        </Style>
+    </basemodel:DockControlDisposable.Resources>
+
+
+    <Grid DataContext="{StaticResource SchemaViewModel}" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="10" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Background="White" CornerRadius="10">
+            <Grid Margin="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel  Name="gridSchemas" Orientation="Horizontal">
+                    <TextBlock Text="方案名" VerticalAlignment="Center" Margin="3"/>
+                    <ComboBox Margin="3" Width="300" Name="comboBoxSchemas"
+                          ItemsSource="{Binding Schemas}" Style="{DynamicResource StyleComboBox}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding SCHEMA_NAME}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <ComboBox.ContextMenu>
+                            <ContextMenu MenuItem.Click="Click_SchemaExpand">
+                                <MenuItem x:Name="menuExpand" Header="方案设置"/>
+                            </ContextMenu>
+                        </ComboBox.ContextMenu>
+                    </ComboBox>
+                    <Button Click="ButtonClick_Save" Margin="3" Width="120" ToolTip="保存方案"  
+                            Style="{DynamicResource PrimaryButtonStyle}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{DynamicResource 保存}" Width="18" />
+                            <TextBlock Text="保存方案" Margin="5,0" />
+                        </StackPanel>
+                    </Button>
+                    <Button Content="规程选点..." Height="25" Width="120" Click="JJGPlan_Click" ToolTip="设置当前方案的规程误差负载点"
+                             Style="{DynamicResource PrimaryButtonStyle}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin=" 0 0 25 0">
+                    <Button Style="{DynamicResource SuccessButtonStyle}" 
+                        Margin="5,0" Width="40" Click="ButtonClick_Import" Content="导入"/>
+                    <Button Click="ButtonClick_SortDefault" ToolTip="恢复方案的默认排序">
+                        <Image Width="24" Source="/Images/同步.png" />
+                    </Button>
+                </StackPanel>
+                <LocalControls:TreeViewDragDrop Grid.Row="1" 
+                    Margin="3" x:Name="treeSchema"
+                    Style="{StaticResource TreeViewStyleSchemaConfig}"
+                    Drop="Event_NodeMove"
+                    SelectedItemChanged="TreeSchema_SelectedItemChanged"
+                    ItemsSource="{Binding Children}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}"/>
+                    </TreeView.ItemTemplate>
+                </LocalControls:TreeViewDragDrop>
+
+            </Grid>
+        </Border>
+        <GridSplitter VerticalAlignment="Center" Grid.Row="1" Height="10" HorizontalAlignment="Stretch" Background="Transparent" />
+        <Border Background="White" Grid.Row="2" CornerRadius="10">
+            <Grid>
+                <!--负载点列表集合-->
+                <Grid Grid.Row="2" Name="gridGeneral">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Button Margin="3,3,6,3" HorizontalAlignment="Left" Click="Button_Click_AddItem">
+                        <Image Width="18"  Source="{DynamicResource 添加}"/>
+                    </Button>
+                    <local:DataGridParaValue Grid.Row="1" 
+                                         AutoGenerateColumns="False"
+                                         x:Name="dataGridGeneral"
+                                         BorderThickness="0,1,0,0"
+                                         IsReadOnly="False"
+                                         PreparingCellForEdit="DataGridGeneral_PreparingCellForEdit"
+                                       CellEditEnding="DataGridGeneral_CellEditEnding"
+                                          HeadersVisibility="Column"
+                                         ItemsSource="{Binding ParaValuesView, Mode=TwoWay}"
+                                         Background="{x:Null}" SelectionMode="Single">
+                        <local:DataGridParaValue.Columns>
+                            <DataGridTemplateColumn Header="删除">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Width="16" Click="Button_Click_RemoveItem"
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center">
+                                            <Image Source="{DynamicResource 删除}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="插入">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Width="16" Click="Button_Click_InsertRow"
+                                                HorizontalAlignment="Center" 
+                                                ToolTip="在当前行下插入一行"
+                                                VerticalAlignment="Center">
+                                            <Image Source="{DynamicResource 添加}"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="下移">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Width="16"
+                                                Click="Button_Click_ItemDown"
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center">
+                                            <Image Source="/Images/下移.png" />
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Header="上移">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Width="16" Click="Button_Click_ItemUp"
+                                                HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center">
+                                            <Image Source="/Images/上移.png"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </local:DataGridParaValue.Columns>
+                    </local:DataGridParaValue>
+                </Grid>
+                <!--基本误差/初始固有误差  快速添加面板 -->
+                <ScrollViewer Grid.Row="2"
+                          Name="scrollViewError"
+                          Margin="3,3,6,3"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          Visibility="Collapsed">
+                    <Error:ControlTreeError x:Name="controlError"/>
+                </ScrollViewer>
+                <!--基本误差/初始固有误差  快速添加面板 -->
+                <CheckBox Grid.Row="2" IsChecked="True" Visibility="Collapsed" Margin="60,6,3,3"
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      Name="checkBoxErrorView"
+                      Content="快速添加误差点"/>
+
+                <Button Content="删除重复点"  Grid.Row="2"  Margin="150,6,3,3" Width="80" Height="20"  HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Click="Btn_RemoveCF" Visibility="Collapsed" />
+                <Grid  Grid.Row="2" Margin="40,5,0,5" Visibility="Collapsed" Name="ProtocolPanel">
+                    <TextBox  Width="200" FontSize="12"  Height="19"      HorizontalAlignment="Left" VerticalAlignment="Top" 
+                    Style="{x:Null}" Name="Protocol_Name"/>
+                    <Button Content="添 加" Width="50" Height="20"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="210,1,0,0"  Background="#2ea400"  Style="{Binding }"
+                    BorderThickness="0" FontSize ="12" Click="Btn_AddProtocol" Foreground="White"/>
+                    <Button Content="批量添加" Width="60" Height="20"  VerticalAlignment="Top"   Background="#2ea400"  Style="{Binding }" Foreground="White"
+                     BorderThickness="0" FontSize ="12"   HorizontalAlignment="Right"  Margin="0,1,10,0"  Click="Btn_BatchAddProtocol" Visibility="Visible"/>
+
+
+                </Grid>
+            </Grid>
+        </Border>
+        <GridSplitter Grid.Column="1" Grid.RowSpan="3" Width="10" VerticalAlignment="Stretch" HorizontalAlignment="Center" Background="Transparent"/>
+
+        <Grid Margin="3,10" Grid.Column="2"  Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="31"/>
+                <RowDefinition/>
+                <RowDefinition Height="62"/>
+            </Grid.RowDefinitions>
+            <UniformGrid Columns="3">
+                <Button Content="全检试验" Margin="3" Click="AllCheck_Click"  Style="{DynamicResource PrimaryButtonStyle}"/>
+                <Button Content="抽检试验" Margin="3" Click="SampleCheck_Click"  Style="{DynamicResource PrimaryButtonStyle}"/>
+                <Button Content="全性能试验" Margin="3" Click="FullCheck_Click"  Style="{DynamicResource PrimaryButtonStyle}"/>
+            </UniformGrid>
+            <TreeView Name="treeFramework" Grid.Row="1"
+                      Button.Click="ButtonClick_AddNode"
+                      Style="{DynamicResource DataGridTreeSchemaConfig}">
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children, Mode=TwoWay}"/>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <UniformGrid Columns="2" Rows="2" Grid.Row="2" Button.Click="Click_SchemaOperation">
+                <Button x:Name="buttonNew" Margin="3" Content="新建方案" Style="{DynamicResource SuccessButtonStyle}" />
+                <Button x:Name="buttonCopy" Margin="3" Content="复制方案" Style="{DynamicResource SuccessButtonStyle}" />
+                <Button x:Name="buttonRename" Margin="3" Content="重命名方案" Style="{DynamicResource SuccessButtonStyle}" />
+                <Button x:Name="buttonDelete" Margin="3" Content="删除方案" Style="{DynamicResource SuccessButtonStyle}" />
+            </UniformGrid>
+        </Grid>
+
+    </Grid>
+
+</basemodel:DockControlDisposable>

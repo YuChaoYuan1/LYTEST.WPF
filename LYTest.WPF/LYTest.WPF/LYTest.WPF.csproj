@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69238E0C-1637-4AA3-B98E-349AABD11B3A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LYTest.WPF</RootNamespace>
+    <AssemblyName>LYTest.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>false</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>LYTest.WPF.Program</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=7.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefLibs\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=6.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefLibs\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.9.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefLibs\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppInfo.cs" />
+    <Compile Include="Controls\BorderRadiusButton.cs" />
+    <Compile Include="Controls\ComboBoxPermission.cs" />
+    <Compile Include="Controls\ConfigColumn.cs" />
+    <Compile Include="Controls\ControlEnumComboBox.cs" />
+    <Compile Include="Controls\DataPager.xaml.cs">
+      <DependentUpon>DataPager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditBox.xaml.cs">
+      <DependentUpon>EditBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoadingWait.xaml.cs">
+      <DependentUpon>LoadingWait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MeterStartControl.xaml.cs">
+      <DependentUpon>MeterStartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PilotLamp\AlternatingLamp.xaml.cs">
+      <DependentUpon>AlternatingLamp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TreeViewDragDrop.cs" />
+    <Compile Include="Controls\UserMenu2.xaml.cs">
+      <DependentUpon>UserMenu2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converter\AbracketBConverter.cs" />
+    <Compile Include="Converter\BoolBitConverter.cs" />
+    <Compile Include="Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converter\CodePermission\CodeAddConverter.cs" />
+    <Compile Include="Converter\CodePermission\CodeDeleteConverter.cs" />
+    <Compile Include="Converter\CodePermission\CodeModifyConverter.cs" />
+    <Compile Include="Converter\CodePermission\CodeSelectedConverter.cs" />
+    <Compile Include="Converter\DateOnlyConverter.cs" />
+    <Compile Include="Converter\LevelToMarginConverter.cs" />
+    <Compile Include="Converter\NotBoolConverter.cs" />
+    <Compile Include="Converter\ResultColorConverter.cs" />
+    <Compile Include="Converter\UserVisibilityConverter.cs" />
+    <Compile Include="MainTabContro\ButtonEx.cs" />
+    <Compile Include="MainTabContro\TabItemClose.cs" />
+    <Compile Include="Model\DockControlDisposable.cs" />
+    <Compile Include="Model\DockWindowDisposable.cs" />
+    <Compile Include="Model\GridLineDecorator.cs" />
+    <Compile Include="Model\GridViewColumnHelper.cs" />
+    <Compile Include="Model\IDockControl.cs" />
+    <Compile Include="Model\MainViewModel.cs" />
+    <Compile Include="Model\ModelDockStyle.cs" />
+    <Compile Include="Model\Utils.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Schema\ControlComboParaCode.cs" />
+    <Compile Include="Schema\DataGridParaValue.cs" />
+    <Compile Include="Schema\Error\ControlDataGridError.xaml.cs">
+      <DependentUpon>ControlDataGridError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Error\ControlTreeError.xaml.cs">
+      <DependentUpon>ControlTreeError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\View_AddSchema.xaml.cs">
+      <DependentUpon>View_AddSchema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\View_CopySchema.xaml.cs">
+      <DependentUpon>View_CopySchema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\View_DeleteSchema.xaml.cs">
+      <DependentUpon>View_DeleteSchema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\View_ImportSchema.xaml.cs">
+      <DependentUpon>View_ImportSchema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\View_RenameSchema.xaml.cs">
+      <DependentUpon>View_RenameSchema.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Skin\SkinManager.cs" />
+    <Compile Include="Skin\SkinViewModel.cs" />
+    <Compile Include="Skin\ThemeItem.cs" />
+    <Compile Include="SystemSleepManager.cs" />
+    <Compile Include="UIGeneralClass.cs" />
+    <Compile Include="UiGeneral\ControlFactory.cs" />
+    <Compile Include="UiGeneral\DragDropAdorner.cs" />
+    <Compile Include="UiGeneral\Win32.cs" />
+    <Compile Include="User\Page_AddUser.xaml.cs">
+      <DependentUpon>Page_AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Page_DelUser.xaml.cs">
+      <DependentUpon>Page_DelUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Page_LoginUser.xaml.cs">
+      <DependentUpon>Page_LoginUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Page_MainUser.xaml.cs">
+      <DependentUpon>Page_MainUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\Page_PassWordChange.xaml.cs">
+      <DependentUpon>Page_PassWordChange.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExportData.xaml.cs">
+      <DependentUpon>ExportData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_BackupData.xaml.cs">
+      <DependentUpon>View_BackupData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_MeterInfoSimple.xaml.cs">
+      <DependentUpon>View_MeterInfoSimple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_AgreementConfig.xaml.cs">
+      <DependentUpon>View_AgreementConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_CodeTree.xaml.cs">
+      <DependentUpon>View_CodeTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_Config.xaml.cs">
+      <DependentUpon>View_Config.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_DataFlag.xaml.cs">
+      <DependentUpon>View_DataFlag.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_DeviceDebug.xaml.cs">
+      <DependentUpon>View_DeviceDebug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_InputConfig.xaml.cs">
+      <DependentUpon>View_InputConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_Log.xaml.cs">
+      <DependentUpon>View_Log.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_MenuConfig.xaml.cs">
+      <DependentUpon>View_MenuConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_MeterMessage.xaml.cs">
+      <DependentUpon>View_MeterMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_Input.xaml.cs">
+      <DependentUpon>View_Input.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_PortConfig.xaml.cs">
+      <DependentUpon>View_PortConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_PowerControl.xaml.cs">
+      <DependentUpon>View_PowerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_SaveData.xaml.cs">
+      <DependentUpon>View_SaveData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_SchemaConfig.xaml.cs">
+      <DependentUpon>View_SchemaConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_SchemaItemConfig.xaml.cs">
+      <DependentUpon>View_SchemaItemConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_SchemaOperation.xaml.cs">
+      <DependentUpon>View_SchemaOperation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_SetUpAll.xaml.cs">
+      <DependentUpon>View_SetUpAll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_StdMessage.xaml.cs">
+      <DependentUpon>View_StdMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_Test.xaml.cs">
+      <DependentUpon>View_Test.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_TestConfig.xaml.cs">
+      <DependentUpon>View_TestConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_TestDetail.xaml.cs">
+      <DependentUpon>View_TestDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_User.xaml.cs">
+      <DependentUpon>View_User.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_AddNewCode.xaml.cs">
+      <DependentUpon>Window_AddNewCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_DataAnalysis.xaml.cs">
+      <DependentUpon>Window_DataAnalysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_ExportData.xaml.cs">
+      <DependentUpon>Window_ExportData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_ProtocolAdd.xaml.cs">
+      <DependentUpon>Window_ProtocolAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_ProtocolSelect.xaml.cs">
+      <DependentUpon>Window_ProtocolSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_RatePeriodSelect.xaml.cs">
+      <DependentUpon>Window_RatePeriodSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_SelfheatChart.xaml.cs">
+      <DependentUpon>Window_SelfheatChart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_SetPlanPoint.xaml.cs">
+      <DependentUpon>Window_SetPlanPoint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_ShemaSet.xaml.cs">
+      <DependentUpon>Window_ShemaSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_Show.xaml.cs">
+      <DependentUpon>Window_Show.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_TestControl.xaml.cs">
+      <DependentUpon>Window_TestControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_TestDataSet.xaml.cs">
+      <DependentUpon>Window_TestDataSet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_ThemeChoice.xaml.cs">
+      <DependentUpon>Window_ThemeChoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_TipsLog.xaml.cs">
+      <DependentUpon>Window_TipsLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_TipsStepFinished.xaml.cs">
+      <DependentUpon>Window_TipsStepFinished.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_TipsMessage.xaml.cs">
+      <DependentUpon>Window_TipsMessage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Window_Wait.xaml.cs">
+      <DependentUpon>Window_Wait.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\DataPager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\EditBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoadingWait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MeterStartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PilotLamp\AlternatingLamp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UserMenu2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainTabContro\TabCloseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\IconResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\Error\ControlDataGridError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\Error\ControlTreeError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\View_AddSchema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\View_CopySchema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\View_DeleteSchema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Schema\View_ImportSchema.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Schema\View_RenameSchema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\SimpleStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Logo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Page_AddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Page_DelUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Page_LoginUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Page_MainUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\Page_PassWordChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExportData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_BackupData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_MeterInfoSimple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_AgreementConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_CodeTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_Config.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_DataFlag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_DeviceDebug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_InputConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_Log.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_MenuConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_MeterMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_Input.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_PortConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_PowerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_SaveData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_SchemaConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_SchemaItemConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_SchemaOperation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_SetUpAll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_StdMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_Test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_TestConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_TestDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\ColorResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ConverterResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\zh_CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CheckBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridTree1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridTreeSchemaConfig.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGridTreeSummarySave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollBarStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ScrollViewerStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TabControlStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TreeViewStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_AddNewCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_DataAnalysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_ExportData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_ProtocolAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_ProtocolSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_RatePeriodSelect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_SelfheatChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_SetPlanPoint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_ShemaSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_Show.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_TestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_TestDataSet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_ThemeChoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_TipsLog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_TipsStepFinished.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Window_TipsMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Window_Wait.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LYTest.Core\LYTest.Core.csproj">
+      <Project>{830309E8-432D-437A-9F3E-D7A8925D09B8}</Project>
+      <Name>LYTest.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.DAL\LYTest.DAL.csproj">
+      <Project>{5ef4554f-f70b-4499-8ef6-07cadd8af843}</Project>
+      <Name>LYTest.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Mis\LYTest.Mis.csproj">
+      <Project>{92B1BD49-4868-4D88-B188-30F992E339E2}</Project>
+      <Name>LYTest.Mis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Utility\LYTest.Utility.csproj">
+      <Project>{b51cd3e2-0663-4a0d-af36-b16ed291f033}</Project>
+      <Name>LYTest.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.ViewModel\LYTest.ViewModel.csproj">
+      <Project>{9cb85f14-7126-4f14-98ea-f295f604e346}</Project>
+      <Name>LYTest.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZH.MeterProtocol\LYTest.MeterProtocol.csproj">
+      <Project>{D2741FCF-183D-4581-AFE8-2DF869B4246A}</Project>
+      <Name>LYTest.MeterProtocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\moen\Logo.jpg" />
+    <Resource Include="Images\moen\Logo2.jpg" />
+    <Resource Include="Images\moen\摩恩智能.txt" />
+    <Resource Include="Images\png-1681.png" />
+    <Resource Include="Images\png-1682.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\V_CodeTree.png" />
+    <Resource Include="Images\V_Config.png" />
+    <Resource Include="Images\V_Connect.png" />
+    <Resource Include="Images\V_Input.png" />
+    <Resource Include="Images\V_InputConfig.png" />
+    <Resource Include="Images\V_MenuConfig.png" />
+    <Resource Include="Images\V_Prot.png" />
+    <Resource Include="Images\V_Schema.png" />
+    <Resource Include="Images\V_SetUp.png" />
+    <Resource Include="Images\V_Test.png" />
+    <Resource Include="Images\V_TestConfig.png" />
+    <Resource Include="Images\V_TestDetail.png" />
+    <Resource Include="Images\V_User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Add.png" />
+    <Resource Include="Images\Continuity.png" />
+    <Resource Include="Images\Del.png" />
+    <Resource Include="Images\Down.png" />
+    <Resource Include="Images\Edit.png" />
+    <Resource Include="Images\Error.png" />
+    <Resource Include="Images\OK.png" />
+    <Resource Include="Images\Refresh.png" />
+    <Resource Include="Images\Replace.png" />
+    <Resource Include="Images\Run.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\Start.png" />
+    <Resource Include="Images\Stop.png" />
+    <Resource Include="Images\Up.png" />
+    <Resource Include="Images\Warn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NextStep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Theme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Close.png" />
+    <Resource Include="Images\Min.png" />
+    <Resource Include="Images\Reduction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ConfigData\AgreementConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ConfigData\CarrierConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ConfigData\DataFlag.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back_Earth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\BackColor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\png-0050.png" />
+    <Resource Include="Images\png-0649.png" />
+    <Resource Include="Images\png-1427.png" />
+    <Resource Include="Images\png-1431.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\first.png" />
+    <Resource Include="Images\Last.png" />
+    <Resource Include="Images\next.png" />
+    <Resource Include="Images\prev.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Locking.png" />
+    <Resource Include="Images\Unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\按钮关闭.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PowerOK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\png-1688.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\png-1689.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\解锁.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\锁定.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ConfigData\OadInfosConfig.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\SingleSet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="test.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\test.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Logo2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo5.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

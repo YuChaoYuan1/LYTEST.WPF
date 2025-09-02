@@ -1,0 +1,25 @@
+﻿<Window x:Class="LYTest.WPF.View.Windows.Window_ExportData"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LYTest.WPF.View.Windows"
+        mc:Ignorable="d"
+        Title="数据导出" Height="350" Width="700"         WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Vertical"   VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="导出名称：" VerticalAlignment="Center"  FontSize="35" />
+            <TextBox Width="350" Height="50" Name="SaveName" FontSize="32"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 20 0 20" >
+            <TextBlock Text="导出路径：" VerticalAlignment="Center"   FontSize="35" />
+            <TextBox x:Name="pathText" Width="350" Height="50"  FontSize="32"/>
+            <Button Content="选择路径" Margin="5 0" Click="Button_Click" FontSize="30"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="取消" Width="120" Height="50" FontSize="30" Click="close_click"/>
+            <Button Content="导出" Width="120" Height="50" FontSize="30" Margin="20 0" Click="ExportClick"/>
+        </StackPanel>
+    </StackPanel>
+</Window>

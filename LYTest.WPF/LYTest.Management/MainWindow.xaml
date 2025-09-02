@@ -1,0 +1,197 @@
+﻿<Window  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local1="clr-namespace:LYTest.DataManager.Controls"
+         xmlns:ViewModel="clr-namespace:LYTest.DataManager.ViewModel.Meters"
+         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+         x:Class="LYTest.DataManager.MainWindow"
+        x:Name="数据管理" Icon="数据管理.ico"
+        Height="700" Width="1200" FontFamily="Calibri" FontSize="14"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen"
+        Title="数据管理" Background="#99ccff">
+    <Window.Resources>
+        <ViewModel:MetersViewModel x:Key="MetersViewModel"/>
+        <Style x:Key="DataGridRowHeaderStyle1" TargetType="{x:Type DataGridRowHeader}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
+                        <Grid>
+                            <Themes:DataGridHeaderBorder BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" IsPressed="{TemplateBinding IsPressed}" IsHovered="{TemplateBinding IsMouseOver}" IsSelected="{TemplateBinding IsRowSelected}" Orientation="Horizontal" Padding="{TemplateBinding Padding}" SeparatorBrush="{TemplateBinding SeparatorBrush}" SeparatorVisibility="{TemplateBinding SeparatorVisibility}">
+                                <Grid Width="30">
+                                    <CheckBox IsChecked="{Binding IsSelected,Mode=TwoWay}"
+                                              Click="IsCheckBox_Click"
+                                              HorizontalAlignment="Center"
+                                              Margin="3"
+                                              VerticalAlignment="Center"/>
+                                </Grid>
+                            </Themes:DataGridHeaderBorder>
+                            <Thumb x:Name="PART_TopHeaderGripper" VerticalAlignment="Top">
+                                <Thumb.Style>
+                                    <Style TargetType="{x:Type Thumb}">
+                                        <Setter Property="Height" Value="8"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Cursor" Value="SizeNS"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Thumb.Style>
+                            </Thumb>
+                            <Thumb x:Name="PART_BottomHeaderGripper" VerticalAlignment="Bottom">
+                                <Thumb.Style>
+                                    <Style TargetType="{x:Type Thumb}">
+                                        <Setter Property="Height" Value="8"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Cursor" Value="SizeNS"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Thumb.Style>
+                            </Thumb>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ContextMenu x:Key="contextMenu"  MenuItem.Click="ContextMenu_Click"  >
+            <MenuItem Header=" 详细数据"/>
+        </ContextMenu>
+    </Window.Resources>
+    <Grid  DataContext="{StaticResource MetersViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row=" 0">
+            <local1:ImageButton Image="./images/png-0212.png" Content="模板制作" ImageHeight="40" ImageWidth="40" Width="70" Height="50"  Click="Btn_Model_Click"/>
+            <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                <RadioButton GroupName="UpDownUri" Content="MDS" x:Name="UpDownMDS" IsChecked="True" Margin="0,0,5,0"/>
+                <RadioButton GroupName="UpDownUri" Content="营销"/>
+            </StackPanel>
+            <local1:ImageButton Image="./images/png-0097.png" Content="上传数据" ImageHeight="30" ImageWidth="30" Width="70" Height="50" Click="OnDataUp" />
+
+            <local1:ImageButton Image="./images/OK.png" Content="上传数据成功" ImageHeight="30" ImageWidth="30" Width="70" Height="50" Click="SendFinish" />
+            <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                <RadioButton GroupName="ExcelType" Content="详细Excel" IsChecked="True"/>
+                <RadioButton GroupName="ExcelType" Content="汇总Excel" x:Name="ExcelSummary"/>
+            </StackPanel>
+            <local1:ImageButton Image="./images/Excel.png" Content="导出Excel" ImageHeight="30" ImageWidth="30" Width="70" Height="50" Click="Export_Excel_Click" />
+
+
+            <StackPanel Orientation="Vertical" >
+                <ComboBox x:Name="comboBoxTemplates"
+				          Width="150"
+				          Style="{StaticResource StyleComboBox}" 
+                          SelectionChanged="ComboBoxTemplates_SelectionChanged"
+				          VerticalAlignment="Center"
+                          Margin=" 5 10 3 0"/>
+                <CheckBox Content="预览"
+                          Margin="5,3"
+                          Name="checkBoxPreview"
+                          Click="CheckBox_Click"
+                          HorizontalAlignment="Right"                           
+                          VerticalAlignment="Center"
+                          IsChecked="False"/>
+            </StackPanel>
+
+            <local1:ImageButton Image="./images/png-0649.png" Content="打印报告" ImageHeight="30" ImageWidth="30" Width="70" Height="50" Click="Btn_PrintWord_Click" />
+            <StackPanel  Orientation="Horizontal"  >
+                <ListBox ItemsSource="{Binding SearchItems}"
+                         Background="{x:Null}"
+                         BorderBrush="{x:Null}">
+                    <ListBox.Resources>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <StackPanel x:Name="SearchItemsStackPanel" Orientation="Horizontal"   Margin="3">
+                                            <CheckBox VerticalAlignment="Center"   Margin="3"   IsChecked="{Binding IsSelected,Mode=TwoWay}"  Visibility="Collapsed"/>
+                                            <ComboBox Width="120" Margin="3" ItemsSource="{Binding ColumnNames}"
+                                                                       Style="{DynamicResource StyleComboBox}" 
+                                                                       SelectedValue="{Binding ColumnName,Mode=TwoWay}" />
+                                            <ComboBox Width="80" Margin="3"
+                                                              Style="{DynamicResource StyleComboBox}"
+                                                              ItemsSource="{Binding Conditions}" 
+                                                        Visibility ="{Binding VisibilityText}"
+                                                              SelectedItem="{Binding CompareCondition, Mode=TwoWay}"/>
+                                            <ComboBox Width="200" Margin="3"
+                                                              Style="{DynamicResource StyleComboBox}"
+                                                              ItemsSource="{Binding SeachValues}" 
+                                                              Text="{Binding SearchValue, Mode=TwoWay}"
+                                                                Visibility ="{Binding VisibilityText}"
+                                                              IsEditable="True"/>
+                                            <DatePicker Name="SearchStartDatePicker"
+                                                        Text="起始日期"
+                                                        ToolTip="从这个日期开始查询"
+                                                        Width="150"
+                                                        Margin="3"
+                                                        SelectedDateFormat="Long"
+                                                        SelectedDate="{Binding SearchStartDate}"
+                                                        DisplayDateEnd="{Binding SearchEndDate}"
+                                                        IsEnabled="True"
+                                                        Visibility="{Binding VisibilityDate}"
+                                                        />
+                                            <DatePicker Name="SearchEndDatePicker"
+                                                        Text="结束日期"
+                                                        ToolTip="到这个日期终止查询"
+                                                        Width="150"
+                                                        Margin="3"
+                                                        SelectedDateFormat="Long"
+                                                             DisplayDateStart="{Binding SearchStartDate}"
+                                                        SelectedDate="{Binding SearchEndDate}"
+                                                        IsEnabled="True"
+                                                        Visibility="{Binding VisibilityDate}"
+                                                        />
+                                        </StackPanel>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.Resources>
+                </ListBox>
+                <local1:ImageButton Image="./images/png-0085.png" Content="查询数据" ImageHeight="30" ImageWidth="30" 
+                                    Width="80" Height="50" Click="Click_SearchMeters" />
+            </StackPanel>
+        </StackPanel>
+
+        <DataGrid  x:Name="datagridMeter" 
+			Grid.Row="1"
+			CanUserReorderColumns="True"
+			Margin="3,0,3,3"
+            MouseRightButtonDown="DatagridMeter_MouseRightButtonDown"
+			ContextMenu="{StaticResource contextMenu}"
+			HeadersVisibility="All"
+			Style="{StaticResource dataGridStyleDetailResult}"
+			ItemsSource="{Binding Meters}"
+			SelectionUnit="FullRow"
+            SelectionChanged="DatagridMeter_SelectionChanged"
+            RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}"/>
+
+        <CheckBox Grid.Row="1" Margin="14 3 0 0" ToolTip="全选" Width="18" Height="18" HorizontalAlignment="Left" VerticalAlignment="Top"  IsChecked="{Binding IsAllMeter}"/>
+
+        <Grid Grid.Row=" 2" Height="30">
+            <local1:DataPager Margin="10,3,5,3"  DataContext="{Binding PagerModel}" Grid.Row="1"  Width="400" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+            <!--<Button Content="测试" Click="Test_Click" HorizontalAlignment="Right"  Width="50" Height=" 20" Background=" red" Style="{Binding }" Visibility="Collapsed" />-->
+        </Grid>
+
+        <Frame Grid.Row="1" Name="frameMain" Visibility="Collapsed"  />
+        <TextBlock FontSize="18"
+                   Grid.Row="3"
+                   Name="textBlockMessage"
+                   Margin="3"
+                   VerticalAlignment="Center"
+                   TextWrapping="WrapWithOverflow"
+                   Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                   Text="{Binding Message}"/>
+    </Grid>
+</Window>

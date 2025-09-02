@@ -1,0 +1,80 @@
+2025/9/1 17:02:25
+调用接口2025-09-01 17:02:25:624标准代码获取接口，上报数据
+{"sysNo":"","type":"02","code":"rateFreq,meterConst,accuLv,wireMode,meterModel,meterType,commProt,meterCateg,meterRv,meterFacturer,rc,accsMode,powerFlag,meterTestPowerFactor,curPhase,meterTestCurLoad,meterTestVolt,meterTestCtrlMode,GetCodeValue,secretKeyStatus","pageNo":0,"pageSize":1000}
+
+2025/9/1 17:02:46
+调用接口2025-09-01 17:02:25:624标准代码获取接口，上报数据
+
+
+2025/9/1 17:06:01
+调用接口2025-09-01 17:06:01:478标准代码获取接口，上报数据
+{"sysNo":"","type":"02","code":"rateFreq,meterConst,accuLv,wireMode,meterModel,meterType,commProt,meterCateg,meterRv,meterFacturer,rc,accsMode,powerFlag,meterTestPowerFactor,curPhase,meterTestCurLoad,meterTestVolt,meterTestCtrlMode,GetCodeValue,secretKeyStatus","pageNo":0,"pageSize":1000}
+
+2025/9/1 17:06:22
+调用接口2025-09-01 17:06:01:478标准代码获取接口，上报数据
+
+
+2025/9/1 17:06:44
+调用接口2025-09-01 17:06:44:461标准代码获取接口，上报数据
+{"sysNo":"","type":"02","code":"rateFreq,meterConst,accuLv,wireMode,meterModel,meterType,commProt,meterCateg,meterRv,meterFacturer,rc,accsMode,powerFlag,meterTestPowerFactor,curPhase,meterTestCurLoad,meterTestVolt,meterTestCtrlMode,GetCodeValue,secretKeyStatus","pageNo":0,"pageSize":1000}
+
+2025/9/1 17:07:05
+调用接口2025-09-01 17:06:44:461标准代码获取接口，上报数据
+
+
+2025/9/1 17:07:44
+调用接口2025-09-01 17:07:44:917标准代码获取接口，上报数据
+{"sysNo":"","type":"02","code":"rateFreq,meterConst,accuLv,wireMode,meterModel,meterType,commProt,meterCateg,meterRv,meterFacturer,rc,accsMode,powerFlag,meterTestPowerFactor,curPhase,meterTestCurLoad,meterTestVolt,meterTestCtrlMode,GetCodeValue,secretKeyStatus","pageNo":0,"pageSize":1000}
+
+2025/9/1 17:08:05
+调用接口2025-09-01 17:07:44:917标准代码获取接口，上报数据
+
+
+2025/9/1 17:09:04
+调用接口2025-09-01 17:09:04:466检定台任务信息获取接口，上报数据
+{"sysNo":"","barCode":"5"}
+
+2025/9/1 17:09:25
+调用接口2025-09-01 17:09:04:466检定台任务信息获取接口，上报数据
+
+
+2025/9/1 17:09:59
+调用接口2025-09-01 17:09:59:609检定台任务信息获取接口，上报数据
+{"sysNo":"","barCode":"1"}
+
+2025/9/1 17:10:23
+调用接口2025-09-01 17:09:59:609检定台任务信息获取接口，上报数据
+
+
+2025/9/1 17:10:39
+调用接口2025-09-01 17:10:39:262检定台任务信息获取接口，上报数据
+{"sysNo":"","barCode":"1"}
+
+2025/9/1 17:11:57
+调用接口2025-09-01 17:11:57:334检定台任务信息获取接口，上报数据
+{"sysNo":"","barCode":"111"}
+
+2025/9/1 17:12:21
+调用接口2025-09-01 17:11:57:334检定台任务信息获取接口，上报数据
+
+
+2025/9/1 17:52:52
+调用接口2025-09-01 17:52:52:692检定任务完成接口，上报数据
+{"flag":"01","taskNo":"2025062819301234"}
+
+2025/9/1 17:53:13
+调用接口2025-09-01 17:52:52:692检定任务完成接口，上报数据
+
+
+2025/9/1 17:53:45
+调用接口2025-09-01 17:53:43:543检定任务完成接口，上报数据
+{"flag":"01","taskNo":"2025062819301234"}
+
+2025/9/1 17:54:11
+调用接口2025-09-01 17:53:43:543检定任务完成接口，上报数据
+
+
+2025/9/1 17:54:31
+调用接口2025-09-01 17:54:31:049检定任务完成接口，上报数据
+{"flag":"01","taskNo":"2025062819301234"}
+

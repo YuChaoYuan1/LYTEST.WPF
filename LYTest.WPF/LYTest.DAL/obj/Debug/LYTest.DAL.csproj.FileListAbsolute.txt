@@ -1,0 +1,7 @@
+D:\LY_Meter_Code_M2\Resource\LYTest.DAL.dll
+D:\LY_Meter_Code_M2\Resource\LYTest.DAL.pdb
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.DAL\obj\Debug\LYTest.DAL.csproj.AssemblyReference.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.DAL\obj\Debug\LYTest.DAL.csproj.CoreCompileInputs.cache
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.DAL\obj\Debug\LYTest.DAL.csproj.CopyComplete
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.DAL\obj\Debug\LYTest.DAL.dll
+D:\LY_Meter_Code_M2\LYTest.WPF\LYTest.DAL\obj\Debug\LYTest.DAL.pdb

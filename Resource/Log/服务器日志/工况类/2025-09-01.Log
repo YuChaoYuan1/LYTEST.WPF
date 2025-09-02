@@ -1,0 +1,768 @@
+2025/9/1 16:50:52
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 16:50:31",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 16:57:09
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 16:56:48",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 16:59:52
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 16:59:31",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:00:51
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:00:30",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:02:04
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:01:43",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:05:55
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:05:40",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:06:55
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:06:55",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:10:14
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:09:53",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:11:41
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:11:20",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:14:46
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:14:25",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:16:08
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:15:46",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:17:29
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:17:08",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:18:50
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:18:29",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:20:11
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:19:50",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:21:11
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:21:11",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+
+2025/9/1 17:22:32
+13.9---上报数据成功 Url:tcp://192.168.100.10:44309,topic:GK_JD_OUTPUT_INFO_TOPIC,接口描述:设备输出信息上报接口,上报数据Json内容:
+{
+  "plantNo": "",
+  "machNo": "",
+  "devSeatNo": "01",
+  "occurTime": "2025-09-01 17:22:11",
+  "realTimeValues": [
+    {
+      "outParaName": "voltageA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "voltageC",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "currentA",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentB",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "currentC",
+      "outParaValue": 0.0
+    },
+    {
+      "outParaName": "phaseA",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseB",
+      "outParaValue": "0"
+    },
+    {
+      "outParaName": "phaseC",
+      "outParaValue": "0"
+    }
+  ],
+  "remarks": ""
+}
+

@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{92B1BD49-4868-4D88-B188-30F992E339E2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LYTest.Mis</RootNamespace>
+    <AssemblyName>LYTest.Mis</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\..\Resource\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=25.6.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.ConfigManager, Version=4.0.7.58604, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.ConfigManager.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.IConfigManager, Version=4.0.7.45100, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.IConfigManager.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.InternalCommClient, Version=4.0.12.58604, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.InternalCommClient.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.InternalContract, Version=4.0.12.58604, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.InternalContract.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.IRouteInfoManager, Version=4.0.7.53833, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.IRouteInfoManager.dll</HintPath>
+    </Reference>
+    <Reference Include="CLDC.CLAT.Comm.Utility, Version=4.0.7.53833, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Resource\CLDC.CLAT.Comm.Utility.dll</HintPath>
+    </Reference>
+    <Reference Include="ICInterface">
+      <HintPath>..\RefLibs\ICInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="kafka-net">
+      <HintPath>..\..\Resource\kafka-net.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefLibs\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\RefLibs\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.6.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.5.3.0\lib\net45\System.Web.Http.SelfHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\ApiHelper.cs" />
+    <Compile Include="Common\GK_ApiConfig.cs" />
+    <Compile Include="Common\GK_BaseApi.cs" />
+    <Compile Include="Common\IMis.cs" />
+    <Compile Include="Common\JsonHelper.cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Common\MySQLHelper.cs" />
+    <Compile Include="Common\OracleHelper.cs" />
+    <Compile Include="Common\SqlHelper.cs" />
+    <Compile Include="Common\WebService.cs" />
+    <Compile Include="Common\WebServiceHelper.cs" />
+    <Compile Include="DataHelper\DataHelper.cs" />
+    <Compile Include="DataHelper\DataManage.cs" />
+    <Compile Include="DownHelper\HeiLongJianDownHelper.cs" />
+    <Compile Include="GuoJin\GuoJin.cs" />
+    <Compile Include="GuoJin\Tables\MT_DETECT_MET_RSLT.cs" />
+    <Compile Include="GuoJin\Tables\M_DETECT_RSLT.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_ACVOLTAGE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_BASICERR_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_BASICFUN_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_CLIMATEACT_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_CONC_Basic.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_CONSIST_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_CONSTANT_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_CREEPING_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_DAYTIME_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_DEMANDERR_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_ELECTRIC_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_ERROR_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_ETDAYTIME_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_EVENTLOG_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_FEESCHARG_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_FREEZING_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_GROUNDFAULT_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_IMPACTTEST_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_IMPACT_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_IMPCURRENT_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_KEYUPDATE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_MEASONERR_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_MEASREPE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_PARAMEUPD_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_POWER_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_RATETIME_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_RECORD_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_REMOTE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_RFINDUCDIS_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_RFINDUCTION_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_SAFETY_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_START_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_TEMPERARISE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_TRANPULSE_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_VIBRATION_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_VSAGANDSHORT_MET_CONC.cs" />
+    <Compile Include="GuoJin\Tables\M_QT_WIDELYPROT_MET_CONC.cs" />
+    <Compile Include="HEB\DataConvertHelperCls.cs" />
+    <Compile Include="HEB\DBConvert.cs" />
+    <Compile Include="HEB\HeiLongJian.cs" />
+    <Compile Include="HEB\StTrialScheme_Local.cs" />
+    <Compile Include="Houda\Houda.cs" />
+    <Compile Include="Houda\HoudaInteraction.cs" />
+    <Compile Include="Houda\NetCommunication.cs" />
+    <Compile Include="Houda\XmlMsg.cs" />
+    <Compile Include="IMICP\IMICPDataTables\SubResult.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VOverloadMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VPowerMeasMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VPwdChangeMeterConc.cs" />
+    <Compile Include="IMICP\SmartmeteringIndustrialPlatform.cs" />
+    <Compile Include="IMICP\IMICPDataTables\ArrBatchDevPara.cs" />
+    <Compile Include="IMICP\IMICPDataTables\CommonDatas.cs" />
+    <Compile Include="IMICP\IMICPDataTables\CommonDatas_DETedTestData.cs" />
+    <Compile Include="IMICP\IMICPDataTables\DevCodePara.cs" />
+    <Compile Include="IMICP\IMICPDataTables\InOutWhDtl.cs" />
+    <Compile Include="IMICP\IMICPDataTables\MeterDet.cs" />
+    <Compile Include="IMICP\IMICPDataTables\MeterVeriCompConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\SealInst.cs" />
+    <Compile Include="IMICP\IMICPDataTables\SetResults.cs" />
+    <Compile Include="IMICP\IMICPDataTables\TrialSch.cs" />
+    <Compile Include="IMICP\IMICPDataTables\TrialSchDtl.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VBasicerrMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VClockValueMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VComminicatMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VConsistMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VConstMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VCreepingMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VDayerrMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VDemandMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VDemandvalMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VEqMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VeriDisqualReasonList.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VeriDtlFormList.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VeriTask.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VErrorMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VEsamMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VEsamSecMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VEventRcdMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VFeeMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VHutCombinaMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VInfluenQtyMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VIntuitMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VMaxDmdErrMeterConc.cs" />
+    <Compile Include="IMICP\IMICPDataTables\VMeasureRptMeterConc.cs" />
+    <Compile Include="LY20\Api.cs" />
+    <Compile Include="MDS\MDS.cs" />
+    <Compile Include="MDS\Table\MT_BASICERR_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_CONSIST_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_CONST_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_CREEPING_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_DATECT_OUT_EQUIP.cs" />
+    <Compile Include="MDS\Table\MT_DAYERR_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_DETECT_RSLT.cs" />
+    <Compile Include="MDS\Table\MT_EQUIP_UNPASS_REASON.cs" />
+    <Compile Include="MDS\Table\MT_ERROR_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_ESAM_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_ESAM_READ_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_ESAM_SECURITY_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_HPLCID_CERT_INFO.cs" />
+    <Compile Include="MDS\Table\MT_INTUIT_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_METER.cs" />
+    <Compile Include="MDS\Table\MT_MET_CONC_Base.cs" />
+    <Compile Include="MDS\Table\MT_PRESETPARAM_CHECK_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_STANDARD_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_STARTING_MET_CONC.cs" />
+    <Compile Include="MDS\Table\MT_VARIATION_MET_CONC.cs" />
+    <Compile Include="MisData\MisDataHelper.cs" />
+    <Compile Include="MISFactory.cs" />
+    <Compile Include="MisScheme.cs" />
+    <Compile Include="NanRui\NanRui.cs" />
+    <Compile Include="NanRui\Tables\MT_ADDRESS_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_BASICERR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_BATTVOLT_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_BOX_PILE_DET.cs" />
+    <Compile Include="NanRui\Tables\MT_BOX_TYPE_INFO.cs" />
+    <Compile Include="NanRui\Tables\MT_BUY_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CANCELWARN_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CHANGE_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CLOCK_VALUE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_COMMINICATE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CONSIST_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CONST_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CONST_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CONTROL_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CP_INFO.cs" />
+    <Compile Include="NanRui\Tables\MT_CREEPING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CURRENT_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CURR_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_CURVE_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DATECT_OUT_EQUIP.cs" />
+    <Compile Include="NanRui\Tables\MT_DAYERR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DEMAND_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DEMAND_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_IT_RSLT.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_OUT_EQUIP.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_PARA_INFO.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_RSLT.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_SCHEME.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_SCHEME_DET.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_SCHEME_DET_TEMP.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_SCHEME_TEMP.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_SYS_INFO.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_TASK.cs" />
+    <Compile Include="NanRui\Tables\MT_DETECT_TMNL_RSLT.cs" />
+    <Compile Include="NanRui\Tables\MT_DEVIATION_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_DLB_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_EC_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ELECOFF_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ELECON_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ELECTRIFY_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ELEC_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_EP_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_EQ_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ERROR_IT_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ERROR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ESAM_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ESAM_READ_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_ESAM_SECURITY_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_FEE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_GPS_TIMING.cs" />
+    <Compile Include="NanRui\Tables\MT_HPLCID_CERT_INFO.cs" />
+    <Compile Include="NanRui\Tables\MT_HUTCHISON_COMBINA_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_INFLUENCE_QTY_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_INIERR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_INTUIT_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_LEAP_YEAR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_MAX_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_MEASURE_REPEAT_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_METER.cs" />
+    <Compile Include="NanRui\Tables\MT_METER_POSI.cs" />
+    <Compile Include="NanRui\Tables\MT_MET_CONC_Base.cs" />
+    <Compile Include="NanRui\Tables\MT_MULTI_INTERFACE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_OVERLOAD_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PARA_READ_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PARA_SETTING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PARA_SET_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PASSWORD_CHANGE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_POWER_MEASURE_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_POWER_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PRESETPARAM_CHECK_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_PRESETPARAM_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_RESET_DEMAND_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_RESET_EQ_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_RUNNING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_SEAL_INST.cs" />
+    <Compile Include="NanRui\Tables\MT_STANDARD_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_STARTING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_SURPLUS_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_SWITCHOFF_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_SWITCHON_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_TIME_ERROR_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_TIME_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_TIMING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_TS_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_VARIATION_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_VOLTAGE_EFFECT_TMNL_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_VOLT_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_WARNNING_MET_CONC.cs" />
+    <Compile Include="NanRui\Tables\MT_WAVE_MET_CONC.cs" />
+    <Compile Include="HeBei20\HeBei20.cs" />
+    <Compile Include="HeBei20\Tables\MT_ADDRESS_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_BASICERR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_BATTVOLT_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_BOX_PILE_DET.cs" />
+    <Compile Include="HeBei20\Tables\MT_BOX_TYPE_INFO.cs" />
+    <Compile Include="HeBei20\Tables\MT_BUY_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CANCELWARN_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CHANGE_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CLOCK_VALUE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_COMMINICATE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CONSIST_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CONST_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CONST_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CONTROL_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CP_INFO.cs" />
+    <Compile Include="HeBei20\Tables\MT_CREEPING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CURRENT_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CURR_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_CURVE_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DATECT_OUT_EQUIP.cs" />
+    <Compile Include="HeBei20\Tables\MT_DAYERR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DEMAND_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DEMAND_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_IT_RSLT.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_OUT_EQUIP.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_PARA_INFO.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_RSLT.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_SCHEME.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_SCHEME_DET.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_SCHEME_DET_TEMP.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_SCHEME_TEMP.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_SYS_INFO.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_TASK.cs" />
+    <Compile Include="HeBei20\Tables\MT_DETECT_TMNL_RSLT.cs" />
+    <Compile Include="HeBei20\Tables\MT_DEVIATION_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_DLB_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_EC_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ELECOFF_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ELECON_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ELECTRIFY_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ELEC_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_EP_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_EQ_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ERROR_IT_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ERROR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ESAM_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ESAM_READ_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_ESAM_SECURITY_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_FEE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_GPS_TIMING.cs" />
+    <Compile Include="HeBei20\Tables\MT_HPLCID_CERT_INFO.cs" />
+    <Compile Include="HeBei20\Tables\MT_HUTCHISON_COMBINA_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_INFLUENCE_QTY_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_INIERR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_INTUIT_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_LEAP_YEAR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_MAX_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_MEASURE_REPEAT_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_METER.cs" />
+    <Compile Include="HeBei20\Tables\MT_METER_POSI.cs" />
+    <Compile Include="HeBei20\Tables\MT_MET_CONC_Base.cs" />
+    <Compile Include="HeBei20\Tables\MT_MULTI_INTERFACE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_OVERLOAD_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PARA_READ_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PARA_SETTING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PARA_SET_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PASSWORD_CHANGE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_POWER_MEASURE_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_POWER_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PRESETPARAM_CHECK_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_PRESETPARAM_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_RESET_DEMAND_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_RESET_EQ_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_RUNNING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_SEAL_INST.cs" />
+    <Compile Include="HeBei20\Tables\MT_STANDARD_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_STARTING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_SURPLUS_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_SWITCHOFF_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_SWITCHON_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_TIME_ERROR_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_TIME_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_TIMING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_TS_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_VARIATION_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_VOLTAGE_EFFECT_TMNL_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_VOLT_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_WARNNING_MET_CONC.cs" />
+    <Compile Include="HeBei20\Tables\MT_WAVE_MET_CONC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SG186LX\SG186.cs" />
+    <Compile Include="SG186\CheckErr.cs" />
+    <Compile Include="SG186\CheckRecords.cs" />
+    <Compile Include="SG186\CheckResult.cs" />
+    <Compile Include="SG186\Dgn_CheckRecords.cs" />
+    <Compile Include="SG186\SC186Base.cs" />
+    <Compile Include="SG186\SG186.cs" />
+    <Compile Include="SG186\ZZ_CheckRecords.cs" />
+    <Compile Include="SG186\ZZ_CheckRegister.cs" />
+    <Compile Include="SG186\ZZ_CheckRegisterInit.cs" />
+    <Compile Include="SG186\ZZ_CheckVolt.cs" />
+    <Compile Include="ShangHai20\ShangHai20.cs" />
+    <Compile Include="ShangHai20\Tables\MT_BASICERR_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_CLOCK_VALUE_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_CONSIST_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_CONST_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_CONTROL_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_CREEPING_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DAYERR_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DEMANDVALUE_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_OUT_EQUIP.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_PARA_INFO.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_RSLT.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_SCHEME.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_SCHEME_DET.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DETECT_TASK.cs" />
+    <Compile Include="ShangHai20\Tables\MT_DEVIATION_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_EQ_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_ERROR_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_ESAM_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_ESAM_SECURITY_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_FLAG_BIND.cs" />
+    <Compile Include="ShangHai20\Tables\MT_HUTCHISON_COMBINA_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_INFLUENCE_QTY_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_INTUIT_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_MEASURE_REPEAT_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_METER.cs" />
+    <Compile Include="ShangHai20\Tables\MT_MET_CONC_Base.cs" />
+    <Compile Include="ShangHai20\Tables\MT_PASSWORD_CHANGE_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_PRESETPARAM_CHECK_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_PRESETPARAM_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_SEAL_INST.cs" />
+    <Compile Include="ShangHai20\Tables\MT_STANDARD_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_STARTING_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_SURPLUS_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_TIME_ERROR_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_TS_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_VARIATION_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_VOLT_MET_CONC.cs" />
+    <Compile Include="ShangHai20\Tables\MT_WAVE_MET_CONC.cs" />
+    <Compile Include="Taida\CheckBasicData.cs" />
+    <Compile Include="Taida\CheckErr.cs" />
+    <Compile Include="Taida\Taida.cs" />
+    <Compile Include="TianJin\TianJin.cs" />
+    <Compile Include="WLMQ\MDS.cs" />
+    <Compile Include="WLMQ\MDS_MeterResultHelper.cs" />
+    <Compile Include="WLMQ\StdDicCode.cs" />
+    <Compile Include="XiAn\XiAnProject.cs" />
+    <Compile Include="ZHGK_XinJiang\MDS.cs" />
+    <Compile Include="ZHGK_XinJiang\MDS_MeterResultHelper.cs" />
+    <Compile Include="ZHGK_XinJiang\StdDicCode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LYTest.Core\LYTest.Core.csproj">
+      <Project>{830309E8-432D-437A-9F3E-D7A8925D09B8}</Project>
+      <Name>LYTest.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.DAL\LYTest.DAL.csproj">
+      <Project>{5EF4554F-F70B-4499-8EF6-07CADD8AF843}</Project>
+      <Name>LYTest.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LYTest.Utility\LYTest.Utility.csproj">
+      <Project>{B51CD3E2-0663-4A0D-AF36-B16ED291F033}</Project>
+      <Name>LYTest.Utility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZH.MeterProtocol\LYTest.MeterProtocol.csproj">
+      <Project>{D2741FCF-183D-4581-AFE8-2DF869B4246A}</Project>
+      <Name>LYTest.MeterProtocol</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GuoJin\国金源富.txt" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.ConfigManager.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.ConfigManager.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.ConfigManager.XML" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IConfigManager.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IConfigManager.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IConfigManager.xml" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalCommClient.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalCommClient.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalCommClient.XML" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalContract.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalContract.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.InternalContract.XML" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IRouteInfoManager.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IRouteInfoManager.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.IRouteInfoManager.XML" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.Utility.dll" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.Utility.pdb" />
+    <Content Include="HEB\Dll\CLDC.CLAT.Comm.Utility.XML" />
+    <Content Include="IMICP\说明.txt" />
+    <Content Include="NanRui\生产调度平台.txt" />
+    <Content Include="SG186\东软SG186接口.txt" />
+    <Content Include="Taida\泰达mis中间库.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

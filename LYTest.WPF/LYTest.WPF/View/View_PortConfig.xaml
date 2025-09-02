@@ -1,0 +1,220 @@
+﻿<basemodel:DockControlDisposable  
+             xmlns:basemodel="clr-namespace:LYTest.WPF.Model"
+             x:Class="LYTest.WPF.View.View_PortConfig"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LYTest.WPF.View" 
+             xmlns:ViewModel="clr-namespace:LYTest.ViewModel.ProtConfig;assembly=LYTest.ViewModel"
+             mc:Ignorable="d" 
+             Foreground="{DynamicResource 字体颜色标准}"
+             d:DesignHeight="600" d:DesignWidth="1200"
+            >
+
+    <basemodel:DockControlDisposable.Resources>
+        <ViewModel:PortConfigViewModel x:Key="PortConfigViewModel"/>
+
+        <DataGridTemplateColumn x:Key="columnEdit"  Header="有改动"   Width="50">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <Image Width="14"
+                           Visibility="{Binding FlagChanged,Converter={StaticResource BoolToVisibilityConverter}}" 
+                            Source="/Images/Edit.png"/>
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <Style x:Key="styleCheckBoxRelay"  TargetType="CheckBox">
+            <Setter Property="Content" Value="闭合"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+        <Style x:Key="styleCheckBoxRelay1"  TargetType="CheckBox">
+            <Setter Property="Content" Value="闭合"/>
+            <Setter Property="Margin" Value="3"/>
+        </Style>
+    </basemodel:DockControlDisposable.Resources>
+    
+    <Grid DataContext="{StaticResource PortConfigViewModel}">
+        <TabControl Background="{DynamicResource 窗口背景色}" >
+            <TabItem Width="160"
+                     Foreground="{DynamicResource 字体颜色标准}"
+                     Header="服务器端口"  >
+
+                <DataGrid ItemsSource="{Binding Servers}"   HeadersVisibility="Column"
+                          Style="{StaticResource dataGridStyleGeneral}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="服务器名" Width="120" Binding="{Binding Name}" IsReadOnly="True"/>
+                        <DataGridTextColumn  Header="IP地址_远程端口_本地起始端口"
+                                             Binding="{Binding Address,Mode=TwoWay}" Width="200"/>
+                        <DataGridTemplateColumn Header="有改动" IsReadOnly="True" Width="45">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Width="14"
+                                           Visibility="{Binding FlagChanged,Converter={StaticResource BoolToVisibilityConverter}}" 
+                                            Source="/Images/Edit.png"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!--设备端口配置-标准表-功率源-误差版-->
+            <TabItem Width="160"  Foreground="{DynamicResource 字体颜色标准}"  Header="设备端口">
+                <!--名称  服务器编号  设备型号   串口参数  开始端口 端口间隔  端口数量   帧最大间隔  字节最大间隔  是否编辑  删除-->
+                <ListBox  Margin="3" ItemsSource="{Binding Groups}"  Name="list_Device">
+                    <ListBox.Template >
+                        <ControlTemplate TargetType="ListBox">
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                                <WrapPanel IsItemsHost="True"
+                                           Orientation="Vertical"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Stretch"/>
+                            </ScrollViewer>
+                        </ControlTemplate>
+                    </ListBox.Template>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="8,3">
+                                <StackPanel   Orientation="Horizontal" Background="{DynamicResource 窗口背景色}">
+                                    <CheckBox   VerticalAlignment="Center" IsChecked="{Binding IsExist,Mode=TwoWay}"/>
+                                    <TextBlock Text="{Binding Name}" Margin="3" Width="250" VerticalAlignment="Center"/>
+                                    <Button VerticalAlignment="Center" Click="Btn_Add_Device" ToolTip="添加设备"
+                                            Visibility="{Binding IsExist,Converter={StaticResource BoolToVisibilityConverter}}">
+                                        <Button.Content>
+                                            <Image Width="18" Source="/Images/Add.png"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                                <DataGrid   Style="{StaticResource dataGridStyleGeneral}"
+                                            Visibility="{Binding IsExist,Converter={StaticResource BoolToVisibilityConverter}}"
+                                            HeadersVisibility="Column" ItemsSource="{Binding DeviceItems}" >
+                                    <DataGrid.Columns>
+                                        <DataGridComboBoxColumn Header="服务器" Width="100"
+                                                                EditingElementStyle="{StaticResource StyleComboBox}"
+                                                                SelectedItemBinding="{Binding Server,Mode=TwoWay}"
+                                                                ItemsSource="{Binding Source={StaticResource PortConfigViewModel},Path=Servers}"/>
+                                        <DataGridComboBoxColumn Header="设备型号" Width="100"
+                                                                EditingElementStyle="{StaticResource StyleComboBox}"
+                                                                SelectedItemBinding="{Binding Model,Mode=TwoWay}"
+                                                                ItemsSource="{Binding Source={StaticResource PortConfigViewModel},Path=ModelItems}"/>
+                                        <DataGridComboBoxColumn Header="串口参数" Width="80"
+                                                                SelectedItemBinding="{Binding ComParam,Mode=TwoWay}"
+                                                                ItemsSource="{Binding Source={StaticResource PortConfigViewModel},Path=ComParams}"
+                                                                EditingElementStyle="{StaticResource StyleComboBox}"/>
+                                        <DataGridTextColumn Header="端口号" Width="60" Binding="{Binding PortNum,Mode=TwoWay}"/>
+                                        <DataGridTextColumn Header="帧最大间隔" Width="120" Binding="{Binding MaxTimePerFrame,Mode=TwoWay}"/>
+                                        <DataGridTextColumn Header="字节最大间隔" Width="120" Binding="{Binding MaxTimePerByte,Mode=TwoWay}"/>
+                  
+                                        <DataGridCheckBoxColumn Header="是否需要联机" Binding="{Binding IsLink,Mode=TwoWay}" />
+
+                                        <DataGridTemplateColumn Header="有改动" IsReadOnly="True" Width="45">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Image Width="14" Source="/Images/Edit.png"
+                                                           Visibility="{Binding FlagChanged,Converter={StaticResource BoolToVisibilityConverter}}"  />
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                        <DataGridTemplateColumn Header="删除" IsReadOnly="True" Width="45">
+                                            <DataGridTemplateColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button HorizontalAlignment="Center" 
+                                                             VerticalAlignment="Center"
+                                                             ToolTip="删除当前设备"
+                                                             Click="Btn_Del_Device">
+                                                        <Image Width="14"    Height="14" Source="/Images/Del.png"/>
+                                                    </Button>
+                                                </DataTemplate>
+                                            </DataGridTemplateColumn.CellTemplate>
+                                        </DataGridTemplateColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </TabItem>
+
+
+            <!--表位端口配置-->
+            <TabItem Width="160"
+                Foreground="{DynamicResource 字体颜色标准}"
+                     Header="表位配置" Height="21" Margin="0,-2,0,0.2" VerticalAlignment="Bottom">
+                <StackPanel Margin="8,3">
+
+                    <!--  服务器编号   串口参数  开始端口 端口间隔  端口数量   帧最大间隔  字节最大间隔  是否编辑  删除-->
+                    <Button VerticalAlignment="Center" Margin="5"
+                            HorizontalAlignment="Left"
+                            ToolTip="添加表位端口配置"
+                            Click="Btn_Add_Meter">
+                        <Button.Content>
+                            <Image Width="32" Source="/Images/Add.png"/>
+                        </Button.Content>
+                    </Button>
+                    <DataGrid  Style="{StaticResource dataGridStyleGeneral}"
+                               Visibility="{Binding IsExist,Converter={StaticResource BoolToVisibilityConverter}}"
+                               HeadersVisibility="Column" ItemsSource="{Binding MeterItem}">
+                        <DataGrid.Columns>
+                            <DataGridComboBoxColumn
+                                    Header="服务器"
+                                    Width="120"
+                                    EditingElementStyle="{StaticResource StyleComboBox}"
+                                    SelectedItemBinding="{Binding Server,Mode=TwoWay}"
+                                    ItemsSource="{Binding Source={StaticResource PortConfigViewModel},Path=Servers}"/>
+                            <DataGridComboBoxColumn
+                                    Header="串口参数"
+                                    Width="80"
+                                    SelectedItemBinding="{Binding ComParam,Mode=TwoWay}"
+                                    ItemsSource="{Binding Source={StaticResource PortConfigViewModel},Path=ComParams}"
+                                    EditingElementStyle="{StaticResource StyleComboBox}"/>
+                            <DataGridTextColumn Header="开始端口"
+                                                Width="80"
+                                                Binding="{Binding StartPort,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Header="端口间隔"
+                                                 Width="80"
+                                                 Binding="{Binding IntervalValue,Mode=TwoWay}"/>
+                            <DataGridTextColumn     Header="端口数量"   
+                                                    Width="80"
+                                                    Binding="{Binding PortCount,Mode=TwoWay}"/>
+                            <DataGridTextColumn  Header="帧最大间隔"
+                                                 Width="120"
+                                                 Binding="{Binding MaxTimePerFrame,Mode=TwoWay}"/>
+                            <DataGridTextColumn Header="字节最大间隔" Width="120" Binding="{Binding MaxTimePerByte,Mode=TwoWay}"/>
+                            <DataGridTemplateColumn Header="有改动" IsReadOnly="True" Width="45">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Width="14"
+                                               Visibility="{Binding FlagChanged,Converter={StaticResource BoolToVisibilityConverter}}" 
+                                               Source="/Images/Edit.png"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn   Header="删除"  IsReadOnly="True"  Width="40">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button  HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center"
+                                                 ToolTip="删除表位端口配置"
+                                                 Click="Btn_Del_Meter">
+                                            <Image Width="14" Height="14"  Source="/Images/Del.png"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+
+
+
+            </TabItem>
+        </TabControl>
+
+        <Button HorizontalAlignment="Right"  Margin="15" ToolTip="保存所有的配置"
+                Command="{Binding LocalCommand}"
+                CommandParameter="SavePortConfig"   VerticalAlignment="Bottom">
+            <Image Width="40" Source="/Images/Save.png"/>
+        </Button>
+    </Grid>
+</basemodel:DockControlDisposable>

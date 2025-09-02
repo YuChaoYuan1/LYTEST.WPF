@@ -1,0 +1,215 @@
+﻿<basemodel:DockControlDisposable  xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model"
+            x:Class="LYTest.WPF.SG.View.View_CodeTree"
+            xmlns:Controls2="clr-namespace:LYTest.WPF.SG.Controls"                 
+            xmlns:Controls1="clr-namespace:LYTest.WPF.SG.Controls"                    
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:LYTest.WPF.SG.View"
+            mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="880">
+    <basemodel:DockControlDisposable.Resources>
+        <DataTemplate x:Key="CellTemplate_Code">
+            <StackPanel Orientation="Horizontal"  Margin="{Binding CODE_LEVEL,Converter={StaticResource LevelToIndentConverter}}">
+                <ToggleButton x:Name="Expander" 
+                              Style="{StaticResource ExpandCollapseToggleStyle}" 
+                              IsChecked="{Binding Path=IsExpanded,
+                              RelativeSource={RelativeSource 
+                              AncestorType={x:Type TreeViewItem}}}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              ClickMode="Press"/>
+                <CheckBox Margin="3,1"
+					      IsChecked="{Binding CODE_ENABLED,Mode=TwoWay}"
+                          IsEnabled="{Binding CodePermission,Converter={StaticResource CodeSelectedConverter}}"
+					      VerticalAlignment="Center"/>
+                <Controls1:EditBox Text="{Binding CODE_NAME,Mode=TwoWay}"
+                                   VerticalAlignment="Center"
+                                   IsEnabled="{Binding CodePermission,Converter={StaticResource CodeModifyConverter}}"
+                                   Width="200"/>
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=HasItems,
+                               RelativeSource={RelativeSource 
+                               AncestorType={x:Type TreeViewItem}}}" 
+                               Value="False">
+                    <Setter TargetName="Expander" Property="Visibility"  Value="Hidden"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <GridViewColumnCollection x:Key="ColumnCollectionCode">
+            <GridViewColumn  Width="320"  Header="中文名称" CellTemplate="{StaticResource CellTemplate_Code}"/>
+            <GridViewColumn Width="240"   Header="英文名称">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Controls1:EditBox Text="{Binding CODE_TYPE,Mode=TwoWay}"
+                            VerticalAlignment="Center" Width="200"
+                            IsEnabled="{Binding CodePermission,Converter={StaticResource CodeModifyConverter}}" />
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="120"  Header="编码值">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Controls1:EditBox Text="{Binding CODE_VALUE,Mode=TwoWay}"
+                            VerticalAlignment="Center" Width="200"
+                            IsEnabled="{Binding CodePermission,Converter={StaticResource CodeModifyConverter}}" />
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="auto" Header="权限">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Controls2:ComboBoxPermission Width="auto" MinWidth="32"
+                            Visibility="{Binding CurrentPermission, ConverterParameter=2, Converter={StaticResource UserVisibilityConverter}}"
+                            SelectedValue="{Binding CodePermission,Mode=TwoWay}"
+                            Style="{DynamicResource StyleComboBox}"/>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="40"  Header="保存">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Click="OnSave" >
+                            <Image Source="{DynamicResource 保存}" Height="18" />
+                        </Button>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="40"  Header="添加">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Click="OnAdd"
+                                Visibility="{Binding CodePermission,Converter={StaticResource CodeAddConverter}}" >
+                            <Image Source="{DynamicResource 添加}" Height="18" />
+                        </Button>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="40" Header="删除">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button VerticalAlignment="Center" HorizontalAlignment="Center" Click="OnDelete"
+                                Visibility="{Binding CodePermission,Converter={StaticResource CodeDeleteConverter}}" >
+                            <Image Source="{DynamicResource 删除}" Height="18" />
+                        </Button>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+            <GridViewColumn Width="40" Header="有变动">
+                <GridViewColumn.CellTemplate>
+                    <DataTemplate>
+                        <Image x:Name="imageChange" Visibility="Hidden" Height="14" Source="/Images/编辑.png" />
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding FlagChanged}" Value ="true">
+                                <Setter TargetName="imageChange" Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </GridViewColumn.CellTemplate>
+            </GridViewColumn>
+        </GridViewColumnCollection>
+
+        <Style TargetType="TreeView" x:Key="StyleCodeTree">
+            <Style.Resources>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Foreground" Value="{DynamicResource 字体颜色标准}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TreeViewItem}">
+                                <StackPanel VerticalAlignment="Center">
+                                    <Border Name="Bd"
+                                             Background="{TemplateBinding Background}"
+                                             BorderBrush="{TemplateBinding BorderBrush}"
+                                             BorderThickness="0"
+                                             Padding="{TemplateBinding Padding}">
+                                        <GridViewRowPresenter x:Name="PART_Header" Content="{TemplateBinding Header}" Columns="{StaticResource ColumnCollectionCode}" />
+                                    </Border>
+                                    <ItemsPresenter x:Name="ItemsHost" />
+                                </StackPanel>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsExpanded" Value="false">
+                                        <Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="HasHeader" Value="false"/>
+                                            <Condition Property="Width" Value="Auto"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PART_Header" Property="MinWidth" Value="75"/>
+                                    </MultiTrigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="HasHeader" Value="false"/>
+                                            <Condition Property="Height" Value="Auto"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="PART_Header" Property="MinHeight" Value="19"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <!--<Setter Property="Foreground" Value="Blue"/>-->
+                                        <Setter Property="Background" TargetName="Bd" Value="{DynamicResource 窗口背景深色}"/>
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsSelected" Value="true"/>
+                                            <Condition Property="IsSelectionActive" Value="false"/>
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="Bd" Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                                    </MultiTrigger>
+                                    <Trigger Property="IsEnabled" Value="false">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background"  Value="{DynamicResource 表行颜色}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="Background"   Value="{DynamicResource 网格选中项颜色}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"  Value="true">
+                            <Setter Property="Background"  Value="{DynamicResource 网格选中项颜色}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TreeView}">
+                        <!--<ScrollViewer>-->
+                        <!--<Border BorderBrush="{TemplateBinding BorderBrush}" Background="White" BorderThickness="{TemplateBinding BorderThickness}">-->
+                        <DockPanel>
+                            <GridViewHeaderRowPresenter Columns="{StaticResource ColumnCollectionCode}" DockPanel.Dock="Top" Height="25"/>
+                            <ScrollViewer Margin="0" Padding="0">
+                                <ItemsPresenter/>
+                            </ScrollViewer>
+                        </DockPanel>
+                        <!--</Border>-->
+                        <!--</ScrollViewer>-->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Children}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="AlternationCount" Value="2"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </basemodel:DockControlDisposable.Resources>
+    <Border Background="White" CornerRadius="10" Margin="10">
+        <basemodel:GridLineDecorator Margin="3" ClipToBounds="True" GridLineBrush="{DynamicResource 边框颜色}">
+            <TreeView Style="{StaticResource StyleCodeTree}" ItemsSource="{Binding CodeNodes}" Name="treeViewCode"/>
+        </basemodel:GridLineDecorator>
+        <!--<GridSplitter HorizontalAlignment="Right" VerticalAlignment="Stretch" Background="{DynamicResource 分隔条颜色}" Width="2"/>-->
+
+    </Border>
+</basemodel:DockControlDisposable> 

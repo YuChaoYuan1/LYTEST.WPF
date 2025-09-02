@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="LYTest.DataManager.SG.Controls.DataPager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:LYTest.DataManager.SG.Controls"
+             x:Name="dp"
+             mc:Ignorable="d" 
+             d:DesignHeight="100"
+             d:DesignWidth="577">
+    <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="0" >
+        <WrapPanel Orientation="Horizontal">
+            <Button VerticalAlignment="Center" 
+                    Command="{Binding LocalCommand}"
+                    CommandParameter="MoveToFirst"
+                    Margin="3,0">
+                <Image Width="18" Height="18"
+                        Source="../images/first.png"/>
+            </Button>
+            <Button VerticalAlignment="Center"
+                    Command="{Binding LocalCommand}"
+                    CommandParameter="MoveToPrev"
+                    Margin="3,0">
+                <Image Width="18" Height="18"
+                        Source="../Images/prev.png"/>
+            </Button>
+            <TextBox MinWidth="20"
+                     Margin="10,0,0,0"
+                     Text="{Binding Path=PageIndex}"
+                     VerticalAlignment="Center"
+                     Name="tbPageIndex" 
+                     TextAlignment="Center" />
+            <TextBlock Text="/"
+                       VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding PageCount}" Margin="0,0,10,0"
+                       VerticalAlignment="Center"/>
+            <Button VerticalAlignment="Center"
+                    Command="{Binding LocalCommand}"
+                    CommandParameter="MoveToNext"
+                    Margin="3,0">
+                <Image Width="18" Height="18"
+                        Source="../Images/next.png"/>
+            </Button>
+            <Button VerticalAlignment="Center"
+                    Command="{Binding LocalCommand}"
+                    CommandParameter="MoveToEnd"
+                    Margin="3,0">
+                <Image Width="18" Height="18"
+                        Source="../Images/Last.png"/>
+            </Button>
+            <Button VerticalAlignment="Center"
+                    Command="{Binding LocalCommand}"
+                    CommandParameter="RefreshModel"
+                    Margin="3,0">
+                <Image Width="18" Height="18"
+                        Source="../Images/Refresh.png"/>
+            </Button>
+            <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Margin="3">
+                <ComboBox Margin="5,0"
+                          VerticalAlignment="Center"
+                  Name="cboPageSize"
+                  MinWidth="50"
+                  ItemsSource="{Binding SizeCollection}" 
+                  SelectedItem="{Binding PageSize, Mode=TwoWay}" 
+                          Style="{DynamicResource StyleComboBox}" />
+                <TextBlock Text="{Binding Start}" 
+                           Margin="3,0"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="-"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding End}" 
+                           Margin="3,0"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="共"
+                           Margin="10,0,0,0"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Path=Total}" 
+                           Margin="3,0"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="条"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </WrapPanel>
+    </Border>
+</UserControl>

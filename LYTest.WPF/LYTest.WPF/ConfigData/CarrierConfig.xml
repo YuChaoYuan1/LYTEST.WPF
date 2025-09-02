@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CarrierProtocol>
+	<DefaultProtocols>
+		<R Name="新建载波协议">
+			<CarrierType>2041</CarrierType>
+			<RdType>新建载波协议</RdType>
+			<CommuType>2018</CommuType>
+			<BaudRate>9600,e,8,1</BaudRate>
+			<Comm>5</Comm>
+			<CmdTime>5000</CmdTime>
+			<ByteTime>100</ByteTime>
+			<RouterID>0</RouterID>
+			<IsCheck_Model>False</IsCheck_Model>
+			<IsCheck_SM>False</IsCheck_SM>
+			<ZBParame>00</ZBParame>
+			<WXParame>00</WXParame>
+		</R>
+	</DefaultProtocols>
+	<Protocols>
+		<R Name="标准载波">
+			<CarrierType>COM</CarrierType>
+			<RdType>1</RdType>
+			<CommuType>2018</CommuType>
+			<BaudRate>9600,e,8,1</BaudRate>
+			<Comm>26</Comm>
+			<CmdTime>4000</CmdTime>
+			<ByteTime>1000</ByteTime>
+			<RouterID>0</RouterID>
+			<IsRoute>True</IsRoute>
+			<IsBroad>True</IsBroad>
+			<ZBParame>00</ZBParame>
+			<WXParame>00</WXParame>
+		</R>
+		<R Name="鼎信">
+			<CarrierType>2041</CarrierType>
+			<RdType>1</RdType>
+			<CommuType>2018</CommuType>
+			<BaudRate>9600,e,8,1</BaudRate>
+			<Comm>3</Comm>
+			<CmdTime>5000</CmdTime>
+			<ByteTime>100</ByteTime>
+			<RouterID>0</RouterID>
+			<IsRoute>False</IsRoute>
+			<IsBroad>False</IsBroad>
+			<ZBParame>00</ZBParame>
+			<WXParame>00</WXParame>
+		</R>
+		<R Name="中电华瑞2016">
+			<CarrierType>2041</CarrierType>
+			<RdType>0</RdType>
+			<CommuType>2018</CommuType>
+			<BaudRate>9600,e,8,1</BaudRate>
+			<Comm>20</Comm>
+			<CmdTime>6000</CmdTime>
+			<ByteTime>300</ByteTime>
+			<RouterID>0</RouterID>
+			<IsCheck_Model>True</IsCheck_Model>
+			<IsCheck_SM>True</IsCheck_SM>
+			<ZBParame>00</ZBParame>
+			<WXParame>00</WXParame>
+		</R>
+	</Protocols>
+	<Protocols>
+		<R Name="东软载波">
+			<CarrierType>2041</CarrierType>
+			<RdType>7</RdType>
+			<CommuType>2018</CommuType>
+			<BaudRate>9600,e,8,1</BaudRate>
+			<Comm>19</Comm>
+			<CmdTime>5000</CmdTime>
+			<ByteTime>100</ByteTime>
+			<RouterID>0</RouterID>
+			<IsCheck_Model>False</IsCheck_Model>
+			<IsCheck_SM>False</IsCheck_SM>
+			<ZBParame>00</ZBParame>
+			<WXParame>00</WXParame>
+		</R>
+	</Protocols>
+</CarrierProtocol>

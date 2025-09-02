@@ -1,0 +1,163 @@
+﻿<basemodel:DockControlDisposable  
+    xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model"
+    x:Class="LYTest.WPF.SG.View.View_StdMessage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:LYTest.WPF.SG.View"
+    mc:Ignorable="d">
+    <basemodel:DockControlDisposable.Resources>
+        <Style x:Key="headTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="20,0" />
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="rightTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Margin" Value="0,0,10,0" />
+            <Setter Property="FontFamily" Value="微软雅黑" />
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+    </basemodel:DockControlDisposable.Resources>
+
+    <Grid>
+        <Grid Visibility="{Binding IsSingle, Converter={StaticResource BoolToVisibilityConverter}}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="U:" Style="{StaticResource rightTextStyle}" />
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="I:" Style="{StaticResource rightTextStyle}" />
+            <TextBlock Grid.Row="1"  Grid.Column="5" Text="Φ:" Style="{StaticResource rightTextStyle}" />
+
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="P:" Style="{StaticResource rightTextStyle}" />
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="Q:" Style="{StaticResource rightTextStyle}" />
+            <TextBlock Grid.Row="2" Grid.Column="5" Text="S:" Style="{StaticResource rightTextStyle}" />
+
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="F:" Style="{StaticResource rightTextStyle}" />
+
+            <TextBlock Grid.Row="1" Grid.Column="2" Foreground="SkyBlue" Text="{Binding Ua, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="1" Grid.Column="4" Foreground="SkyBlue" Text="{Binding Ia, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="1" Grid.Column="6" Foreground="SkyBlue" Text="{Binding Freq, StringFormat=\{0:F4\}}"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="2" Foreground="SkyBlue" Text="{Binding P, StringFormat=\{0:F4\}}" />
+            <TextBlock Grid.Row="2" Grid.Column="4" Foreground="SkyBlue" Text="{Binding Q, StringFormat=\{0:F4\}}" />
+            <TextBlock Grid.Row="2" Grid.Column="6" Foreground="SkyBlue" Text="{Binding S, StringFormat=\{0:F4\}}" />
+
+            <TextBlock Grid.Row="3" Grid.Column="2" Foreground="SkyBlue" Text="{Binding PhaseA, StringFormat=\{0:F4\}}"/>
+
+        </Grid>
+
+        <Grid d:Visibility="Hidden"  Visibility="{Binding IsThree, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="A:" Grid.Column="1" Grid.Row="2" Foreground="Yellow" />
+            <TextBlock Text="B:" Grid.Column="1" Grid.Row="3" Foreground="Green"  />
+            <TextBlock Text="C:" Grid.Column="1" Grid.Row="4" Foreground="red" />
+
+            <TextBlock Grid.Column="2" Grid.Row="1" Style="{StaticResource headTextStyle}">
+                    <Run Text="U" />
+                    <Run Text="(V)" FontSize="9" BaselineAlignment="Bottom" />
+            </TextBlock>
+            <TextBlock Grid.Column="3" Grid.Row="1" Style="{StaticResource headTextStyle}">
+                    <Run Text="I" />
+                    <Run Text="(A)" FontSize="9" BaselineAlignment="Bottom" />
+            </TextBlock>
+            <TextBlock Grid.Column="4" Grid.Row="1" Style="{StaticResource headTextStyle}">
+                    <Run Text="P" />
+                    <Run Text="(W)" FontSize="9" BaselineAlignment="Bottom" />
+            </TextBlock>
+            <TextBlock Grid.Column="5" Grid.Row="1" Style="{StaticResource headTextStyle}">
+                    <Run Text="Q" />
+                    <Run Text="(Va)" FontSize="9" BaselineAlignment="Bottom" />
+            </TextBlock>
+            <TextBlock Grid.Column="6" Grid.Row="1" Style="{StaticResource headTextStyle}">
+                    <Run Text="Φ"/>
+                    <Run FontSize="9" Text="UI" BaselineAlignment="Bottom"/>
+            </TextBlock>
+
+            <Border Grid.Row="2" Grid.ColumnSpan="8" Background="#44FFFFFF" />
+            <TextBlock Grid.Row="2" Grid.Column="2" Foreground="Yellow" Text="{Binding Ua, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Foreground="Yellow" Text="{Binding Ia, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="2" Grid.Column="4" Foreground="Yellow" Text="{Binding Pa, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="2" Grid.Column="5" Foreground="Yellow" Text="{Binding Qa, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="2" Grid.Column="6" Foreground="Yellow" Text="{Binding PhaseA, StringFormat=\{0:F4\}}"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="2" Foreground="Green" Text="{Binding  Ub, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="3" Grid.Column="3" Foreground="Green" Text="{Binding  Ib, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="3" Grid.Column="4" Foreground="Green" Text="{Binding  Pb, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="3" Grid.Column="5" Foreground="Green" Text="{Binding  Qb, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="3" Grid.Column="6" Foreground="Green" Text="{Binding PhaseB, StringFormat=\{0:F4\}}"/>
+
+            <Border Grid.Row="4" Grid.ColumnSpan="8" Background="#44FFFFFF" />
+            <TextBlock Grid.Row="4" Grid.Column="2" Foreground="red" Text="{Binding Uc, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="4" Grid.Column="3" Foreground="red" Text="{Binding Ic, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="4" Grid.Column="4" Foreground="red" Text="{Binding Pc, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="4" Grid.Column="5" Foreground="red" Text="{Binding Qc, StringFormat=\{0:F4\}}"/>
+            <TextBlock Grid.Row="4" Grid.Column="6" Foreground="red" Text="{Binding PhaseC, StringFormat=\{0:F4\}}"/>
+            <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="6" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="P:" Grid.Column="0" />
+                <TextBlock Text="Q:" Grid.Column="2" />
+                <TextBlock Text="S:" Grid.Column="4" />
+                <TextBlock Grid.Column="1" Text="{Binding P, StringFormat=\{0:F4\}}"/>
+                <TextBlock Grid.Column="3" Text="{Binding Q, StringFormat=\{0:F4\}}"/>
+                <TextBlock Grid.Column="5" Text="{Binding S, StringFormat=\{0:F4\}}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</basemodel:DockControlDisposable>

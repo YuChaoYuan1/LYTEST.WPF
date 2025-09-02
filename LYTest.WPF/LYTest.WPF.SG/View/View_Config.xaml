@@ -1,0 +1,157 @@
+﻿<basemodel:DockControlDisposable
+    x:Class="LYTest.WPF.SG.View.View_Config"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:LYTest.ViewModel.Config;assembly=LYTest.ViewModel"
+    xmlns:localCtrl="clr-namespace:LYTest.WPF.SG.Controls"
+    xmlns:Converter="clr-namespace:LYTest.WPF.SG.Converter"
+    xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model"
+    mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="800">
+    <basemodel:DockControlDisposable.Resources>
+        <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <viewmodel:ConfigViewModel x:Key="ConfigViewModel"/>
+    </basemodel:DockControlDisposable.Resources>
+    <Grid DataContext="{StaticResource ConfigViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TreeView Margin="3,20,3,3" x:Name="advTree"
+                  Background="Transparent" BorderThickness="0"
+			      SelectedItemChanged="AdvTree_ActiveItemChanged"
+			      ItemsSource="{Binding TreeConfig.Children}"  >
+            <TreeView.ItemTemplate  >
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}"  >
+                    <TextBlock Text="{Binding ConfigName}" Margin="0,3"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <GridSplitter VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Background="Transparent"/>
+        <Border Margin="10" CornerRadius="10" Background="White" Grid.Column="2">
+            <TabControl Margin="10">
+                <TabItem Header="配置值" Width="200">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="32"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button ToolTip="保存" HorizontalAlignment="Left" Click="Button2_Click"
+                              Style="{DynamicResource PrimaryButtonStyle}"  >
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <Image Width="18" Source="{DynamicResource 保存}" />
+                                <TextBlock Text="保存" Margin="5,0,5,0" />
+
+                            </StackPanel>
+                        </Button>
+                        <TreeView Grid.Row="1" ItemsSource="{Binding Groups}">
+                            <TreeView.ItemTemplate>
+                                <DataTemplate>
+                                    <TreeViewItem ItemsSource="{Binding Units}" IsExpanded="True" >
+                                        <TreeViewItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock VerticalAlignment="Center"
+                                                       HorizontalAlignment="Right"
+                                                       Margin="3"
+                                                       Text="{Binding StringValue}"
+                                                       MinWidth="400"/>
+                                                <!--<Button ToolTip="保存"
+                                                    x:Name="SaveGroup"
+                                                    Click="Button_Click"
+												    Margin="1"
+												    VerticalAlignment="Center" Visibility="Collapsed" >
+                                                    <Image Width="18"	Source="{DynamicResource 保存}" />
+                                                </Button>-->
+                                                <!--<Button  x:Name="DeleteGroup"
+                                                     Click="Button_Click"
+												     Margin="1"
+                                                     ToolTip="删除"
+												     VerticalAlignment="Center" Visibility="Collapsed" >
+                                                    <Image Width="18" Source="{DynamicResource 删除}" />
+                                                </Button>-->
+                                                <Image Width="12" ToolTip="配置有改动" Source="/Images/编辑.png"
+                                                   Visibility="{Binding ChangeFlag, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                            </StackPanel>
+                                        </TreeViewItem.Header>
+                                        <TreeViewItem.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Width="120" Margin="0,0,10,0"/>
+                                                    <ContentControl x:Name="controlConfigValue">
+                                                        <TextBox MinWidth="160" MaxWidth="640" Margin="1" VerticalAlignment="Center" Text="{Binding ConfigValue}"/>
+                                                    </ContentControl>
+                                                </StackPanel>
+                                                <DataTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding IsCombo}" Value="true">
+                                                        <Setter TargetName="controlConfigValue" Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="ContentControl">
+                                                                    <localCtrl:ControlEnumComboBox Width="160"
+                                                                                               SelectedItem="{Binding ConfigValue, Mode=TwoWay}"
+                                                                                               EnumName="{Binding Code}"
+                                                                                               VerticalAlignment="Center"
+                                                                                               Margin="1" 
+                                                                                               Style="{DynamicResource StyleComboBox}"/>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                        </TreeViewItem.ItemTemplate>
+                                    </TreeViewItem>
+                                </DataTemplate>
+                            </TreeView.ItemTemplate>
+                        </TreeView>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="配置项" Width="200" Foreground="{DynamicResource 字体颜色标准}" Name="tabitemConfig1">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="auto" Margin="5">
+                        <StackPanel HorizontalAlignment="Left" Grid.ColumnSpan="2">
+                            <Grid Height="auto">
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Text="{Binding CurrentNode.ConfigName}"/>
+                                <Button CommandParameter="SaveConfigInfo" ToolTip="保存" Command="{Binding LocalCommand}" HorizontalAlignment="Right" Margin="3" 
+                                        Style="{DynamicResource PrimaryButtonStyle}">
+                                    <StackPanel Orientation="Horizontal" Margin="5">
+                                        <Image Width="18" Source="{DynamicResource 保存}" />
+                                        <TextBlock Text="保存" Margin="5,0,5,0" />
+
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                            <DataGrid Width="auto" ItemsSource="{Binding Infos}" HeadersVisibility="Column">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding Name}" IsReadOnly="False" Header="配置名称" Width="160"/>
+                                    <localCtrl:ConfigColumn Header = "配置数据源" Width="120"
+										SelectedItemBinding="{Binding CodeName}"
+                                        EditingElementStyle="{DynamicResource StyleComboBox}" >
+                                    </localCtrl:ConfigColumn>
+                                    <DataGridTextColumn Binding="{Binding DefaultValue}"
+                                        IsReadOnly="False" Header="默认值" Width="160"/>
+                                    <DataGridTemplateColumn Width="32" IsReadOnly="True">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button x:Name="DeleteConfigInfo" ToolTip="删除"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+													Click="Button_Click" >
+                                                    <Image Width="18" Height="18" Source="{DynamicResource 删除}"/>
+                                                </Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button Margin="3" HorizontalAlignment="Right"
+							    CommandParameter="AddConfigInfo" Command="{Binding LocalCommand}" >
+                                <Image Width="18" Source="{DynamicResource 添加}"/>
+                            </Button>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+        </Border>
+    </Grid>
+
+</basemodel:DockControlDisposable> 

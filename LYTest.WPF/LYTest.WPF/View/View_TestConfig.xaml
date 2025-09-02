@@ -1,0 +1,263 @@
+﻿<basemodel:DockControlDisposable
+    x:Class="LYTest.WPF.View.View_TestConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModel="clr-namespace:LYTest.ViewModel.CheckInfo;assembly=LYTest.ViewModel"
+    xmlns:basemodel="clr-namespace:LYTest.WPF.Model"
+    mc:Ignorable="d" 
+    d:DesignHeight="600" d:DesignWidth="1200"
+    Foreground="{DynamicResource 字体颜色标准}">
+
+    <basemodel:DockControlDisposable.Resources>
+        <viewModel:DataBaseDisplayViewModel x:Key="dataDisplayViewModel"/>
+        <ContextMenu x:Key="contextMenuSpecial">
+            <MenuItem Header="误差试验编号"/>
+            <MenuItem Header="走字试验编号"/>
+        </ContextMenu>
+    </basemodel:DockControlDisposable.Resources>
+
+    <basemodel:DockControlDisposable.DataContext>
+        <Binding Mode="OneWay" Source="{StaticResource dataDisplayViewModel}"/>
+    </basemodel:DockControlDisposable.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <TreeView  Name="treeSchema"
+                   SelectedItemChanged="AdvTree_ActiveItemChanged"
+                   Margin="3"
+                   ItemsSource="{Binding Children}"
+                   BorderBrush="{x:Null}">
+            <TreeView.Resources>
+                <Style TargetType="TreeViewItem">
+                    <Setter Property="IsExpanded" Value="true"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsTerminal}" Value="true"/>
+                                <Condition Binding="{Binding HaveViewNo}" Value="true"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground" Value="DarkGreen"/>
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsTerminal}" Value="true"/>
+                                <Condition Binding="{Binding HaveViewNo}" Value="false"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.Resources>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Margin="3"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}"
+                               Margin="3,0"
+                               VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ParaNo, StringFormat=(\{0\})}"
+                                   Margin="3,0"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <GridSplitter HorizontalAlignment="Right"
+                      Width="3"
+                      VerticalAlignment="Stretch"
+                      Background="{DynamicResource 分隔条颜色}"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="5,0"
+				        Orientation="Horizontal" 
+				        VerticalAlignment="Center">
+                <TextBlock Text="表名称" VerticalAlignment="Center"/>
+                <ComboBox  Width="250"
+                           Name="comboBoxTable"
+                           SelectionChanged="tableNameChanged"
+					       SelectedItem="{Binding TableName}"
+					       ItemsSource="{Binding TableNames}" Style="{DynamicResource StyleComboBox}"/>
+                <Button Content="添加字段"
+                                Width="80"
+                                CommandParameter="AddPKField"
+                                Command="{Binding LocalCommand}"
+                                Style="{DynamicResource ButtonStyleBorder}"
+                                Margin="5,0"/>
+            </StackPanel>
+            <TabControl Grid.Row="1" Margin="3"
+                        Background="{DynamicResource 窗口背景色}">
+                <TabItem Header="主字段配置"
+                         Foreground="{DynamicResource 字体颜色标准}">
+                    <DataGrid Style="{StaticResource dataGridStyleGeneral}"
+			                  ItemsSource="{Binding FieldsPK, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Button  Name="PKMoveUp"
+                                                             ToolTip="上移"
+                                                             Margin="1"
+                                                             Click="ClickItemMove">
+                                                        <Image Width="18" Source="/Images/Up.png"/>
+                                                    </Button>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGridTemplateColumn.CellStyle>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Button  Name="PKMoveDown"
+                                                             Click="ClickItemMove"
+                                                             ToolTip="下移">
+                                                        <Image Width="18" Source="/Images/Up.png" 
+                                                               RenderTransformOrigin="0.5,0.5" >
+                                                            <Image.LayoutTransform>
+                                                                <TransformGroup>
+                                                                    <ScaleTransform ScaleY="-1" ScaleX="1"/>
+                                                                    <SkewTransform AngleY="0" AngleX="0"/>
+                                                                    <RotateTransform Angle="0"/>
+                                                                    <TranslateTransform/>
+                                                                </TransformGroup>
+                                                            </Image.LayoutTransform>
+                                                        </Image>
+                                                    </Button>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGridTemplateColumn.CellStyle>
+                            </DataGridTemplateColumn>
+                            <DataGridComboBoxColumn Width="200"
+                                                    x:Name="columnFieldPk"
+                                                    IsReadOnly="False"
+						                         	Header="字段名"
+                                                    SelectedItemBinding="{Binding FieldName}" 
+                                                    EditingElementStyle="{DynamicResource StyleComboBox}"/>
+                            <DataGridTextColumn Width="*" IsReadOnly="False"
+                                                x:Name="columnDisplayNamePk"
+							                    Header="显示名"
+                                                Binding="{Binding ViewName}"
+                                                ElementStyle="{DynamicResource StyleWrapText}"
+                                                EditingElementStyle="{DynamicResource StyleEditTextBox}"/>
+                            <DataGridTemplateColumn Width="auto">
+                                <DataGridTemplateColumn.CellStyle>
+                                    <Style TargetType="DataGridCell">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate>
+                                                    <Button   Name="DeletePK"
+                                                              ToolTip="删除字段显示"
+                                                              Margin="1"
+                                                              Click="ClickItemMove" >
+                                                        <Image Width="18" Source="/Images/Del.png" />
+                                                    </Button>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </DataGridTemplateColumn.CellStyle>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </TabItem>
+            </TabControl >
+            <Button Grid.Row="2"
+				Width="80"
+				HorizontalAlignment="Center"
+				VerticalAlignment="Center"
+				Content="保存"  
+                Style="{DynamicResource ButtonStyleBorder}"
+                Click="Button_Click"/>
+            <TextBlock x:Name="textBlockSave"
+				Text="保存成功"
+				Grid.Row="2"
+				Margin="10,0"
+				Height="0"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Left"/>
+        </Grid>
+        <GridSplitter HorizontalAlignment="Left"
+                      Grid.Column="2"
+                      VerticalAlignment="Stretch"
+                      Background="{DynamicResource 分隔条颜色}"
+                      Width="3"/>
+        <Grid Margin="3"  Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="结论视图列表" Margin="3"/>
+            <ListBox Grid.Row="1" ItemsSource="{Binding ViewIds.ViewUnits}"
+                     BorderBrush="{x:Null}"	SelectedItem="{Binding ViewIds.SelectedUnit,Mode=TwoWay}"
+		             Margin="3"  Name="listboxViewId"  SelectionChanged="ViewItemChanged"
+		             VerticalAlignment="Stretch">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border BorderThickness="2" Margin="2" BorderBrush="{TemplateBinding BorderBrush}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock HorizontalAlignment="Left"  Text="{Binding ViewId}"
+                                                       Width="50"   VerticalAlignment="Center"/>
+                                            <TextBlock HorizontalAlignment="Left" Text="{Binding ViewName}"
+                                                       VerticalAlignment="Center"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter Property="BorderBrush" Value="{DynamicResource 边框颜色}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+            <StackPanel Grid.Row="2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="编号" VerticalAlignment="Center" Margin="3"/>
+                    <TextBox Grid.Column="1" VerticalAlignment="Center"  Text="{Binding ViewIdAdd}"  Margin="2"/>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="名称" VerticalAlignment="Center"  Margin="3"/>
+                    <TextBox Grid.Column="1" VerticalAlignment="Center" Text="{Binding ViewNameAdd}" Margin="2"/>
+                </Grid>
+                <Button Content="添加结论视图"    Width="100" Margin="3" 
+                                Style="{DynamicResource ButtonStyleBorder}"
+                                CommandParameter="AddResultViewId"
+                                Command="{Binding LocalCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</basemodel:DockControlDisposable> 

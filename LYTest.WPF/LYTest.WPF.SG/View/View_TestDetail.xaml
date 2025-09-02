@@ -1,0 +1,78 @@
+﻿<basemodel:DockControlDisposable 
+              xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model"
+              x:Class="LYTest.WPF.SG.View.View_TestDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LYTest.WPF.SG.View" 
+             xmlns:Converter="clr-namespace:LYTest.WPF.SG.Converter"
+             mc:Ignorable="d" 
+             Foreground="{DynamicResource 字体颜色标准}"
+             d:DesignHeight="600" d:DesignWidth="1100">
+    <basemodel:DockControlDisposable.Resources>
+        <Converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </basemodel:DockControlDisposable.Resources>
+    <Grid Name="gridRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <DockPanel LastChildFill="True" >
+                <Button DockPanel.Dock="Right" Height="25" 
+                    Name="buttonRefresh" Click="Button_Click_Refresh" ToolTip="刷新方案">
+                    <Image Source="/Images/同步.png" Stretch="Uniform"/>
+                </Button>
+                <ComboBox Margin="0" x:Name="comboBoxSchema"
+				    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+				    ItemsSource="{Binding Schemas}"
+				    SelectedItem="{Binding SelectedSchema, Mode=TwoWay}" DisplayMemberPath="SCHEMA_NAME" />
+
+            </DockPanel>
+
+            <basemodel:GridLineDecorator Grid.Row="1" ClipToBounds="True"
+                                     GridLineBrush="{DynamicResource 边框颜色}"
+                                     x:Name="decorator1">
+                <TreeView x:Name="treeScheme"
+                      Style="{StaticResource TreeViewStyleResultSummaryFirst}"
+			          SelectedItemChanged="TreeScheme_SelectionChanged"
+			          ItemsSource="{Binding Categories}" >
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}"/>
+                    </TreeView.ItemTemplate>
+                    <TreeView.ContextMenu>
+                        <ContextMenu MenuItem.Click="Click_SchemaExpand">
+                            <MenuItem x:Name="menuExpand" Header="展开方案树"/>
+                            <MenuItem x:Name="menuCollapsed" Header="折叠方案树"/>
+                            <MenuItem x:Name="clearData" Header="清除本项实验数据"/>
+                            <MenuItem x:Name="setResoultOK" Header="本项实验手动合格"/>
+                            <MenuItem x:Name="setResoultNO" Header="本项实验手动不合格"/>
+                        </ContextMenu>
+                    </TreeView.ContextMenu>
+                </TreeView>
+            </basemodel:GridLineDecorator>
+        </Grid>
+
+        <DataGrid Name="dataGridCheck" Margin="3"  Grid.Column="1" ItemsSource="{Binding DetailResultView}" HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="要检" Width="50" IsReadOnly="True" CanUserResize="False">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding 要检}"  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                      Content="{Binding Index,Converter={StaticResource IndexFormatConverter}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu >
+                <ContextMenu Name="setReoultMenu"  StaysOpen="True" />
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</basemodel:DockControlDisposable> 

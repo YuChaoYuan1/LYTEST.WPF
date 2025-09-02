@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DgnProtocol>
+	<DefaultProtocols>
+		<R Name="DLT645-2007-Default">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>false</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYYYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>0</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="96" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="99" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+	</DefaultProtocols>
+	<Protocols>
+		<R Name="CDLT6452007">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>False</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="98" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="96" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清电量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+		<R Name="CDLT698">
+			<Setting>9600,e,8,1</Setting>
+			<HaveProgrammingkey>False</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT698</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="98" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="96" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+		<R Name="CDL698-2400">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>false</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT698</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="98" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="96" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清电量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+		<R Name="CDLT6452007LGyr">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>True</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="02" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="02" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+		<R Name="CDLT6452007(09)">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>True</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>7</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="96" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="99" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+		<R Name="DLT6452007-4位">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>false</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="96" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="99" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>4</DecimalDigits>
+		</R>
+		<R Name="DLT6452007(09)-4位">
+			<Setting>2400,e,8,1</Setting>
+			<HaveProgrammingkey>True</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT6452007</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>7</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="96" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="99" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>4</DecimalDigits>
+		</R>
+		<R Name="DLT698-4位">
+			<Setting>9600,e,8,1</Setting>
+			<HaveProgrammingkey>false</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT698</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" ShenGu="5" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="98" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="96" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清电表密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>4</DecimalDigits>
+		</R>
+		<R Name="DLT698-4800">
+			<Setting>4800,e,8,1</Setting>
+			<HaveProgrammingkey>false</HaveProgrammingkey>
+			<DataFieldPassword>false</DataFieldPassword>
+			<BlockAddAA>false</BlockAddAA>
+			<ClassName>CDLT698</ClassName>
+			<UserID>000000</UserID>
+			<VerifyPasswordType>0</VerifyPasswordType>
+			<FECount>4</FECount>
+			<DateTimeFormat>YYMMDDWWHHFFSS</DateTimeFormat>
+			<SundayIndex>1</SundayIndex>
+			<FeiLvId Jian="1" Feng="2" Ping="3" Gu="4" />
+			<OperationsNoKey>
+				<Operation Name="WriteLevel1" Display="一类写密码" Password="000000" Class="97" />
+				<Operation Name="WriteLevel2" Display="二类写密码" Password="000000" Class="96" />
+				<Operation Name="ClearMeter" Display="清电表密码" Password="000000" Class="98" />
+				<Operation Name="ClearDemmand" Display="清需量密码" Password="000000" Class="98" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="96" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="96" />
+			</OperationsNoKey>
+			<OperationsHaveKey>
+				<Operation Name="Write" Display="写密码" Password="000000" Class="02" />
+				<Operation Name="ClearEnergy" Display="清需量密码" Password="000000" Class="02" />
+				<Operation Name="ClearDemmand" Display="清电量密码" Password="000000" Class="02" />
+				<Operation Name="ClearEvent" Display="清事件密码" Password="000000" Class="02" />
+				<Operation Name="SwitchControl" Display="拉合闸密码" Password="000000" Class="02" />
+			</OperationsHaveKey>
+			<DataItemsLevel1>
+			</DataItemsLevel1>
+			<DataItemsLevel3>
+			</DataItemsLevel3>
+			<DecimalDigits>2</DecimalDigits>
+		</R>
+	</Protocols>
+</DgnProtocol>

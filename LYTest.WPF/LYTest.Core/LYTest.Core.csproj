@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{830309E8-432D-437A-9F3E-D7A8925D09B8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LYTest.Core</RootNamespace>
+    <AssemblyName>LYTest.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataUnit.cs" />
+    <Compile Include="DgnProtocolInfo.cs" />
+    <Compile Include="Function\VoltageUnbalanceCalculator.cs" />
+    <Compile Include="LinkType.cs" />
+    <Compile Include="ErrLimitHelper.cs" />
+    <Compile Include="DownHelper\XiAnProjectDownHelper.cs" />
+    <Compile Include="Enum\BluetoothModule.cs" />
+    <Compile Include="Enum\CommMode.cs" />
+    <Compile Include="Enum\Cus_CheckStaute.cs" />
+    <Compile Include="Enum\Cus_CostControlItem.cs" />
+    <Compile Include="Enum\Cus_DgnItem.cs" />
+    <Compile Include="Enum\Cus_EncryptionTrialType.cs" />
+    <Compile Include="Enum\Cus_FeiLv.cs" />
+    <Compile Include="Enum\Cus_LightSelect.cs" />
+    <Compile Include="Enum\Cus_PowerPhase.cs" />
+    <Compile Include="Enum\Cus_UpdateKeyType.cs" />
+    <Compile Include="Enum\Cus_Ywg.cs" />
+    <Compile Include="Enum\Cus_ZouZiMethod.cs" />
+    <Compile Include="Enum\EmCarrierType.cs" />
+    <Compile Include="Enum\EmCloseMode.cs" />
+    <Compile Include="Enum\EmCommProtCode.cs" />
+    <Compile Include="Enum\EmLightColor.cs" />
+    <Compile Include="Enum\EmLinkType.cs" />
+    <Compile Include="Enum\EmLocalStationType.cs" />
+    <Compile Include="Enum\EmMeterType.cs" />
+    <Compile Include="Enum\EmPolar.cs" />
+    <Compile Include="Enum\EmTestMode.cs" />
+    <Compile Include="Enum\EmTrialConclusion.cs" />
+    <Compile Include="Enum\EmTrialType.cs" />
+    <Compile Include="Enum\EmWireMode.cs" />
+    <Compile Include="Enum\MeterLogicalAddressEnum.cs" />
+    <Compile Include="Enum\Meter_State.cs" />
+    <Compile Include="Enum\PowerWay.cs" />
+    <Compile Include="Enum\Cus_PowerYuanJian.cs" />
+    <Compile Include="Enum\ProjectID.cs" />
+    <Compile Include="Enum\StandarMeterInfo.cs" />
+    <Compile Include="Enum\UniversityMeterID.cs" />
+    <Compile Include="Enum\WireMode.cs" />
+    <Compile Include="Function\ArrayConvert.cs" />
+    <Compile Include="Function\Common.cs" />
+    <Compile Include="Function\DateTimes.cs" />
+    <Compile Include="Function\File.cs" />
+    <Compile Include="Function\Funs.cs" />
+    <Compile Include="Function\MethodExpand.cs" />
+    <Compile Include="Function\Number.cs" />
+    <Compile Include="Function\QiDQianDFunction.cs" />
+    <Compile Include="ConstHelper.cs" />
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="MeterProtocalItem.cs" />
+    <Compile Include="MeterProtocol.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\ClBuHeGePicture.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\ClDeviceState.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\ClTrialData_Local.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterClearEnerfy.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterClockError.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterCommunicationHPLC.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterDefault.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterDgn.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterDLTData.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterEncryptionControl.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterEnergyError.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterErrAccord.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterErrAccordBase.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterError.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterBase.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterFK.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterFKEnPower.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterFKWarning.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterFreeze.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterFunction.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterHPLCIDAuthen.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterInitialError.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterInsulation.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterLoadRecord.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterPower.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterPreWiring.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterQdQid.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterRegister.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterResult.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterShow.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterSjJLgn.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterSpecialErr.cs" />
+    <Compile Include="Model\DnbModel\DnbInfo\MeterZZError.cs" />
+    <Compile Include="Model\DnbModel\MeterTestData.cs" />
+    <Compile Include="Model\FL_Data.cs" />
+    <Compile Include="Model\Meter\ClMeterInfo_Local.cs" />
+    <Compile Include="Model\Meter\TestMeterInfo.cs" />
+    <Compile Include="Model\RatePeriodTable.cs" />
+    <Compile Include="Model\Schema\JJGParams.cs" />
+    <Compile Include="Model\Schema\SchemaNode.cs" />
+    <Compile Include="OperateFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ComPortInfo.cs" />
+    <Compile Include="FloatE.cs" />
+    <Compile Include="Struct\ErrorLimit.cs" />
+    <Compile Include="Struct\MeterPrepare.cs" />
+    <Compile Include="Struct\MeterState.cs" />
+    <Compile Include="Struct\StIdentityInfo.cs" />
+    <Compile Include="Struct\StKeyInfo.cs" />
+    <Compile Include="Struct\StMonitorData.cs" />
+    <Compile Include="Struct\StParameterCheck.cs" />
+    <Compile Include="Struct\StPlan_ConnProtocol.cs" />
+    <Compile Include="Struct\StPlan_QianDong.cs" />
+    <Compile Include="Struct\StPlan_QiDong.cs" />
+    <Compile Include="Struct\StPlan_WcPoint.cs" />
+    <Compile Include="Struct\StPlan_ZouZi.cs" />
+    <Compile Include="Struct\StReslultDataXml.cs" />
+    <Compile Include="Struct\StStationState.cs" />
+    <Compile Include="Struct\StTime.cs" />
+    <Compile Include="XmlControl.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

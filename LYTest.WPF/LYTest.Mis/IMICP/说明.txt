@@ -1,0 +1,5 @@
+﻿说明
+	Intelligent Measurement and Industrial Control Platform
+	智慧计量工控平台与四线一库接口 20250512
+	20250612  YYC
+	电能表设计表格代码的编写。基本误差上传数据的编写。（部分字段暂时无法确定）

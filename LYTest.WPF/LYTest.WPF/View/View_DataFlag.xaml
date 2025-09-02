@@ -1,0 +1,135 @@
+﻿<basemodel:DockControlDisposable  
+             xmlns:basemodel="clr-namespace:LYTest.WPF.Model" 
+             x:Class="LYTest.WPF.View.View_DataFlag"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LYTest.WPF.View"
+             mc:Ignorable="d" 
+             Foreground="{DynamicResource 字体颜色标准}"
+             d:DesignHeight="450" d:DesignWidth="1200">
+    <basemodel:DockControlDisposable.Resources>
+        <XmlDataProvider x:Key="DataFlag"
+                         Source="/LYTest.WPF;component/ConfigData/DataFlag.xml"/>
+        <local:DataFlagItem x:Key="DataItemTemp"/>
+    </basemodel:DockControlDisposable.Resources>
+    <Grid DataContext="{Binding Source={StaticResource DataFlag}, XPath=/DataFlagInfo}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Margin="3"
+            Style="{StaticResource dataGridStyleGeneral}"
+                  HeadersVisibility="Column"
+                  ItemsSource="{Binding XPath=/DataFlagInfo/R}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="标识名称" Width="200" Binding="{Binding XPath=@DataFlagDiName}"/>
+                <DataGridTextColumn Header="数据标识"
+                                    Width="80"
+                                Binding="{Binding XPath=@DataFlagDi}"/>
+                <DataGridTextColumn Header="数据标识698"
+                                    Width="80"
+                                Binding="{Binding XPath=@DataFlagOi}"/>
+                <DataGridTextColumn Header="长度"
+                                    Width="40"
+                                Binding="{Binding XPath=@DataLength}"/>
+                <DataGridTextColumn Header="小数位"
+                                    Width="50"
+                                Binding="{Binding XPath=@DataSmallNumber}"/>
+                <DataGridTextColumn Header="格式"
+                                Binding="{Binding XPath=@DataFormat}"
+                                    Width="120"/>
+                <DataGridTextColumn Header="所属大类"
+                                Binding="{Binding XPath=@ClassName}"
+                                    Width="100"/>
+                <DataGridTextColumn Header="安全模式"
+                                Binding="{Binding XPath=@EmSecurityMode}"
+                                    Width="60"/>
+                <DataGridTextColumn Header="读写权限"
+                                Binding="{Binding XPath=@Rights}"
+                                    Width="60"/>
+                <DataGridTextColumn Header="所属芯片"
+                                Binding="{Binding XPath=@Chip}"
+                                    Width="60"/>
+                <DataGridTextColumn Header="序号"
+                                Binding="{Binding XPath=@SortNo}"
+                                    Width="40"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button HorizontalAlignment="Right"
+                        Click="Click_Save"
+                        ToolTip="保存"
+                        VerticalAlignment="Bottom"
+                        Grid.Column="1"
+                        Margin="10">
+            <Image  Width="32" Height="32"  Source="/Images/save.png"/>
+        </Button>
+
+        <StackPanel Grid.Column="1" 
+                    Margin="3"
+                    VerticalAlignment="Top" 
+                    DataContext="{Binding  Source={StaticResource DataItemTemp}}">
+            <TextBlock Text="标识名称" Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding Name}"/>
+            <TextBlock Text="数据标识" Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding DataFlag}"/>
+            <TextBlock Text="数据标识698"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding DataFlag698}"/>
+            <TextBlock Text="长度"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding Length}"/>
+            <TextBlock Text="小数位"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding DotLength}"/>
+            <TextBlock Text="格式"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding DataFormat}"/>
+
+            <TextBlock Text="所属大类"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding ClassName}"/>
+
+            <TextBlock Text="安全模式"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding EmSecurityMode}"/>
+
+            <TextBlock Text="读写权限"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding Rights}"/>
+
+            <TextBlock Text="所属芯片"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding Chip}"/>
+            <TextBlock Text="排序号"
+                       Margin="3,1,3,0"/>
+            <TextBox HorizontalAlignment="Stretch"
+                     Margin="3 0 3 3" Text="{Binding SortNo}"/>
+
+            <Button Content="添加标识" 
+                    Click="Click_Add"
+                    Margin="5,10"
+                    Height="25"
+                    Width="80" 
+                    Style="{DynamicResource ButtonStyleBorder}"/>
+            
+        </StackPanel>
+        <GridSplitter Grid.Column="1"
+                      Width="3"
+                      VerticalAlignment="Stretch"
+                      HorizontalAlignment="Left" Background="{DynamicResource 分隔条颜色}"/>
+    </Grid>
+</basemodel:DockControlDisposable> 

@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Control colors.-->
+    <ImageBrush x:Key="BrushWindowColor"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/背景.bmp"/>
+    <ImageBrush x:Key="BrushControlLight"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/背景浅.bmp"/>
+    <ImageBrush x:Key="BrushControlFail"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/背景不合格.bmp"/>
+    <ImageBrush x:Key="BrushControlDisable"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/背景无效.bmp"/>
+    <ImageBrush x:Key="BrushContentDark"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/背景深.bmp"/>
+    <!--Border colors-->    
+    <SolidColorBrush x:Key="ColorWindow"
+                     Color="#FFC3DEEE"/>
+    <SolidColorBrush x:Key="ColorWindowLight"
+                     Color="#FFE3FEFE"/>
+    
+    <SolidColorBrush x:Key="BrushBorderLight" Color="White"/>
+    <SolidColorBrush x:Key="BrushBorderMedium" Color="#FF888888"/>
+    <SolidColorBrush x:Key="BrushTextLight" Color="White"/>
+    <SolidColorBrush x:Key="BrushTextDark" Color="#FF0F0F0F"/>
+    <SolidColorBrush x:Key="BrushColorError" Color="#FFFF4B4B"/>
+    <SolidColorBrush x:Key="BrushColorPass" Color="LightGreen"/>
+    <ImageBrush x:Key="BrushMeterUnit"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/表位颜色.bmp"/>
+    <ImageBrush x:Key="BrushMeterLight"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/表颜色浅.bmp"/>
+    <ImageBrush x:Key="BrushMeterMedium"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/表颜色中.bmp"/>
+    <ImageBrush x:Key="BrushScreen"
+                TileMode="Tile"
+                  Viewport="0,0,5,5" 
+                  Stretch="None" 
+                  ViewportUnits="Absolute"
+                    ImageSource="../Styles/BrushImage/屏幕.bmp"/>
+    
+</ResourceDictionary>

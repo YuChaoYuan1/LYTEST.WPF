@@ -1,0 +1,275 @@
+﻿<Window  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:local1="clr-namespace:LYTest.DataManager.SG.Controls"
+         xmlns:ViewModel="clr-namespace:LYTest.DataManager.SG.ViewModel.Meters"
+         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+         x:Class="LYTest.DataManager.SG.MainWindow"
+        x:Name="window" Icon="数据管理.ico"
+        Height="700" Width="1200" FontFamily="宋体" 
+        WindowState="Maximized" WindowStartupLocation="CenterScreen"
+        Title="数据管理" Background="{DynamicResource 窗口背景色}">
+    <Window.Resources>
+        <ViewModel:MetersViewModel x:Key="MetersViewModel"/>
+        <ContextMenu x:Key="contextMenu"  MenuItem.Click="ContextMenu_Click"  >
+            <MenuItem Header=" 详细数据"/>
+        </ContextMenu>
+    </Window.Resources>
+    <DockPanel  DataContext="{StaticResource MetersViewModel}" LastChildFill="True">
+
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Height="90" >
+            <local1:ImageButton Image="./images/png-0212.png" Content="模板制作" ImageHeight="40" ImageWidth="40" Width="70" Height="50"  Click="Btn_Model_Click"/>
+            <!--上传-->
+            <GroupBox  Width="200">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./images/upload.png" Height="18" />
+                        <TextBlock Text="上传" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <UniformGrid Columns="2" >
+                    <Button Width="70" Height="30" Click="OnUpMds">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./images/upload.png" Height="22" />
+                            <TextBlock Text="MDS" VerticalAlignment="Center" Margin="3"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Width="70" Height="30" Click="OnUpMis">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./images/upload1.png" Height="22" />
+                            <TextBlock Text="营销" VerticalAlignment="Center" Margin="3"/>
+                        </StackPanel>
+                    </Button>
+
+                </UniformGrid>
+            </GroupBox>
+            <!--导出-->
+            <GroupBox  Width="200">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./images/xls1.png" Height="18" />
+                        <TextBlock Text="导出" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <Grid HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button Width="40" Height="40" Click="OnExportDetail">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="./images/xls1.png" Height="22" />
+                            <!--<TextBlock Text="详细" VerticalAlignment="Center" Margin="3"/>-->
+                        </StackPanel>
+                    </Button>
+                    <ToggleButton Grid.Column="1" Width="15" Height="40" Background="Transparent" BorderThickness="0" x:Name="btnExportDown">
+                        <ToggleButton.Content>
+                            <Path x:Name="Arrow"
+				                HorizontalAlignment="Center"
+				                VerticalAlignment="Center"
+				                Data="M 0 0 L 6 6 L 12 0 Z" 
+				                Fill="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+                        </ToggleButton.Content>
+                    </ToggleButton>
+                    <Popup x:Name="pop" IsOpen="{Binding ElementName=btnExportDown, Path=IsChecked, Mode=TwoWay}" Width="150" >
+                        <StackPanel Orientation="Vertical" ButtonBase.Click="OnPopSelected">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Height" Value="30" />
+                                    <Setter Property="Background" Value="White" />
+                                    <Setter Property="BorderThickness" Value="0,0,0,1" />
+                                    
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button  Tag="summary1">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="./images/xls2.png" Height="18" />
+                                        <TextBlock Text="汇总1" VerticalAlignment="Center" Margin="3"/>
+                                    </StackPanel>
+                                </Button.Content>
+
+                            </Button>
+
+                            <Button  Tag="summary2">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="./images/xls2.png" Height="18" />
+                                        <TextBlock Text="汇总2" VerticalAlignment="Center" Margin="3"/>
+                                    </StackPanel>
+                                </Button.Content>
+
+                            </Button>
+                            <Button  Tag="summary3">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="./images/xls2.png" Height="18" />
+                                        <TextBlock Text="汇总3" VerticalAlignment="Center" Margin="3"/>
+                                    </StackPanel>
+                                </Button.Content>
+
+                            </Button>
+
+                        </StackPanel>
+                        <!--<ListBox SelectionChanged="OnPopSelected">
+                            <ListBox.Resources>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="MinHeight" Value="30" />
+                                </Style>
+                            </ListBox.Resources>
+                            <ListBoxItem Tag="summary1">
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="./images/xls2.png" Height="18" />
+                                        <TextBlock Text="汇总1" VerticalAlignment="Center" Margin="3"/>
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                            <ListBoxItem Tag="summary2">
+                                <ListBoxItem.Content>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="./images/xls2.png" Height="18" />
+                                        <TextBlock Text="汇总2" VerticalAlignment="Center" Margin="3"/>
+                                    </StackPanel>
+                                </ListBoxItem.Content>
+                            </ListBoxItem>
+                        </ListBox>-->
+                    </Popup>
+
+                    <!--<Button Width="70" Height="30" Click="OnExportSummary">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./images/xls2.png" Height="22" />
+                            <TextBlock Text="汇总" VerticalAlignment="Center" Margin="3"/>
+                        </StackPanel>
+                    </Button>-->
+
+                </Grid>
+            </GroupBox>
+            <!--报告-->
+            <GroupBox  Width="300">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./images/print.png" Height="18" />
+                        <TextBlock Text="报告" />
+                    </StackPanel>
+                </GroupBox.Header>
+
+                <StackPanel Orientation="Vertical" >
+                    <ComboBox x:Name="comboBoxTemplates" Style="{DynamicResource StyleComboBox}" SelectionChanged="ComboBoxTemplates_SelectionChanged"
+                          Margin=" 5 10 3 0"/>
+                    <UniformGrid Columns="2" Margin="0,5">
+                        <Button Width="70" Height="30" Click="OnReportPreview">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./images/preview.png" Height="22" />
+                                <TextBlock Text="预览" VerticalAlignment="Center" Margin="3"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="70" Height="30" Click="OnReportPrint">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="./images/print.png" Height="22" />
+                                <TextBlock Text="打印" VerticalAlignment="Center" Margin="3"/>
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
+                </StackPanel>
+            </GroupBox>
+            <!--查询-->
+            <GroupBox  Width="440">
+                <GroupBox.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="./images/search.png" Height="18" />
+                        <TextBlock Text="查询" />
+                    </StackPanel>
+                </GroupBox.Header>
+                <StackPanel  Orientation="Vertical"  >
+                    <ListBox ItemsSource="{Binding SearchItems}"
+                         Background="{x:Null}"
+                         BorderBrush="{x:Null}">
+                        <ListBox.Resources>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListBoxItem">
+                                            <StackPanel Orientation="Horizontal" Margin="3">
+                                                <ComboBox Width="120" Margin="3" ItemsSource="{Binding ColumnNames}"
+                                                                       Style="{DynamicResource StyleComboBox}" 
+                                                                       SelectedValue="{Binding ColumnName,Mode=TwoWay}" />
+                                                <ComboBox Width="80" Margin="3"
+                                                              Style="{DynamicResource StyleComboBox}"
+                                                              ItemsSource="{Binding Conditions}" 
+                                                              SelectedItem="{Binding CompareCondition, Mode=TwoWay}"/>
+                                                <ComboBox Width="200" Margin="3"
+                                                              Style="{DynamicResource StyleComboBox}"
+                                                              ItemsSource="{Binding SeachValues}" 
+                                                              Text="{Binding SearchValue, Mode=TwoWay}"
+                                                              IsEditable="True"/>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListBox.Resources>
+                    </ListBox>
+                    <Button HorizontalAlignment="Right" Margin="10,0" 
+                                    Width="90" Height="30" Click="Click_SearchMeters">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="./images/search.png" Height="22" />
+                            <TextBlock Text="查询数据" VerticalAlignment="Center" Margin="3"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+        </StackPanel>
+        <TextBlock DockPanel.Dock="Bottom" FontSize="18"
+                   Name="textBlockMessage"
+                   Margin="3"
+                   TextWrapping="WrapWithOverflow"
+                   Visibility="{Binding IsVisible, Converter={StaticResource BoolToVisibilityConverter}}"
+                   Text="{Binding Message}"/>
+
+
+        <Border Background="White" CornerRadius="10" Margin="10">
+            <Grid Margin="10,10,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <DataGrid  x:Name="datagridMeter" 
+			        CanUserReorderColumns="True"
+                    MouseRightButtonDown="DatagridMeter_MouseRightButtonDown"
+			        ContextMenu="{StaticResource contextMenu}"
+			        HeadersVisibility="All"
+                    RowHeaderWidth="30"
+			        ItemsSource="{Binding Meters}"
+			        SelectionUnit="FullRow"
+                    SelectionChanged="DatagridMeter_SelectionChanged">
+                    <DataGrid.RowHeaderStyle>
+                        <Style TargetType="DataGridRowHeader">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type DataGridRowHeader}">
+                                        <CheckBox IsChecked="{Binding IsSelected,Mode=TwoWay}"
+                                           Click="IsCheckBox_Click"
+                                           VerticalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.RowHeaderStyle>
+                    <!--RowHeaderStyle="{DynamicResource DataGridRowHeaderStyle1}"-->
+
+                </DataGrid>
+
+                <CheckBox Margin="0 3 0 0" ToolTip="全选" Background="Transparent"
+                          VerticalAlignment="Top"  IsChecked="{Binding IsAllMeter}"/>
+
+                <local1:DataPager Margin="10,3,5,3"  DataContext="{Binding PagerModel}" Grid.Row="1"  Width="400"
+                                  HorizontalAlignment="Center"  VerticalAlignment="Center"
+                                  BorderThickness="0" />
+            </Grid>
+
+        </Border>
+
+
+    </DockPanel>
+</Window>

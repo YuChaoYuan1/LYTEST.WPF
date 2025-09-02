@@ -1,0 +1,10 @@
+1.本文件用于台体、流水线密钥下装软件加密接口升级；程序版本21.1.8.1，可以从问属性查看；
+
+2.功能
+1)      增加了双协议函数，同时优化了服务端；
+2)      针对20表修改了密钥修改恢复函数内部逻辑，函数本身不变；
+
+3.WinSocketServer.dll程序升级步骤：
+1)	找到原有WinSocketServer.dll文件，备份；
+2)	复制新的WinSocketServer.dll文件将原有文件覆盖；
+3)	如果原有WinSocketServer.dll文件更改过名字，则需将新的WinSocketServer.dll更改名字后替换；

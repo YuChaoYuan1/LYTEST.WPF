@@ -1,0 +1,39 @@
+﻿<Window x:Class="LYTest.WPF.SG.View.Windows.Window_Wait"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:LYTest.WPF.SG.Controls"
+        mc:Ignorable="d"
+        Title="Window_Wait" Height="250" Width="350" 
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        ResizeMode="CanResizeWithGrip"  
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent">
+    <Window.Effect>
+        <DropShadowEffect Color="Gray"   ShadowDepth="0" BlurRadius="5" Opacity="1" Direction="0.5"/>
+    </Window.Effect>
+    <Border BorderThickness="1" Margin="2" UseLayoutRounding="True" Background="#003B77">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid MouseMove="Window_MouseMove">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" >
+                    <Image Source="{StaticResource 等待}" Width="20" Height="20" Margin="10 0 0 0"/>
+                    <TextBlock Text="等待中" Margin="5 0" VerticalAlignment="Center" FontSize="14" Foreground="White" />
+                </StackPanel>
+            </Grid>
+            <Border Grid.Row="1" Margin="5" Background="White" CornerRadius="5">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <controls:LoadingWait Width="25" Height="25" />
+                    <TextBlock Text="等待执行完毕..." Name="textBlock" VerticalAlignment="Center" Margin="5 0" 
+                           FontSize="20" Foreground="#003B77" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Border>
+</Window>

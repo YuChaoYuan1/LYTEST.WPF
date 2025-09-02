@@ -1,0 +1,59 @@
+﻿<Window x:Class="LYTest.WPF.SG.View.Windows.Window_TipsStepFinished"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LYTest.WPF.SG.View.Windows"
+        mc:Ignorable="d"
+        Foreground="{DynamicResource 字体颜色标准}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ShowInTaskbar="False"
+        Title="Window_TipsMessage" Height="250" Width="450"
+        MouseMove="Window_MouseMove"
+        FontSize="32"
+        ResizeMode="NoResize" 
+        Background="Transparent">
+    <Border BorderThickness="1"  CornerRadius="10" Background="White" Margin="5">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray"  ShadowDepth="0" BlurRadius="5" Opacity="0.3" Direction="0"></DropShadowEffect>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" CornerRadius="10 10 0 0">
+                <Border.Background>
+                    <LinearGradientBrush  EndPoint="1,0.5" StartPoint="0,0.5">
+                        <GradientStop Color="#257ACD"     Offset="0"/>
+                        <GradientStop Color="#48B7FC"  Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Image Source="/Images/info.png" Width="40" Height="40" Margin="0 0 10 0"/>
+                    <TextBlock Text="单点测试完毕" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White"/>
+                </StackPanel>
+            </Border>
+
+            <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto"   Margin="15,10">
+                <TextBlock  VerticalAlignment="Center"  Name="textBlock" TextWrapping="Wrap"
+                   ToolTip="{Binding Text, RelativeSource={RelativeSource Self}}"  HorizontalAlignment="Center" 
+                            FontSize="20"/>
+            </ScrollViewer>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Width="120" Height="45"
+                    Content="关源" Background="#48B7FC" Foreground="White" Click="Button_Off_Click"  />
+                <Button  VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    Width="130" Height="45" Margin="50,0,0,0"
+                    Content="保持电压" Background="#48B7FC" Foreground="White" Click="Button_Click"  />
+            </StackPanel>
+
+        </Grid>
+    </Border>
+</Window>

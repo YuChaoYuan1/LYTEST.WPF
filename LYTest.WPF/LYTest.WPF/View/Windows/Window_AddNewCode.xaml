@@ -1,0 +1,91 @@
+﻿<Window x:Class="LYTest.WPF.View.Windows.Window_AddNewCode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LYTest.WPF.View.Windows"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ShowInTaskbar="False"
+        Background="{DynamicResource 窗口背景色}"
+         WindowStartupLocation="CenterScreen"
+           Control.MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Title="Window_AddNewCode" Height="500" Width="500"
+        FontSize="16">
+    <Border BorderThickness="1"
+            BorderBrush="{DynamicResource 边框颜色}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Background="{DynamicResource 窗口背景深色}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding CODE_NAME}"
+                       Margin="8,3"/>
+                    <TextBlock Text="{Binding CODE_TYPE}"
+                       Margin="8,3"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ListBox Margin="3" Grid.Row="1" Grid.ColumnSpan="2"
+                     Background="{DynamicResource 窗口背景色}"
+                ItemsSource="{Binding Children}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="300" Margin="3"
+                                       TextWrapping="WrapWithOverflow"
+                                   Text="{Binding CODE_NAME}"/>
+                                <TextBlock Width="40" Margin="3"
+                                       TextWrapping="WrapWithOverflow"
+                                   Text="{Binding CODE_VALUE}"/>
+                                <Button Click="DeleteItem_Click">
+                                    <Image Width="18" Source="/Images/Del.png" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            
+                <StackPanel Grid.ColumnSpan="2"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Stretch">
+                    <TextBlock Text="编码名称:" Margin="3"/>
+                    <TextBox Margin="3" HorizontalAlignment="Stretch"
+                           Name="textBoxName"/>
+                    <StackPanel Orientation="Horizontal"><TextBlock Text="编码值（数字）:" Margin="3"/>
+                        <CheckBox Content="自动编码" x:Name="chkAutoCode" VerticalAlignment="Center" IsChecked="True"/>
+                    </StackPanel>
+                    <TextBox Margin="3" HorizontalAlignment="Stretch" IsReadOnly="{Binding ElementName=chkAutoCode,Path=IsChecked}"
+                           Name="textBoxValue"/>
+                    <Grid Margin="5,15"
+                    HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="5,3"
+                            Style="{StaticResource ButtonStyleBorder}"
+                            Click="Click_Enter"
+                            Content="确定"/>
+                        <Button Content="取消"
+                            Grid.Column="1"
+                            Style="{StaticResource ButtonStyleBorder}"
+                            Click="Click_Quit"
+                            Margin="5,3"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.ConfigManager</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.ConfigManager.ConfigManager">
+            <summary>
+            配置文件管理类
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.ConfigManager.ConfigManager.getInstance">
+            <summary>
+            获取配置管理单例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.ConfigManager.ConfigManager.GetConfigInfo(System.String,System.String@,System.String@)">
+            <summary>
+            读取配置信息
+            </summary>
+            <returns></returns>
+            <param name="invokeMethod">调用方法</param>
+            <param name="targetObject">目标对象</param>
+            <param name="targetMethod">目标方法</param>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.ConfigManager.ConfigManager.ReadConfig">
+            <summary>
+            加载配置文件
+            </summary>
+        </member>
+    </members>
+</doc>

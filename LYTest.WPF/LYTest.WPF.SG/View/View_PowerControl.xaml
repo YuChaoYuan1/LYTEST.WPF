@@ -1,0 +1,416 @@
+﻿<basemodel:DockControlDisposable  
+             xmlns:basemodel="clr-namespace:LYTest.WPF.SG.Model" 
+             x:Class="LYTest.WPF.SG.View.View_PowerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LYTest.WPF.SG.View" 
+             xmlns:Controls1="clr-namespace:LYTest.WPF.SG.Controls" 
+             xmlns:local1="clr-namespace:LYTest.ViewModel.PowerControl;assembly=LYTest.ViewModel"
+             mc:Ignorable="d" 
+             Foreground="{DynamicResource 字体颜色标准}"
+             d:DesignHeight="550" d:DesignWidth="850">
+
+    <basemodel:DockControlDisposable.Resources>
+        <local1:PowerControlModel x:Key="PowerControlViewModel"/>
+        <Style TargetType="Button" BasedOn="{StaticResource SuccessButtonStyle}">
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="10,5,10,0"/>
+            <Setter Property="Command" Value="{Binding LocalCommand}" />
+        </Style>
+    </basemodel:DockControlDisposable.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition  Height="230"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="White" Margin="10,10,10,0" CornerRadius="10">
+            <Grid Margin="10" DataContext="{StaticResource PowerControlViewModel}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid >
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Resources>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontSize" Value="12"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                            </Style>
+                        </StackPanel.Resources>
+
+                        <StackPanel Orientation="Horizontal" Margin="10 5 0 10"  >
+                            <Controls1:ControlEnumComboBox Width="100" Height="25" EnumName="CLFS" Style="{DynamicResource StyleComboBox}"
+                                                      SelectedValue="{Binding Setting,Mode=TwoWay}" />
+
+                            <Controls1:ControlEnumComboBox Width="100"   Height="25"  EnumName="PowerFactor"  Style="{DynamicResource StyleComboBox}"
+                                                      SelectedValue="{Binding GLYS,Mode=TwoWay}" Margin="10 0 10 0" />
+                            <Controls1:ControlEnumComboBox Width="100"   Height="25"  EnumName="PowerDirection"  Style="{DynamicResource StyleComboBox}"
+                                                      SelectedValue="{Binding GLFX,Mode=TwoWay}" Margin="0 0 10 0" />
+                            <TextBlock Text="频率:" VerticalAlignment="Center"/>
+                            <TextBox Width="50" VerticalAlignment="Center"  Text="{Binding Freq,Mode=TwoWay}"/>
+                            <CheckBox Content="逆向序" VerticalAlignment="Center"  Margin="10 0 10 0"   IsChecked="{Binding IsReverseOrder,Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="U:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLU" HorizontalAlignment="Left" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" Click="ALLU_Click"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="UA:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLUa" HorizontalAlignment="Left" IsChecked="{Binding IsUA ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电压：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding Ua,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding PhaseUa,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                            <CheckBox Content="统一设置" VerticalAlignment="Center"  Margin="15 0 10 0"   IsChecked="{Binding IsAllCheck,Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal"  Margin="3">
+                            <TextBlock Text="UB:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLUb" HorizontalAlignment="Left" IsChecked="{Binding IsUB ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电压：" Margin="15,0,0,0" />
+                            <TextBox Width="100" Text="{Binding Ub,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding PhaseUb,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="3" >
+                            <TextBlock Text="UC:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLUc" HorizontalAlignment="Left" IsChecked="{Binding IsUC ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电压：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding Uc,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding PhaseUc,Mode=TwoWay,  StringFormat=\{0:F3\}}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="I:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLI" HorizontalAlignment="Left" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" Click="ALLI_Click"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="3">
+                            <TextBlock Text="IA:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLIa" HorizontalAlignment="Left" IsChecked="{Binding IsIA ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电流：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding Ia,Mode=TwoWay,  StringFormat=\{0:F4\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding PhaseIa,Mode=TwoWay,  StringFormat=\{0:F4\}}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="3"  >
+                            <TextBlock Text="IB:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLIb" HorizontalAlignment="Left" IsChecked="{Binding IsIB ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电流：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding Ib,Mode=TwoWay,  StringFormat=\{0:F4\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding PhaseIb,Mode=TwoWay,  StringFormat=\{0:F4\}}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="3" >
+                            <TextBlock Text="IC:" Margin="5" Width="30"/>
+                            <CheckBox Name="ALLIc" HorizontalAlignment="Left" IsChecked="{Binding IsIC ,Mode=TwoWay}" BorderThickness="1,1,0,1" Style="{DynamicResource CheckBoxSwitchStyle}" VerticalAlignment="Center"  Content="OFF" Tag="ON" />
+                            <TextBlock Text="电流：" Margin="15,0,0,0"/>
+                            <TextBox Width="100" Text="{Binding Ic,Mode=TwoWay,  StringFormat=\{0:F4\}}"/>
+                            <TextBlock Text="相位：" Margin="15,0,0,0"  />
+                            <TextBox Width="100" Text="{Binding PhaseIc,Mode=TwoWay,  StringFormat=\{0:F4\}}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Margin="0 0 50 20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="100">
+                        <Button Content="升  源" CommandParameter="PowerOnFree"  Margin="0,10" />
+                        <Button Content="关  源" CommandParameter="PowerOffFree" />
+                    </StackPanel>
+                </Grid>
+                <TextBlock Height="200" Width="5" Grid.Column="1" Background="{DynamicResource 窗口背景色}" />
+
+                <StackPanel Grid.Column="2" Margin="20,10">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                        <RadioButton Content="电流幅值" IsChecked="True" Margin="3" FontWeight="Bold"
+                                     CommandParameter="SetAdjustCurrent" Command="{Binding LocalCommand}"/>
+                        <RadioButton Content="电流相位" x:Name="AdjustPhiI" Margin="3" FontWeight="Bold"
+                                     CommandParameter="SetAdjustCurrentAngle"  Command="{Binding LocalCommand}"/>
+                        <RadioButton Content="电压幅值 调节" Margin="3" FontWeight="Bold" 
+                                     CommandParameter="SetAdjustVoltage"  Command="{Binding LocalCommand}"/>
+                    </StackPanel>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="36"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Vertical"  VerticalAlignment="Center"  HorizontalAlignment="Center" Margin="0,3">
+                            <TextBlock Grid.Row="0" Text="{Binding ZoomTips2 ,Mode=TwoWay}" HorizontalAlignment="Left" Foreground="Red" />
+                            <TextBlock Grid.Row="0" Text="{Binding ZoomTips ,Mode=TwoWay}" HorizontalAlignment="Left" Foreground="Red"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Orientation="Vertical" Visibility="{Binding ElementName=AdjustPhiI,Path=IsChecked,Converter={StaticResource NotBoolToVisibilityConverter}}">
+                                <Button Content="↑ 0.01%" CommandParameter="Add_001" />
+                                <Button Content="↑ 0.1%" CommandParameter="Add_01" />
+                                <Button Content="↑ 1%" CommandParameter="Add_1" />
+                                <Button Content="↑ 10%" CommandParameter="Add_10" />
+                                <Button Content="120%" CommandParameter="Set_120" Margin="0,30,0,0"/>
+                                <Button Content="80%" CommandParameter="Set_80" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"  Grid.Column="1" Visibility="{Binding ElementName=AdjustPhiI,Path=IsChecked,Converter={StaticResource NotBoolToVisibilityConverter}}">
+                                <Button Content="↓ 0.01%"   CommandParameter="Cut_001" />
+                                <Button Content="↓ 0.1%" CommandParameter="Cut_01" />
+                                <Button Content="↓ 1%" CommandParameter="Cut_1" />
+                                <Button Content="↓ 10%" CommandParameter="Cut_10" />
+                                <Button Content="100%" CommandParameter="Set_100" Margin="0,30,0,0"/>
+                                <Button Content="60%"  CommandParameter="Set_60" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Vertical" Visibility="{Binding ElementName=AdjustPhiI,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Button Content="↑ 0.0001" CommandParameter="Add_001" />
+                                <Button Content="↑ 0.001" CommandParameter="Add_01" />
+                                <Button Content="↑ 0.01" CommandParameter="Add_1" />
+                                <Button Content="↑ 0.1" CommandParameter="Add_10" />
+                                <Button Content="↑ 1" CommandParameter="Add_100" />
+
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"  Grid.Column="1" Visibility="{Binding ElementName=AdjustPhiI,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Button Content="↓ 0.0001"   CommandParameter="Cut_001" />
+                                <Button Content="↓ 0.001" CommandParameter="Cut_01" />
+                                <Button Content="↓ 0.01" CommandParameter="Cut_1" />
+                                <Button Content="↓ 0.1" CommandParameter="Cut_10" />
+                                <Button Content="↓ 1" CommandParameter="Cut_100" />
+
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"  Grid.Row="1" Grid.ColumnSpan="2"
+                                        HorizontalAlignment="Center" Margin="5"
+                                         Visibility="{Binding ElementName=AdjustPhiI,Path=IsChecked,Converter={StaticResource BoolToVisibilityConverter}}">
+                                <TextBox Text="{Binding ZoomX}" Width="78"  Margin="3"
+                                     VerticalAlignment="Bottom"
+                                     MaxLines="1" MaxLength="8"/>
+                                <TextBlock Text="°" Width="8" VerticalAlignment="Center"/>
+                                <Button Content="↑" Width="58"  CommandParameter="Add_X" />
+                                <Button Content="↓" Width="58"  CommandParameter="Cut_X" />
+                            </StackPanel>
+
+                        </Grid>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </Border>
+        <GridSplitter Grid.Row="1" Height="10" HorizontalAlignment="Stretch" VerticalAlignment="Center"  />
+        <Border Background="Black" Margin="10,0,10,10" Grid.Row="2" CornerRadius="10">
+
+            <Grid Name="StdData" Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="标准表实时值" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="20,0,0,0"
+                           FontWeight="Bold" Foreground="White" TextDecorations="Underline" FontSize="20" />
+                <Grid Margin="10,40,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="18"/>
+                        </Style>
+                        <Style TargetType="TextBlock" x:Key="headStyle">
+                            <Setter Property="Foreground" Value="Pink" />
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="12"/>
+                            <Setter Property="FontWeight" Value="Bold" />
+                        </Style>
+                    </Grid.Resources>
+
+                    <TextBlock Grid.Column="1" Style="{DynamicResource headStyle}" Text="电压(V)"  />
+                    <TextBlock Grid.Column="2" Style="{DynamicResource headStyle}" Text="电流(A)"  />
+                    <TextBlock Grid.Column="3" Style="{DynamicResource headStyle}" Text="有功(W)"  />
+                    <TextBlock Grid.Column="4" Style="{DynamicResource headStyle}" Text="无功(Va)" />
+                    <TextBlock Grid.Column="5" Style="{DynamicResource headStyle}" Text="视在(W)"  />
+                    <TextBlock Grid.Column="6" Style="{DynamicResource headStyle}" Text="相角(°)" />
+                    <TextBlock Grid.Column="7" Style="{DynamicResource headStyle}" Text="功率因数" />
+                    <TextBlock Grid.Column="8" Style="{DynamicResource headStyle}" Text="频率(Hz)" />
+
+                    <TextBlock Text="A相" Grid.Row="1"  FontSize="12"  Foreground="#AEB404" />
+                    <TextBlock Text="B相" Grid.Row="2"  FontSize="12"  Foreground="Green" />
+                    <TextBlock Text="C相" Grid.Row="3"  FontSize="12"  Foreground="red" />
+
+                    <!--A相数据-->
+                    <TextBlock Grid.Row="1" Grid.Column="1"  Foreground="#AEB404" Text="{Binding Ua, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2"  Foreground="#AEB404" Text="{Binding Ia, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="3"  Foreground="#AEB404" Text="{Binding Pa, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="4"  Foreground="#AEB404" Text="{Binding Qa, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="5"  Foreground="#AEB404" Text="{Binding Sa, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="6"  Foreground="#AEB404" Text="{Binding PhaseA, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="7"  Foreground="#AEB404" Text="{Binding PF, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="1" Grid.Column="8"  Foreground="#AEB404" Text="{Binding Freq, StringFormat=\{0:F4\}}"/>
+
+                    <!--B相数据-->
+                    <TextBlock Grid.Row="2"   Grid.Column="1"  Foreground="Green" Text="{Binding Ub, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="2"  Foreground="Green" Text="{Binding Ib, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="3"  Foreground="Green" Text="{Binding Pb, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="4"  Foreground="Green" Text="{Binding Qb, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="5"  Foreground="Green" Text="{Binding Sb, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="6"  Foreground="Green" Text="{Binding PhaseB, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="7"  Foreground="Green" Text="{Binding PF, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="2"   Grid.Column="8"  Foreground="Green" Text="{Binding Freq, StringFormat=\{0:F4\}}"/>
+
+                    <!--C相数据-->
+                    <TextBlock Grid.Row="3"   Grid.Column="1"  Foreground="red" Text="{Binding Uc, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="2"  Foreground="red" Text="{Binding Ic, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="3"  Foreground="red" Text="{Binding Pc, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="4"  Foreground="red" Text="{Binding Qc, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="5"  Foreground="red" Text="{Binding Sc, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="6"  Foreground="red" Text="{Binding PhaseC, StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="7"  Foreground="red" Text="{Binding PF,      StringFormat=\{0:F4\}}"/>
+                    <TextBlock Grid.Row="3"   Grid.Column="8"  Foreground="red" Text="{Binding Freq,    StringFormat=\{0:F4\}}"/>
+
+                    <!--总功率-->
+                    <Grid Grid.Row="4" Grid.ColumnSpan="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition  />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition  />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Style="{DynamicResource headStyle}" Text="有功总" />
+                        <TextBlock Grid.Column="2" Style="{DynamicResource headStyle}" Text="无功总" />
+                        <TextBlock Grid.Column="4" Style="{DynamicResource headStyle}" Text="视在总" />
+                                   
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="5" Foreground="#FFFFFFFF" Text="{Binding P, StringFormat=\{0:F4\}}"/>
+                        <TextBlock Grid.Column="3" HorizontalAlignment="Left" Margin="5" Foreground="#FFFFFFFF" Text="{Binding Q, StringFormat=\{0:F4\}}"/>
+                        <TextBlock Grid.Column="5" HorizontalAlignment="Left" Margin="5" Foreground="#FFFFFFFF" Text="{Binding S, StringFormat=\{0:F4\}}"/>
+
+                    </Grid>
+
+                    <Image Source="/Images/功率源控制.png"  Grid.Row="0"  Grid.Column="9" Grid.RowSpan="2" Visibility="{Binding IsPowerOkVisible,Converter={StaticResource BoolToVisibilityConverter}}" />
+                </Grid>
+
+
+                <TextBlock Height="100" Width="3" Grid.Column="1" Background="{DynamicResource 窗口背景色}" />
+
+                <TextBlock Text="矢量图" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="20,0,0,0" Grid.Column="2"
+                           FontWeight="Bold" Foreground="White" TextDecorations="Underline" FontSize="20" />
+
+                <Grid Width="131" Height="131"  Grid.Column="2" HorizontalAlignment="Center" >
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Width" Value="11.5" />
+                            <Setter Property="FontSize" Value="8.5"/>
+                            <Setter Property="TextAlignment" Value="Center"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Width" Value="10.5" />
+                            <Setter Property="Margin" Value="5"/>
+                            <Setter Property="Orientation" Value="Vertical"/>
+                        </Style>
+                    </Grid.Resources>
+
+                    <Border  BorderBrush="White" BorderThickness="0.5" CornerRadius="66"/>
+                    <Border  BorderBrush="White" Width="65.5" BorderThickness=" 0 0 0.5 0" HorizontalAlignment="Left" />
+                    <Border  BorderBrush="White" Height="65.5" BorderThickness=" 0 0 0 0.5 "  VerticalAlignment="Top" />
+
+
+                    <!--Ua-->
+                    <StackPanel   Visibility="{Binding IsVisibleUA,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Ua"   Foreground="red" FontStretch="SemiExpanded" />
+                        <Border Background="red" Width="1" Height="52" VerticalAlignment="Center"  HorizontalAlignment="Center" />
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseUa}" />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+                    <!--Ia-->
+                    <StackPanel   Visibility="{Binding IsVisibleIA,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Ia"  Margin="0 5 0 0"  Foreground="red"/>
+                        <Border Background="red" Width="1" Height="47" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseIa}" />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+
+
+                    <!--Ub-->
+                    <StackPanel   Visibility="{Binding IsVisibleUB,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Ub"   Foreground="Green"/>
+                        <Border Background="Green" Width="1" Height="52" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseUb}" />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+                    <!--Ib-->
+                    <StackPanel  Visibility="{Binding IsVisibleIB,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Ib" Margin="0 5 0 0" Foreground="Green"/>
+                        <Border Background="Green" Width="1" Height="47" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseIb}"  />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+
+                    <!--Uc-->
+                    <StackPanel  Visibility="{Binding IsVisibleUC,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Uc"  Foreground="#AEB404"/>
+                        <Border Background="#AEB404" Width="1" Height="52" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseUc}"  />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+                    <!--Ic-->
+                    <StackPanel  Visibility="{Binding IsVisibleIC,Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="Ic" Foreground="#AEB404" Margin="0 5 0 0"/>
+                        <Border Background="#AEB404"  Width="3" Height="47" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <StackPanel.RenderTransform>
+                            <RotateTransform  CenterX="5.25" CenterY="60.5" Angle="{Binding chart_PhaseIc}"  />
+                        </StackPanel.RenderTransform>
+                    </StackPanel>
+
+                    <Border  Background="White"  Width="5" Height="5"  CornerRadius="50" Margin="0"/>
+                </Grid>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</basemodel:DockControlDisposable> 

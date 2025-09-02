@@ -1,0 +1,156 @@
+﻿using LYTest.DAL;
+using LYTest.DAL.DataBaseView;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LYTest.DataManager
+{
+    public class OneMeterResult : ViewModelBase
+    {
+        /// <summary>
+        /// 构造方法,获取一块表的结论
+        /// </summary>
+        /// <param name="meterPk">表的唯一编号</param>
+        /// <param name="isTemp">临时库还是正式库</param>
+        /// <param name="isFromDb">是否从数据库加载表信息</param>
+        public OneMeterResult(string meterPk, bool isTemp)
+        {
+            LoadResultFromDb(meterPk, isTemp);
+        }
+        /// <summary>
+        /// 从数据库加载数据
+        /// </summary>
+        /// <param name="meterPk">表唯一编号</param>
+        private void LoadResultFromDb(string meterPk, bool isTemp)
+        {
+            Categories.Clear();
+            Dictionary<string, Dictionary<string, string>> resultDictionary = CheckResultBll.Instance.LoadOneResult(isTemp, meterPk);
+            #region 条码号及是否要检
+            DynamicModel modelTemp = DALManager.MeterDbDal.GetByID("METER_INFO", string.Format("METER_ID='{0}'", meterPk));
+            if (modelTemp != null)
+            {
+                YaoJian = (modelTemp.GetProperty("MD_CHECKED") as string == "1") ? true : false;
+                MeterInfo = new DynamicViewModel(modelTemp, 0);
+            }
+            else
+            {
+                return;
+            }
+            #endregion
+            #region 提取ViewId
+            Dictionary<string, List<string>> dictionaryViewTemp = new Dictionary<string, List<string>>();
+            List<string> keyList = resultDictionary.Keys.ToList();
+            for (int i = 0; i < keyList.Count; i++)
+            {
+                //arrayTemp[0]为检定点编号
+                string[] arrayTemp = keyList[i].Split('_');
+                if (arrayTemp.Length == 0)
+                {
+                    continue;
+                }
+                string viewId = ResultViewHelper.GetParaNoView(arrayTemp[0]);
+                if (string.IsNullOrEmpty(viewId))
+                {
+                    continue;
+                }
+                if (dictionaryViewTemp.ContainsKey(viewId))
+                {
+                    dictionaryViewTemp[viewId].Add(keyList[i]);
+                }
+                else
+                {
+                    dictionaryViewTemp.Add(viewId, new List<string>() { keyList[i] });
+                }
+            }
+            #endregion
+            #region 结论分组
+            for (int i = 0; i < dictionaryViewTemp.Count; i++)
+            {
+                ViewCategory category = new ViewCategory();
+                category.ViewName = dictionaryViewTemp.Keys.ElementAt(i);
+                List<string> keyCategory = dictionaryViewTemp.ElementAt(i).Value;
+                for (int j = 0; j < keyCategory.Count; j++)
+                {
+                    DynamicViewModel modelTemp1 = new DynamicViewModel(j);
+                    foreach (string columnHeader in resultDictionary[keyCategory[j]].Keys)
+                    {
+                        modelTemp1.SetProperty(columnHeader, resultDictionary[keyCategory[j]][columnHeader]);
+                        if (!category.Names.Contains(columnHeader))
+                        {
+                            category.Names.Add(columnHeader);
+                        }
+                    }
+                    category.ResultUnits.Add(modelTemp1);
+                }
+                Categories.Add(category);
+            }
+            #endregion
+        }
+
+
+        private bool yaoJian;
+        /// <summary>
+        /// 要检标记
+        /// </summary>
+        public bool YaoJian
+        {
+            get { return yaoJian; }
+            set { SetPropertyValue(value, ref yaoJian, "YaoJian"); }
+        }
+
+        /// <summary>
+        /// 结论列表
+        /// </summary>
+        public AsyncObservableCollection<ViewCategory> Categories { get; } = new AsyncObservableCollection<ViewCategory>();
+
+
+        /// <summary>
+        /// 结论分类视图
+        /// </summary>
+        public class ViewCategory : ViewModelBase
+        {
+            private string viewName;
+            /// <summary>
+            /// 显示的名称
+            /// </summary>
+            public string ViewName
+            {
+                get { return viewName; }
+                set { SetPropertyValue(value, ref viewName, "ViewName"); }
+            }
+            private AsyncObservableCollection<string> names = new AsyncObservableCollection<string>();
+            /// <summary>
+            /// 结论项的名称集合
+            /// </summary>
+            public AsyncObservableCollection<string> Names
+            {
+                get { return names; }
+                set { SetPropertyValue(value, ref names, "Names"); }
+            }
+
+            private AsyncObservableCollection<DynamicViewModel> resultUnits = new AsyncObservableCollection<DynamicViewModel>();
+            /// <summary>
+            /// 结论列表
+            /// </summary>
+            public AsyncObservableCollection<DynamicViewModel> ResultUnits
+            {
+                get { return resultUnits; }
+                set { SetPropertyValue(value, ref resultUnits, "ResultUnits"); }
+            }
+
+        }
+
+        private DynamicViewModel meterInfo;
+        /// <summary>
+        /// 表信息
+        /// </summary>
+        public DynamicViewModel MeterInfo
+        {
+            get { return meterInfo; }
+            set { SetPropertyValue(value, ref meterInfo, "MeterInfo"); }
+        }
+    }
+}

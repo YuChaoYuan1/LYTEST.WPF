@@ -1,0 +1,59 @@
+﻿<Window x:Class="LYTest.WPF.View.Windows.Window_ProtocolSelect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Window_ProtocolSelect" Height="220" Width="300" 
+        WindowStyle="None"
+        AllowsTransparency="True" 
+        ResizeMode="CanResizeWithGrip"  
+        Background="Transparent">
+    <Grid Background="#00bfb7">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" >
+            <TextBox Width="250" Style="{Binding }" Margin="1"  FontSize="15" Name="SelectText"/>
+
+            <Button Style="{Binding}" Margin="3 0" Height="18" BorderThickness="0" BorderBrush="White" Background="Transparent" Foreground="White" Click="SelectData">
+                <Image Source="{StaticResource 搜索}"/>
+            </Button>
+            <Button Style="{Binding}" Margin="3 0" Height="18" BorderThickness="0" BorderBrush="White" Background="Transparent" Foreground="White" Click="ClearSelectText">
+                <Image Source="{StaticResource 清空}"/>
+            </Button>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListBox ItemsSource="{Binding DIClassModels}" SelectedItem="{Binding SelectDIClass,Mode=TwoWay}"  >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding ClassName}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox Grid.Column="1" ItemsSource="{Binding SelectDIClass.DIModels}" SelectedItem="{Binding SelectDIClass.SelectDI,Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DataFlagDiName}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+
+            <ListBox Grid.ColumnSpan="2" Name="selectListBox" ItemsSource="{Binding SelectResult}" Visibility="{Binding IsVisibleSelectResult, Converter={StaticResource BoolToVisibilityConverter}}" SelectionChanged="ListBox_SelectionChanged_1">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DataFlagDiName}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CLDC.CLAT.Comm.IConfigManager</name>
+    </assembly>
+    <members>
+        <member name="T:CLDC.CLAT.Comm.IConfigManager.IRouteConfigManager">
+            <summary>
+            路由配置管理接口
+            </summary>
+        </member>
+        <member name="M:CLDC.CLAT.Comm.IConfigManager.IRouteConfigManager.GetConfigInfo(System.String,System.String@,System.String@)">
+            <summary>
+            通过调用方法，获取目标对象及目标调用方法
+            </summary>
+            <param name="invokeMethod">调用方法</param>
+            <param name="targetObject">获取目标对象</param>
+            <param name="targetMethod">目标调用方法</param>
+            <returns>成功，返回true</returns>
+        </member>
+    </members>
+</doc>

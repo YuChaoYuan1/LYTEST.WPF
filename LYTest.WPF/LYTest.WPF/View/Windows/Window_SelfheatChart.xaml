@@ -1,0 +1,26 @@
+﻿<Window x:Class="LYTest.WPF.View.Windows.Window_SelfheatChart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LYTest.WPF.View.Windows"
+        mc:Ignorable="d"
+        Title="自热试验" Height="450" Width="800">
+    <Grid x:Name="gd">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="3*" />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0">
+            <TextBox IsReadOnly="True" x:Name="txt" TextWrapping="Wrap" />
+
+        </ScrollViewer>
+
+        <Grid Background="#2D2D30" Grid.Row="1">
+            <ScrollViewer Margin="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                <Canvas x:Name="cv" Margin="0,10" Background="Transparent" HorizontalAlignment="Left" />
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Window>

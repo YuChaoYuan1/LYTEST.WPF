@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:ctl="clr-namespace:LYTest.WPF.SG.Controls">
+
+    <!--<Style TargetType="ComboBox">
+        <Setter Property="MinHeight" Value="25" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Margin" Value="3" />
+    </Style>
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="MinHeight" Value="25" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>-->
+    <!--<Style TargetType="{x:Type ctl:ControlEnumComboBox}">
+        <Setter Property="MinHeight" Value="25" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>-->
+
+
+    <Style x:Key="ColumnTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="VerticalAlignment"  Value="Center"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment"  Value="Center"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+    </Style>
+
+
+</ResourceDictionary>
